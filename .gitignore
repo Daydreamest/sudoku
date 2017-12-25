@@ -1,3 +1,11 @@
+#Build directories
+/bin
+/obj
+
+#Code::Blocks project files
+*.cbp
+*.depend
+
 # Prerequisites
 *.d
 
