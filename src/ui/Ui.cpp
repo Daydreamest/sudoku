@@ -1,6 +1,6 @@
 #include "Ui.h"
 
-Ui::Ui()
+Ui::Ui() : init(Initializer()), logger(Logger())
 {
     //ctor
 }
