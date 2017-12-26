@@ -1,4 +1,4 @@
-#include "SudokuBoard.h"
+#include "Board.h"
 
 SudokuBoard::SudokuBoard()
 {

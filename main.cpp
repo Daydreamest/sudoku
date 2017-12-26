@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include <SudokuBoard.h>
+#include <Board.h>
 #include <Ui.h>
 
 using namespace std;
