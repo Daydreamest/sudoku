@@ -8,7 +8,10 @@
 class Field
 {
     public:
+        // Default constructor
         Field();
+
+        // Default destructor
         virtual ~Field();
 
         // Reset the field to default empty state
@@ -29,7 +32,11 @@ class Field
     protected:
 
     private:
+
+        // Current field value
         SudokuValue field_value;
+
+        // A list of possible values that this field may have
         std::set<SudokuValue> possible_values;
 };
 

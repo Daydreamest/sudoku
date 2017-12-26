@@ -1,6 +1,7 @@
 #ifndef VALUES_H
 #define VALUES_H
 
+// Possible values of a single Sudoku field
 enum SudokuValue {
     Value_Undefined = 0,
     Value_1,
