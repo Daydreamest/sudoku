@@ -1,6 +1,6 @@
 #include "Board.h"
 
-SudokuBoard::SudokuBoard()
+SudokuBoard::SudokuBoard() : data()
 {
     //ctor
 }
