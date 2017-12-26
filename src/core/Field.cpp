@@ -1,28 +1,18 @@
 #include "Field.h"
 
-Field::Field() : field_value(Value_Undefined), possible_values()
+Field::Field() : field_value(Value_Undefined), possible_values(FieldPossibilities())
 {
-    reset();
+    possible_values.reset();
 }
 
 Field::~Field()
 {
-    possible_values.clear();
 }
 
 void Field::reset()
 {
     field_value = Value_Undefined;
-    possible_values.clear();
-    possible_values.insert(Value_1);
-    possible_values.insert(Value_2);
-    possible_values.insert(Value_3);
-    possible_values.insert(Value_4);
-    possible_values.insert(Value_5);
-    possible_values.insert(Value_6);
-    possible_values.insert(Value_7);
-    possible_values.insert(Value_8);
-    possible_values.insert(Value_9);
+    possible_values.reset();
 }
 
 void Field::set_value(const SudokuValue v)
@@ -43,6 +33,5 @@ bool Field::is_set() const
 
 bool Field::can_be(const SudokuValue v) const
 {
-    auto position = possible_values.find(v);
-    return position != possible_values.end();
+    return possible_values.contains(v);
 }

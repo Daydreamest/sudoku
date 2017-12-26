@@ -1,8 +1,7 @@
 #ifndef FIELD_H
 #define FIELD_H
 
-#include <set>
-
+#include <FieldPossibilities.h>
 #include <Values.h>
 
 class Field
@@ -37,7 +36,7 @@ class Field
         SudokuValue field_value;
 
         // A list of possible values that this field may have
-        std::set<SudokuValue> possible_values;
+        FieldPossibilities possible_values;
 };
 
 #endif // FIELD_H
