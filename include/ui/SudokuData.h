@@ -2,6 +2,7 @@
 #define SUDOKUDATA_H
 
 #include <array>
+#include <memory>
 
 #include <AbstractSudokuData.h>
 #include <Matrix.h>
@@ -26,5 +27,7 @@ class SudokuData : public AbstractSudokuData
         const std::array<char, 9> create_empty_row() const;
         const Matrix<char, 9, 9> create_empty_array() const;
 };
+
+using SudokuData_Pointer = std::shared_ptr<SudokuData>;
 
 #endif // SUDOKUDATA_H

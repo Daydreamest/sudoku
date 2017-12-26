@@ -5,7 +5,6 @@
 #include <Logger.h>
 #include <SudokuData.h>
 
-
 class Ui
 {
     public:

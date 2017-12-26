@@ -10,7 +10,9 @@ Initializer::~Initializer()
     //dtor
 }
 
-SudokuData Initializer::get()
+SudokuData_Pointer Initializer::get()
 {
-    return SudokuData();
+    SudokuData_Pointer p = std::make_shared<SudokuData>();
+    // TODO fill it up
+    return p;
 }

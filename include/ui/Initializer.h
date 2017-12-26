@@ -1,6 +1,8 @@
 #ifndef INITIALIZER_H
 #define INITIALIZER_H
 
+#include <memory>
+
 #include <SudokuData.h>
 
 class Initializer
@@ -9,7 +11,7 @@ class Initializer
         Initializer();
         virtual ~Initializer();
 
-        SudokuData get();
+        SudokuData_Pointer get();
 
     protected:
 
