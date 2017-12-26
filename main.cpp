@@ -10,6 +10,9 @@ int main()
     SudokuBoard board;
     Ui ui;
 
+    auto s = ui.get_initial_values();
+    ui.print_sudoku(s);
+
     cout << "Hello world!" << endl;
     return 0;
 }
