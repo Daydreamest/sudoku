@@ -22,7 +22,8 @@ std::array<char, 9> SudokuData::operator[](int x)
 
 void SudokuData::set_value(const size_t x, const size_t y, const char value)
 {
-    data[x][y] = value;
+    // TODO mixed places to make it work
+    data[y][x] = value;
 }
 
 void SudokuData::reset()
