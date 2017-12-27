@@ -1,20 +1,21 @@
 #ifndef UI_H
 #define UI_H
 
+#include <AbstractUi.h>
 #include <Initializer.h>
 #include <Logger.h>
 #include <SudokuData.h>
 
-class Ui
+class Ui : public AbstractUi
 {
     public:
         Ui();
         virtual ~Ui();
 
         // Get starting data of the sudoku
-        AbstractSudokuData_Pointer get_initial_values();
+        virtual AbstractSudokuData_Pointer get_initial_values() override;
 
-        void print_sudoku(const AbstractSudokuData_Pointer s);
+        virtual void print_sudoku(const AbstractSudokuData_Pointer s) override;
 
     protected:
 
