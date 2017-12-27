@@ -10,7 +10,7 @@ SudokuData::~SudokuData()
     //dtor
 }
 
-std::array<char, 9> SudokuData::operator[](int x)
+SudokuRow<char> SudokuData::operator[](int x)
 {
     if (x > 8) {
         // TODO log error
@@ -31,14 +31,14 @@ void SudokuData::reset()
     data = create_empty_array();
 }
 
-const std::array<char, 9> SudokuData::create_empty_row() const
+const SudokuRow<char> SudokuData::create_empty_row() const
 {
-    return std::array<char, 9> {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
+    return SudokuRow<char> {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
 }
 
-const Matrix<char, 9, 9> SudokuData::create_empty_array() const
+const SudokuTable<char> SudokuData::create_empty_array() const
 {
-    return Matrix<char, 9, 9> {
+    return SudokuTable<char> {
         ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
         ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
         ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',

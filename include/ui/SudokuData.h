@@ -13,7 +13,7 @@ class SudokuData : public AbstractSudokuData
         SudokuData();
         virtual ~SudokuData();
 
-        virtual std::array<char, 9> operator[] (int x) override;
+        virtual SudokuRow<char> operator[] (int x) override;
 
         void set_value(const size_t x, const size_t y, const char value);
 
@@ -22,10 +22,10 @@ class SudokuData : public AbstractSudokuData
     protected:
 
     private:
-        Matrix<char, 9, 9> data;
+        SudokuTable<char> data;
 
-        const std::array<char, 9> create_empty_row() const;
-        const Matrix<char, 9, 9> create_empty_array() const;
+        const SudokuRow<char> create_empty_row() const;
+        const SudokuTable<char> create_empty_array() const;
 };
 
 using SudokuData_Pointer = std::shared_ptr<SudokuData>;

@@ -14,7 +14,7 @@ class SudokuBoard
     private:
 
         // TODO set to fields
-        Matrix<int, 9, 9> data;
+        SudokuTable<int> data;
 };
 
 #endif // SUDOKUBOARD_H
