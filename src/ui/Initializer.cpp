@@ -10,9 +10,9 @@ Initializer::~Initializer()
     //dtor
 }
 
-SudokuData_Pointer Initializer::get()
+SudokuData::handle_type Initializer::get()
 {
-    SudokuData_Pointer p = std::make_shared<SudokuData>();
+    SudokuData::handle_type p = SudokuData::create();
 
     // TODO automatic read from a file
 
@@ -45,4 +45,9 @@ SudokuData_Pointer Initializer::get()
     p->set_value(8,8,'4');
 
     return p;
+}
+
+Initializer::handle_type Initializer::create()
+{
+    return handle_type(new Initializer);
 }

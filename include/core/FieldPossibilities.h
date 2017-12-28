@@ -1,6 +1,7 @@
 #ifndef FIELDPOSSIBILITIES_H
 #define FIELDPOSSIBILITIES_H
 
+#include <memory>
 #include <set>
 
 #include <Values.h>
@@ -8,8 +9,10 @@
 class FieldPossibilities
 {
     public:
-        // Default constructor
-        FieldPossibilities();
+
+        using handle_type = std::shared_ptr<FieldPossibilities>;
+
+        static handle_type create();
 
         // Default destructor
         virtual ~FieldPossibilities();
@@ -27,6 +30,8 @@ class FieldPossibilities
         bool contains(const SudokuValue v) const;
 
     protected:
+        // Default constructor
+        FieldPossibilities();
 
     private:
 

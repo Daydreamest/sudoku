@@ -39,3 +39,8 @@ bool FieldPossibilities::contains(const SudokuValue v) const
     auto position = possible_values.find(v);
     return position != possible_values.end();
 }
+
+FieldPossibilities::handle_type FieldPossibilities::create()
+{
+    return handle_type(new FieldPossibilities);
+}

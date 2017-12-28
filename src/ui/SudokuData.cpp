@@ -50,3 +50,8 @@ const SudokuTable<char> SudokuData::create_empty_array() const
         ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '
     };
 }
+
+SudokuData::handle_type SudokuData::create()
+{
+    return handle_type(new SudokuData);
+}

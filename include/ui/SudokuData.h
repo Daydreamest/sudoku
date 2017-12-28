@@ -1,7 +1,6 @@
 #ifndef SUDOKUDATA_H
 #define SUDOKUDATA_H
 
-#include <array>
 #include <memory>
 
 #include <AbstractSudokuData.h>
@@ -10,7 +9,9 @@
 class SudokuData : public AbstractSudokuData
 {
     public:
-        SudokuData();
+        using handle_type = std::shared_ptr<SudokuData>;
+
+        static handle_type create();
         virtual ~SudokuData();
 
         virtual SudokuRow<char> operator[] (int x) override;
@@ -20,6 +21,7 @@ class SudokuData : public AbstractSudokuData
         void reset();
 
     protected:
+        SudokuData();
 
     private:
         SudokuTable<char> data;
@@ -27,7 +29,5 @@ class SudokuData : public AbstractSudokuData
         const SudokuRow<char> create_empty_row() const;
         const SudokuTable<char> create_empty_array() const;
 };
-
-using SudokuData_Pointer = std::shared_ptr<SudokuData>;
 
 #endif // SUDOKUDATA_H

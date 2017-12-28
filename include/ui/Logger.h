@@ -1,13 +1,20 @@
 #ifndef LOGGER_H
 #define LOGGER_H
 
+#include <memory>
+
 class Logger
 {
     public:
-        Logger();
+
+        using handle_type = std::shared_ptr<Logger>;
+
+        static handle_type create();
+
         virtual ~Logger();
 
     protected:
+        Logger();
 
     private:
 };

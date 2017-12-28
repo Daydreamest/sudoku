@@ -9,3 +9,8 @@ Logger::~Logger()
 {
     //dtor
 }
+
+Logger::handle_type Logger::create()
+{
+    return handle_type(new Logger);
+}

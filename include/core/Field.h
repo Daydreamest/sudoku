@@ -1,14 +1,17 @@
 #ifndef FIELD_H
 #define FIELD_H
 
+#include <memory>
+
 #include <FieldPossibilities.h>
 #include <Values.h>
 
 class Field
 {
     public:
-        // Default constructor
-        Field();
+        using handle_type = std::shared_ptr<Field>;
+
+        static handle_type create();
 
         // Default destructor
         virtual ~Field();
@@ -29,6 +32,8 @@ class Field
         bool can_be(const SudokuValue v) const;
 
     protected:
+        // Default constructor
+        Field();
 
     private:
 
@@ -36,7 +41,7 @@ class Field
         SudokuValue field_value;
 
         // A list of possible values that this field may have
-        FieldPossibilities possible_values;
+        FieldPossibilities::handle_type possible_values;
 };
 
 #endif // FIELD_H

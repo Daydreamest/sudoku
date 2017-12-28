@@ -8,12 +8,16 @@
 class Initializer
 {
     public:
-        Initializer();
+        using handle_type = std::shared_ptr<Initializer>;
+
+        static handle_type create();
+
         virtual ~Initializer();
 
-        SudokuData_Pointer get();
+        SudokuData::handle_type get();
 
     protected:
+        Initializer();
 
     private:
 };

@@ -7,6 +7,9 @@
 class AbstractSudokuData
 {
     public:
+
+        using handler_type = std::shared_ptr<AbstractSudokuData>;
+
         AbstractSudokuData();
         virtual ~AbstractSudokuData();
 
@@ -16,7 +19,5 @@ class AbstractSudokuData
 
     private:
 };
-
-using AbstractSudokuData_Pointer = std::shared_ptr<AbstractSudokuData>;
 
 #endif // ABSTRACTSUDOKUDATA_H

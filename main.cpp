@@ -7,11 +7,11 @@ using namespace std;
 
 int main()
 {
-    SudokuBoard board;
-    Ui ui;
+    SudokuBoard::handle_type board = SudokuBoard::create();
+    AbstractUi::handler_type ui = Ui::create();
 
-    auto s = ui.get_initial_values();
-    ui.print_sudoku(s);
+    auto s = ui->get_initial_values();
+    ui->print_sudoku(s);
 
     return 0;
 }
