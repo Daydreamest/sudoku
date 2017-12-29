@@ -31,7 +31,15 @@ void SudokuBoard::set_data(const AbstractSudokuData::handler_type d)
 
 const AbstractSudokuData::handler_type SudokuBoard::get_data() const
 {
-    return CoreData::create();
+    CoreData::handle_type result = CoreData::create();
+
+    for (int x = 0; x < 9; x++)
+        for (int y = 0; y < 9; y++)
+            if (data[x][y]->get_value() != Value_Undefined) {
+                result->set_value(x, y, data[x][y]->get_value());
+    }
+
+    return result;
 }
 
 

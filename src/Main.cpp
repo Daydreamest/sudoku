@@ -36,5 +36,7 @@ void Main::run()
 
     board->set_data(s);
 
+    ui->print_sudoku(board->get_data());
+
 //    board->set_value(0,0,Value_5);
 }
