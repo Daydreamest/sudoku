@@ -55,3 +55,8 @@ SudokuData::handle_type SudokuData::create()
 {
     return handle_type(new SudokuData);
 }
+
+char SudokuData::get_value(const size_t x, const size_t y) const
+{
+    return data[x][y];
+}

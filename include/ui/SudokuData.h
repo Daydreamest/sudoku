@@ -18,6 +18,8 @@ class SudokuData : public AbstractSudokuData
 
         void set_value(const size_t x, const size_t y, const char value);
 
+        virtual char get_value(const size_t x, const size_t y) const override;
+
         void reset();
 
     protected:
