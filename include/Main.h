@@ -3,7 +3,6 @@
 
 #include <memory>
 
-#include <AbstractLogger.h>
 #include <Board.h>
 #include <AbstractUi.h>
 
@@ -12,6 +11,7 @@ class Main
     public:
 
         using handle_type = std::unique_ptr<Main>;
+        friend handle_type std::make_unique<Main>();
 
         static handle_type create();
 
@@ -19,13 +19,10 @@ class Main
 
         void run();
 
-        void initialize();
-
     protected:
         Main();
 
     private:
-        AbstractLogger::handle_type logger;
         SudokuBoard::handle_type board;
         AbstractUi::handle_type ui;
 };

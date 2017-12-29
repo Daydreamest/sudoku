@@ -4,7 +4,7 @@
 #include <Logger.h>
 #include <Ui.h>
 
-Main::Main() : logger(nullptr), board(nullptr), ui(nullptr)
+Main::Main() : board(nullptr), ui(nullptr)
 {
     //ctor
 }
@@ -16,22 +16,21 @@ Main::~Main()
 
 Main::handle_type Main::create()
 {
-    return handle_type(new Main);
+    handle_type result = std::make_unique<Main>();
+
+    auto logger = Logger::create();
+
+    result->board = SudokuBoard::create();
+    result->board->set_logger(logger);
+
+    result->ui = Ui::create();
+    result->ui->set_logger(logger);
+
+    return std::move(result);
 }
 
 void Main::run()
 {
     auto s = ui->get_initial_values();
     ui->print_sudoku(s);
-}
-
-void Main::initialize()
-{
-    logger = Logger::create();
-
-    board = SudokuBoard::create();
-    board->set_logger(logger);
-
-    ui = Ui::create();
-    ui->set_logger(logger);
 }
