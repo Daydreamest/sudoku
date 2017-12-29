@@ -4,10 +4,11 @@
 #include <memory>
 
 #include <AbstractSudokuData.h>
+#include <LoggerInterface.h>
 #include <Field.h>
 #include <Matrix.h>
 
-class SudokuBoard
+class SudokuBoard : public LoggerInterface
 {
     public:
 

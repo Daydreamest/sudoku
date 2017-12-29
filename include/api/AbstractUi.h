@@ -3,13 +3,14 @@
 
 #include <memory>
 
+#include <LoggerInterface.h>
 #include <SudokuData.h>
 
-class AbstractUi
+class AbstractUi : public LoggerInterface
 {
     public:
 
-        using handler_type = std::shared_ptr<AbstractUi>;
+        using handle_type = std::shared_ptr<AbstractUi>;
 
         virtual ~AbstractUi() {};
 

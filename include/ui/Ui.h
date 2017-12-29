@@ -5,7 +5,6 @@
 
 #include <AbstractUi.h>
 #include <Initializer.h>
-#include <Logger.h>
 #include <SudokuData.h>
 
 class Ui : public AbstractUi
@@ -28,7 +27,6 @@ class Ui : public AbstractUi
 
     private:
         Initializer::handle_type init;
-        Logger::handle_type logger;
 };
 
 #endif // UI_H

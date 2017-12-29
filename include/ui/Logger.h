@@ -3,7 +3,9 @@
 
 #include <memory>
 
-class Logger
+#include <AbstractLogger.h>
+
+class Logger : public AbstractLogger
 {
     public:
 
@@ -12,6 +14,8 @@ class Logger
         static handle_type create();
 
         virtual ~Logger();
+
+        virtual void log(const std::string text) override;
 
     protected:
         Logger();

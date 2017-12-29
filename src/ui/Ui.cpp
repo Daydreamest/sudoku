@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-Ui::Ui() : init(Initializer::create()), logger(Logger::create())
+Ui::Ui() : init(Initializer::create())
 {
     //ctor
 }
