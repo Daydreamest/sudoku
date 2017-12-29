@@ -20,11 +20,11 @@ Main::handle_type Main::create()
 
     auto logger = Logger::create();
 
-    result->board = SudokuBoard::create();
-    result->board->set_logger(logger);
-
     result->ui = Ui::create();
     result->ui->set_logger(logger);
+
+    result->board = SudokuBoard::create();
+    result->board->set_logger(logger);
 
     return std::move(result);
 }
@@ -33,4 +33,8 @@ void Main::run()
 {
     auto s = ui->get_initial_values();
     ui->print_sudoku(s);
+
+    board->set_data(s);
+
+//    board->set_value(0,0,Value_5);
 }

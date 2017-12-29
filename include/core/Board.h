@@ -19,6 +19,7 @@ class SudokuBoard : public LoggerInterface
         virtual ~SudokuBoard();
 
         void set_data(const AbstractSudokuData::handler_type d);
+        const AbstractSudokuData::handler_type get_data() const;
 
         void set_value(const size_t x, const size_t y, const SudokuValue val);
 

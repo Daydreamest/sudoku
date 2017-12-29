@@ -1,6 +1,8 @@
 #include "Board.h"
 
-SudokuBoard::SudokuBoard() : data()
+#include <CoreData.h>
+
+SudokuBoard::SudokuBoard() : data(create_empty_array())
 {
     //ctor
 }
@@ -27,8 +29,16 @@ void SudokuBoard::set_data(const AbstractSudokuData::handler_type d)
         }
 }
 
+const AbstractSudokuData::handler_type SudokuBoard::get_data() const
+{
+    return CoreData::create();
+}
+
+
 void SudokuBoard::set_value(const size_t x, const size_t y, const SudokuValue val)
 {
+//    log("Hello world!");
+
     // TODO do magic checks
     data[x][y]->set_value(val);
 }

@@ -23,15 +23,18 @@ class SudokuValueTools
         virtual ~SudokuValueTools();
 
         static SudokuValue get_value_from_char(const char ch);
+        static char get_char_from_value(const SudokuValue val);
 
     protected:
 
     private:
         SudokuValueTools();
 
-        static std::map<char, SudokuValue> create_map();
-
+        static std::map<char, SudokuValue> create_ch_map();
         static std::map<char, SudokuValue> ch_to_val_map;
+
+        static std::map<SudokuValue, char> create_val_map();
+        static std::map<SudokuValue, char> val_to_ch_map;
 };
 
 #endif // VALUES_H
