@@ -26,11 +26,11 @@ class SudokuBoard
 
     private:
 
-        SudokuRow<Field::handle_type> get_row(size_t i) const;
-        SudokuColumn<Field::handle_type> get_column(size_t i) const;
-        SudokuTile<Field::handle_type> get_tile(size_t i) const;
-        SudokuTile<Field::handle_type> get_tile(size_t x, size_t y) const;
-        Field::handle_type get_field(size_t x, size_t y) const;
+        SudokuRow<Field::handle_type> get_row(const size_t i) const;
+        SudokuColumn<Field::handle_type> get_column(const size_t i) const;
+        SudokuTile<Field::handle_type> get_tile(const size_t index) const;
+        SudokuTile<Field::handle_type> get_tile(const size_t x, const size_t y) const;
+        Field::handle_type get_field(const size_t x, const size_t y) const;
 
         // TODO set to fields
         SudokuTable<Field::handle_type> data;

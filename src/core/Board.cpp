@@ -51,12 +51,12 @@ const SudokuTable<Field::handle_type> SudokuBoard::create_empty_array() const
     return table;
 }
 
-SudokuRow<Field::handle_type> SudokuBoard::get_row(size_t i) const
+SudokuRow<Field::handle_type> SudokuBoard::get_row(const size_t i) const
 {
     return data[i];
 }
 
-SudokuColumn<Field::handle_type> SudokuBoard::get_column(size_t i) const
+SudokuColumn<Field::handle_type> SudokuBoard::get_column(const size_t i) const
 {
     SudokuColumn<Field::handle_type> col = SudokuColumn<Field::handle_type>();
     for (int j = 0; j < 9; j++) {
@@ -65,22 +65,28 @@ SudokuColumn<Field::handle_type> SudokuBoard::get_column(size_t i) const
     return col;
 }
 
-SudokuTile<Field::handle_type> SudokuBoard::get_tile(size_t i) const
+SudokuTile<Field::handle_type> SudokuBoard::get_tile(const size_t index) const
 {
     SudokuTile<Field::handle_type> tile = SudokuTile<Field::handle_type>();
 
-    // TODO fill it up with proper fields
+    const size_t start_x = (index % 3) * 3;
+    const size_t start_y = (index / 3) * 3;
+
+    for (int i = 0; i < 3; i++)
+        for (int j = 0; j < 3; j++) {
+            tile[i][j] = data[start_x + i][start_y + j];
+        }
 
     return tile;
 }
 
-SudokuTile<Field::handle_type> SudokuBoard::get_tile(size_t x, size_t y) const
+SudokuTile<Field::handle_type> SudokuBoard::get_tile(const size_t x, const size_t y) const
 {
-    return get_tile(1);
+    const size_t index = (x / 3) + (y / 3) * 3;
+    return get_tile(index);
 }
 
-Field::handle_type SudokuBoard::get_field(size_t x, size_t y) const
+Field::handle_type SudokuBoard::get_field(const size_t x, const size_t y) const
 {
     return data[x][y];
 }
-
