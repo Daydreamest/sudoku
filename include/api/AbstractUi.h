@@ -4,7 +4,7 @@
 #include <memory>
 
 #include <LoggerInterface.h>
-#include <SudokuData.h>
+#include <AbstractSudokuData.h>
 
 class AbstractUi : public LoggerInterface
 {
@@ -15,9 +15,9 @@ class AbstractUi : public LoggerInterface
         virtual ~AbstractUi() {};
 
         // Get starting data of the sudoku
-        virtual AbstractSudokuData::handler_type get_initial_values() = 0;
+        virtual AbstractData::handle_type get_initial_values() = 0;
 
-        virtual void print_sudoku(const AbstractSudokuData::handler_type s) = 0;
+        virtual void print_sudoku(const AbstractData::handle_type s) = 0;
 
     protected:
         AbstractUi() {};

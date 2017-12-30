@@ -4,7 +4,7 @@
 #include <Logger.h>
 #include <Ui.h>
 
-Main::Main() : board(nullptr), ui(nullptr)
+Main::Main() : sudoku(nullptr), ui(nullptr)
 {
     //ctor
 }
@@ -23,17 +23,17 @@ Main::handle_type Main::create()
     result->ui = Ui::create();
     result->ui->set_logger(logger);
 
-    result->board = SudokuBoard::create();
-    result->board->set_logger(logger);
+    result->sudoku = Sudoku::create();
+    result->sudoku->set_logger(logger);
 
     return std::move(result);
 }
 
 void Main::run()
 {
-    board->set_data(ui->get_initial_values());
+    sudoku->set_data(ui->get_initial_values());
 
-    ui->print_sudoku(board->get_data());
+    ui->print_sudoku(sudoku->get_data());
 
 //    board->set_value(0,0,Value_5);
 }

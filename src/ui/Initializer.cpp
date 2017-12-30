@@ -1,5 +1,7 @@
 #include "Initializer.h"
 
+#include <SudokuData.h>
+
 Initializer::Initializer()
 {
     //ctor
@@ -10,9 +12,9 @@ Initializer::~Initializer()
     //dtor
 }
 
-SudokuData::handle_type Initializer::get()
+AbstractData::handle_type Initializer::get()
 {
-    SudokuData::handle_type p = SudokuData::create();
+    UiData::handle_type p = UiData::create();
 
     // TODO automatic read from a file
 

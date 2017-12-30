@@ -23,7 +23,7 @@ class Main
         Main();
 
     private:
-        SudokuBoard::handle_type board;
+        Sudoku::handle_type sudoku;
         AbstractUi::handle_type ui;
 };
 

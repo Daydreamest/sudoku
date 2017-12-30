@@ -4,14 +4,14 @@
 #include <array>
 #include <memory>
 
-class AbstractSudokuData
+class AbstractData
 {
     public:
 
-        using handler_type = std::shared_ptr<AbstractSudokuData>;
+        using handle_type = std::shared_ptr<AbstractData>;
 
-        AbstractSudokuData() {};
-        virtual ~AbstractSudokuData() {};
+        AbstractData() {};
+        virtual ~AbstractData() {};
 
         virtual std::array<char, 9> operator[] (int x) = 0;
 

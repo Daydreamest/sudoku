@@ -12,12 +12,12 @@ Ui::~Ui()
     //dtor
 }
 
-AbstractSudokuData::handler_type Ui::get_initial_values()
+AbstractData::handle_type Ui::get_initial_values()
 {
     return init->get();
 }
 
-void Ui::print_sudoku(const AbstractSudokuData::handler_type s)
+void Ui::print_sudoku(const AbstractData::handle_type s)
 {
     std::cout << "  ----------- ----------- -----------" << std::endl;
     int v_rule = 1;

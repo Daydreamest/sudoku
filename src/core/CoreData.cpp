@@ -15,7 +15,7 @@ CoreData::handle_type CoreData::create()
     return handle_type(new CoreData);
 }
 
-SudokuRow<char> CoreData::operator[](int x)
+Row<char> CoreData::operator[](int x)
 {
     return data[x];
 }
@@ -31,14 +31,14 @@ void CoreData::set_value(const size_t x, const size_t y, const SudokuValue val)
     data[x][y] = ch;
 }
 
-const SudokuRow<char> CoreData::create_empty_row() const
+const Row<char> CoreData::create_empty_row() const
 {
-    return SudokuRow<char> {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
+    return Row<char> {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
 }
 
-const SudokuTable<char> CoreData::create_empty_array() const
+const Table<char> CoreData::create_empty_array() const
 {
-    return SudokuTable<char> {
+    return Table<char> {
         ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
         ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
         ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',

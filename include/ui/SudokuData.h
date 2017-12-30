@@ -6,15 +6,15 @@
 #include <AbstractSudokuData.h>
 #include <Matrix.h>
 
-class SudokuData : public AbstractSudokuData
+class UiData : public AbstractData
 {
     public:
-        using handle_type = std::shared_ptr<SudokuData>;
+        using handle_type = std::shared_ptr<UiData>;
 
         static handle_type create();
-        virtual ~SudokuData();
+        virtual ~UiData();
 
-        virtual SudokuRow<char> operator[] (int x) override;
+        virtual Row<char> operator[] (int x) override;
 
         void set_value(const size_t x, const size_t y, const char value);
 
@@ -23,13 +23,13 @@ class SudokuData : public AbstractSudokuData
         void reset();
 
     protected:
-        SudokuData();
+        UiData();
 
     private:
-        SudokuTable<char> data;
+        Table<char> data;
 
-        const SudokuRow<char> create_empty_row() const;
-        const SudokuTable<char> create_empty_array() const;
+        const Row<char> create_empty_row() const;
+        const Table<char> create_empty_array() const;
 };
 
 #endif // SUDOKUDATA_H

@@ -8,37 +8,35 @@
 #include <Field.h>
 #include <Matrix.h>
 
-class SudokuBoard : public LoggerInterface
+class Sudoku : public LoggerInterface
 {
     public:
 
-        using handle_type = std::shared_ptr<SudokuBoard>;
+        using handle_type = std::shared_ptr<Sudoku>;
 
         static handle_type create();
 
-        virtual ~SudokuBoard();
+        virtual ~Sudoku();
 
-        void set_data(const AbstractSudokuData::handler_type d);
-        const AbstractSudokuData::handler_type get_data() const;
+        void set_data(const AbstractData::handle_type d);
+        const AbstractData::handle_type get_data() const;
 
         void set_value(const size_t x, const size_t y, const SudokuValue val);
 
     protected:
-        SudokuBoard();
+        Sudoku();
 
     private:
+        Table<Field::handle_type> data;
 
-        SudokuRow<Field::handle_type> get_row(const size_t i) const;
-        SudokuColumn<Field::handle_type> get_column(const size_t i) const;
-        SudokuTile<Field::handle_type> get_tile(const size_t index) const;
-        SudokuTile<Field::handle_type> get_tile(const size_t x, const size_t y) const;
         Field::handle_type get_field(const size_t x, const size_t y) const;
+        Row<Field::handle_type> get_row(const size_t i) const;
+        Column<Field::handle_type> get_column(const size_t i) const;
+        Tile<Field::handle_type> get_tile(const size_t index) const;
+        Tile<Field::handle_type> get_tile(const size_t x, const size_t y) const;
 
-        // TODO set to fields
-        SudokuTable<Field::handle_type> data;
-
-        const SudokuRow<Field::handle_type> create_empty_row() const;
-        const SudokuTable<Field::handle_type> create_empty_array() const;
+        const Row<Field::handle_type> create_empty_row() const;
+        const Table<Field::handle_type> create_empty_array() const;
 };
 
 #endif // SUDOKUBOARD_H

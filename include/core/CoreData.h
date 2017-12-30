@@ -6,7 +6,7 @@
 #include <Matrix.h>
 #include <Values.h>
 
-class CoreData : public AbstractSudokuData
+class CoreData : public AbstractData
 {
     public:
         using handle_type = std::shared_ptr<CoreData>;
@@ -14,7 +14,7 @@ class CoreData : public AbstractSudokuData
         static handle_type create();
         virtual ~CoreData();
 
-        virtual SudokuRow<char> operator[] (int x) override;
+        virtual Row<char> operator[] (int x) override;
 
         // TODO should return const char
         virtual char get_value(const size_t x, const size_t y) const override;
@@ -25,10 +25,10 @@ class CoreData : public AbstractSudokuData
         CoreData();
 
     private:
-        SudokuTable<char> data;
+        Table<char> data;
 
-        const SudokuRow<char> create_empty_row() const;
-        const SudokuTable<char> create_empty_array() const;
+        const Row<char> create_empty_row() const;
+        const Table<char> create_empty_array() const;
 
 };
 

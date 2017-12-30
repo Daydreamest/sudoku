@@ -1,16 +1,16 @@
 #include "SudokuData.h"
 
-SudokuData::SudokuData() : data(create_empty_array())
+UiData::UiData() : data(create_empty_array())
 {
     //ctor
 }
 
-SudokuData::~SudokuData()
+UiData::~UiData()
 {
     //dtor
 }
 
-SudokuRow<char> SudokuData::operator[](int x)
+Row<char> UiData::operator[](int x)
 {
     if (x > 8) {
         // TODO log error
@@ -20,24 +20,24 @@ SudokuRow<char> SudokuData::operator[](int x)
     return data[x];
 }
 
-void SudokuData::set_value(const size_t x, const size_t y, const char value)
+void UiData::set_value(const size_t x, const size_t y, const char value)
 {
     data[x][y] = value;
 }
 
-void SudokuData::reset()
+void UiData::reset()
 {
     data = create_empty_array();
 }
 
-const SudokuRow<char> SudokuData::create_empty_row() const
+const Row<char> UiData::create_empty_row() const
 {
-    return SudokuRow<char> {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
+    return Row<char> {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
 }
 
-const SudokuTable<char> SudokuData::create_empty_array() const
+const Table<char> UiData::create_empty_array() const
 {
-    return SudokuTable<char> {
+    return Table<char> {
         ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
         ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
         ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
@@ -50,12 +50,12 @@ const SudokuTable<char> SudokuData::create_empty_array() const
     };
 }
 
-SudokuData::handle_type SudokuData::create()
+UiData::handle_type UiData::create()
 {
-    return handle_type(new SudokuData);
+    return handle_type(new UiData);
 }
 
-char SudokuData::get_value(const size_t x, const size_t y) const
+char UiData::get_value(const size_t x, const size_t y) const
 {
     return data[x][y];
 }

@@ -3,7 +3,7 @@
 
 #include <memory>
 
-#include <SudokuData.h>
+#include <AbstractSudokuData.h>
 
 class Initializer
 {
@@ -14,7 +14,7 @@ class Initializer
 
         virtual ~Initializer();
 
-        SudokuData::handle_type get();
+        AbstractData::handle_type get();
 
     protected:
         Initializer();

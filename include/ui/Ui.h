@@ -5,7 +5,7 @@
 
 #include <AbstractUi.h>
 #include <Initializer.h>
-#include <SudokuData.h>
+#include <AbstractSudokuData.h>
 
 class Ui : public AbstractUi
 {
@@ -16,9 +16,9 @@ class Ui : public AbstractUi
         virtual ~Ui();
 
         // Get starting data of the sudoku
-        virtual AbstractSudokuData::handler_type get_initial_values() override;
+        virtual AbstractData::handle_type get_initial_values() override;
 
-        virtual void print_sudoku(const AbstractSudokuData::handler_type s) override;
+        virtual void print_sudoku(const AbstractData::handle_type s) override;
 
         static handle_type create();
 
