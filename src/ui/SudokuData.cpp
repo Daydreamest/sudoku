@@ -22,8 +22,7 @@ SudokuRow<char> SudokuData::operator[](int x)
 
 void SudokuData::set_value(const size_t x, const size_t y, const char value)
 {
-    // TODO mixed places to make it work
-    data[y][x] = value;
+    data[x][y] = value;
 }
 
 void SudokuData::reset()

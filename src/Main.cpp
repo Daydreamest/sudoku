@@ -31,10 +31,7 @@ Main::handle_type Main::create()
 
 void Main::run()
 {
-    auto s = ui->get_initial_values();
-    ui->print_sudoku(s);
-
-    board->set_data(s);
+    board->set_data(ui->get_initial_values());
 
     ui->print_sudoku(board->get_data());
 
