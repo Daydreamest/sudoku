@@ -51,41 +51,41 @@ void Sudoku::set_value(const size_t x, const size_t y, const SudokuValue val)
     data[x][y]->set_value(val);
 }
 
-const Row<Field::handle_type> Sudoku::create_empty_row() const
+const FieldRow Sudoku::create_empty_row() const
 {
-    Row<Field::handle_type> row = Row<Field::handle_type>();
+    FieldRow row = FieldRow();
     for (int i = 0; i < 9; i++) {
         row[i] = Field::create();
     }
     return row;
 }
 
-const Table<Field::handle_type> Sudoku::create_empty_array() const
+const FieldBoard Sudoku::create_empty_array() const
 {
-    Table<Field::handle_type> table = Table<Field::handle_type>();
+    FieldBoard table = FieldBoard();
     for (int i = 0; i < 9; i++) {
         table[i] = create_empty_row();
     }
     return table;
 }
 
-Row<Field::handle_type> Sudoku::get_row(const size_t i) const
+FieldRow Sudoku::get_row(const size_t i) const
 {
     return data[i];
 }
 
-Column<Field::handle_type> Sudoku::get_column(const size_t i) const
+FieldColumn Sudoku::get_column(const size_t i) const
 {
-    Column<Field::handle_type> col = Column<Field::handle_type>();
+    FieldColumn col = FieldColumn();
     for (int j = 0; j < 9; j++) {
         col[j] = data[j][i];
     }
     return col;
 }
 
-Tile<Field::handle_type> Sudoku::get_tile(const size_t index) const
+FieldTile Sudoku::get_tile(const size_t index) const
 {
-    Tile<Field::handle_type> tile = Tile<Field::handle_type>();
+    FieldTile tile = FieldTile();
 
     const size_t start_x = (index % 3) * 3;
     const size_t start_y = (index / 3) * 3;
@@ -98,7 +98,7 @@ Tile<Field::handle_type> Sudoku::get_tile(const size_t index) const
     return tile;
 }
 
-Tile<Field::handle_type> Sudoku::get_tile(const size_t x, const size_t y) const
+FieldTile Sudoku::get_tile(const size_t x, const size_t y) const
 {
     const size_t index = (x / 3) + (y / 3) * 3;
     return get_tile(index);

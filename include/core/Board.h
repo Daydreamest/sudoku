@@ -6,7 +6,6 @@
 #include <AbstractSudokuData.h>
 #include <LoggerInterface.h>
 #include <Field.h>
-#include <Matrix.h>
 
 class Sudoku : public LoggerInterface
 {
@@ -27,16 +26,16 @@ class Sudoku : public LoggerInterface
         Sudoku();
 
     private:
-        Table<Field::handle_type> data;
+        FieldBoard data;
 
         Field::handle_type get_field(const size_t x, const size_t y) const;
-        Row<Field::handle_type> get_row(const size_t i) const;
-        Column<Field::handle_type> get_column(const size_t i) const;
-        Tile<Field::handle_type> get_tile(const size_t index) const;
-        Tile<Field::handle_type> get_tile(const size_t x, const size_t y) const;
+        FieldRow get_row(const size_t i) const;
+        FieldColumn get_column(const size_t i) const;
+        FieldTile get_tile(const size_t index) const;
+        FieldTile get_tile(const size_t x, const size_t y) const;
 
-        const Row<Field::handle_type> create_empty_row() const;
-        const Table<Field::handle_type> create_empty_array() const;
+        const FieldRow create_empty_row() const;
+        const FieldBoard create_empty_array() const;
 };
 
 #endif // SUDOKUBOARD_H
