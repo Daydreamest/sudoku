@@ -1,6 +1,6 @@
 #include "Initializer.h"
 
-#include <SudokuData.h>
+#include <UiData.h>
 
 Initializer::Initializer()
 {

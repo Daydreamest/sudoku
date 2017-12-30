@@ -4,7 +4,7 @@
 #include <memory>
 
 #include <LoggerInterface.h>
-#include <AbstractSudokuData.h>
+#include <AbstractData.h>
 
 class AbstractUi : public LoggerInterface
 {

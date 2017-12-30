@@ -3,7 +3,7 @@
 
 #include <memory>
 
-#include <Board.h>
+#include <Sudoku.h>
 #include <AbstractUi.h>
 
 class Main

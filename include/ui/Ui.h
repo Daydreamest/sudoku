@@ -5,7 +5,7 @@
 
 #include <AbstractUi.h>
 #include <Initializer.h>
-#include <AbstractSudokuData.h>
+#include <AbstractData.h>
 
 class Ui : public AbstractUi
 {

@@ -3,7 +3,7 @@
 
 #include <memory>
 
-#include <AbstractSudokuData.h>
+#include <AbstractData.h>
 
 class Initializer
 {

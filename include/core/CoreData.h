@@ -1,7 +1,7 @@
 #ifndef COREDATA_H
 #define COREDATA_H
 
-#include <AbstractSudokuData.h>
+#include <AbstractData.h>
 
 #include <Matrix.h>
 #include <Values.h>

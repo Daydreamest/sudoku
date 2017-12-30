@@ -1,4 +1,4 @@
-#include "SudokuData.h"
+#include "UiData.h"
 
 UiData::UiData() : data(create_empty_array())
 {

@@ -1,6 +1,6 @@
 #include "Main.h"
 
-#include <Board.h>
+#include <Sudoku.h>
 #include <Logger.h>
 #include <Ui.h>
 

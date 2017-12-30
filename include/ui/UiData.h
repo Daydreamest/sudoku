@@ -3,7 +3,7 @@
 
 #include <memory>
 
-#include <AbstractSudokuData.h>
+#include <AbstractData.h>
 #include <Matrix.h>
 
 class UiData : public AbstractData
