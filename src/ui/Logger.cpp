@@ -2,14 +2,14 @@
 
 #include <iostream>
 
-Logger::Logger()
+Logger::Logger() : level_to_string_map(create_map())
 {
-    //ctor
+    // ctor
 }
 
 Logger::~Logger()
 {
-    //dtor
+    // dtor
 }
 
 Logger::handle_type Logger::create()
@@ -17,7 +17,27 @@ Logger::handle_type Logger::create()
     return handle_type(new Logger);
 }
 
-void Logger::log(const std::string text)
+void Logger::log(const Log_Level lvl, const std::string text)
 {
-    std::cout << "Log info: " << text << std::endl;
+    std::cout << log_to_str(lvl) << text << std::endl;
+}
+
+const std::string Logger::log_to_str(const Log_Level lvl)
+{
+    auto iter = level_to_string_map.find(lvl);
+    if (iter != level_to_string_map.end()) {
+        return iter->second;
+    }
+
+    return "    ";
+}
+
+const Logger::LevelStringMap Logger::create_map() const
+{
+    return std::map<Log_Level, std::string> {
+        {Log_Level_Debug, "DBG "},
+        {Log_Level_Info, "INF "},
+        {Log_Level_Warning, "WAR "},
+        {Log_Level_Error, "ERR "}
+    };
 }

@@ -1,6 +1,7 @@
 #ifndef LOGGER_H
 #define LOGGER_H
 
+#include <map>
 #include <memory>
 
 #include <AbstractLogger.h>
@@ -15,12 +16,18 @@ class Logger : public AbstractLogger
 
         virtual ~Logger();
 
-        virtual void log(const std::string text) override;
+        virtual void log(const Log_Level lvl, const std::string text) override;
 
     protected:
         Logger();
 
     private:
+        using LevelStringMap = std::map<Log_Level, std::string>;
+
+        const std::string log_to_str(const Log_Level lvl);
+
+        const LevelStringMap level_to_string_map;
+        const LevelStringMap create_map() const;
 };
 
 #endif // LOGGER_H
