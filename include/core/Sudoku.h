@@ -4,8 +4,8 @@
 #include <memory>
 
 #include <AbstractData.h>
-#include <LoggerInterface.h>
 #include <Field.h>
+#include <LoggerInterface.h>
 
 class Sudoku : public LoggerInterface
 {
@@ -22,11 +22,13 @@ class Sudoku : public LoggerInterface
 
         void set_value(const size_t x, const size_t y, const SudokuValue val);
 
+        void TEST();
+
     protected:
         Sudoku();
 
     private:
-        FieldBoard data;
+        FieldBoard board;
 
         Field::handle_type get_field(const size_t x, const size_t y) const;
         FieldRow get_row(const size_t i) const;

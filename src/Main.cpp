@@ -35,5 +35,5 @@ void Main::run()
 
     ui->print_sudoku(sudoku->get_data());
 
-//    board->set_value(0,0,Value_5);
+    sudoku->TEST();
 }

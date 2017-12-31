@@ -18,7 +18,9 @@ void Field::reset()
 void Field::set_value(const SudokuValue v)
 {
     field_value = v;
-    possible_values->clear();
+    if (v != Value_Undefined) {
+        possible_values->clear();
+    }
 }
 
 SudokuValue Field::get_value() const
@@ -39,4 +41,9 @@ bool Field::can_be(const SudokuValue v) const
 Field::handle_type Field::create()
 {
     return handle_type(new Field);
+}
+
+void Field::remove_possibility(const SudokuValue v)
+{
+    possible_values->remove(v);
 }

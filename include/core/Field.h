@@ -32,6 +32,9 @@ class Field
         // Check if the field can have a specific value
         bool can_be(const SudokuValue v) const;
 
+        // Mark that this field can't have this value
+        void remove_possibility(const SudokuValue v);
+
     protected:
         // Default constructor
         Field();

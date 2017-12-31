@@ -1,5 +1,8 @@
 #include "FieldPossibilities.h"
 
+// TODO remove
+//#include <iostream>
+
 FieldPossibilities::FieldPossibilities() : possible_values()
 {
     reset();
@@ -36,8 +39,14 @@ void FieldPossibilities::remove(const SudokuValue v)
 
 bool FieldPossibilities::contains(const SudokuValue v) const
 {
-    auto position = possible_values.find(v);
-    return position != possible_values.end();
+//    std::cout << "Checking for value: " << v << std::endl;
+
+    if (possible_values.count(v) > 0) {
+//        std::cout << "    FOUND" << std::endl;
+        return true;
+    };
+//    std::cout << "    NOT FOUND" << std::endl;
+    return false;
 }
 
 FieldPossibilities::handle_type FieldPossibilities::create()
