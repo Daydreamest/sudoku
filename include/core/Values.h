@@ -4,7 +4,7 @@
 #include <map>
 
 // Possible values of a single Sudoku field
-enum SudokuValue {
+enum Value {
     Value_Undefined = 0,
     Value_1,
     Value_2,
@@ -17,24 +17,24 @@ enum SudokuValue {
     Value_9
 };
 
-class SudokuValueTools
+class ValueTools
 {
     public:
-        virtual ~SudokuValueTools();
+        virtual ~ValueTools();
 
-        static SudokuValue get_value_from_char(const char ch);
-        static char get_char_from_value(const SudokuValue val);
+        static Value get_value_from_char(const char ch);
+        static char get_char_from_value(const Value val);
 
     protected:
 
     private:
-        SudokuValueTools();
+        ValueTools();
 
-        static std::map<char, SudokuValue> create_ch_map();
-        static std::map<char, SudokuValue> ch_to_val_map;
+        static std::map<char, Value> create_ch_map();
+        static std::map<char, Value> ch_to_val_map;
 
-        static std::map<SudokuValue, char> create_val_map();
-        static std::map<SudokuValue, char> val_to_ch_map;
+        static std::map<Value, char> create_val_map();
+        static std::map<Value, char> val_to_ch_map;
 };
 
 #endif // VALUES_H

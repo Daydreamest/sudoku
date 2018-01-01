@@ -26,7 +26,7 @@ void Sudoku::set_data(const AbstractData::handle_type d)
         for (int j = 0; j < 9; j++)
         {
             char ch_val = (*d)[i][j];
-            SudokuValue s_val = SudokuValueTools::get_value_from_char(ch_val);
+            Value s_val = ValueTools::get_value_from_char(ch_val);
 
             set_value(j, i, s_val);
         }
@@ -45,7 +45,7 @@ const AbstractData::handle_type Sudoku::get_data() const
     return result;
 }
 
-void Sudoku::set_value(const size_t x, const size_t y, const SudokuValue val)
+void Sudoku::set_value(const size_t x, const size_t y, const Value val)
 {
 //    log("Set value");
 

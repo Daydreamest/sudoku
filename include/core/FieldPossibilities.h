@@ -24,10 +24,10 @@ class FieldPossibilities
         void reset();
 
         // Remove the given value from the possibilities
-        void remove(const SudokuValue v);
+        void remove(const Value v);
 
         // Check if the list contains the given value
-        bool contains(const SudokuValue v) const;
+        bool contains(const Value v) const;
 
     protected:
         // Default constructor
@@ -36,7 +36,7 @@ class FieldPossibilities
     private:
 
         // A list of possible values that this field may have
-        std::set<SudokuValue> possible_values;
+        std::set<Value> possible_values;
 };
 
 #endif // FIELDPOSSIBILITIES_H

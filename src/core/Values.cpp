@@ -1,16 +1,16 @@
 #include "Values.h"
 
-SudokuValueTools::SudokuValueTools()
+ValueTools::ValueTools()
 {
     //ctor
 }
 
-SudokuValueTools::~SudokuValueTools()
+ValueTools::~ValueTools()
 {
     //dtor
 }
 
-SudokuValue SudokuValueTools::get_value_from_char(const char ch)
+Value ValueTools::get_value_from_char(const char ch)
 {
     auto f = ch_to_val_map.find(ch);
     if (f == ch_to_val_map.end())
@@ -21,7 +21,7 @@ SudokuValue SudokuValueTools::get_value_from_char(const char ch)
     return f->second;
 }
 
-char SudokuValueTools::get_char_from_value(const SudokuValue val)
+char ValueTools::get_char_from_value(const Value val)
 {
     auto f = val_to_ch_map.find(val);
     if (f == val_to_ch_map.end())
@@ -33,9 +33,9 @@ char SudokuValueTools::get_char_from_value(const SudokuValue val)
 }
 
 
-std::map<char, SudokuValue> SudokuValueTools::create_ch_map()
+std::map<char, Value> ValueTools::create_ch_map()
 {
-    return std::map<char, SudokuValue> {
+    return std::map<char, Value> {
         {'1', Value_1},
         {'2', Value_2},
         {'3', Value_3},
@@ -48,9 +48,9 @@ std::map<char, SudokuValue> SudokuValueTools::create_ch_map()
     };
 }
 
-std::map<SudokuValue, char> SudokuValueTools::create_val_map()
+std::map<Value, char> ValueTools::create_val_map()
 {
-    return std::map<SudokuValue, char> {
+    return std::map<Value, char> {
         {Value_1, '1'},
         {Value_2, '2'},
         {Value_3, '3'},
@@ -63,6 +63,6 @@ std::map<SudokuValue, char> SudokuValueTools::create_val_map()
     };
 }
 
-std::map<char, SudokuValue> SudokuValueTools::ch_to_val_map = SudokuValueTools::create_ch_map();
+std::map<char, Value> ValueTools::ch_to_val_map = ValueTools::create_ch_map();
 
-std::map<SudokuValue, char> SudokuValueTools::val_to_ch_map = SudokuValueTools::create_val_map();
+std::map<Value, char> ValueTools::val_to_ch_map = ValueTools::create_val_map();

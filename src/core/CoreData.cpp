@@ -25,9 +25,9 @@ char CoreData::get_value(const size_t x, const size_t y) const
     return data[x][y];
 }
 
-void CoreData::set_value(const size_t x, const size_t y, const SudokuValue val)
+void CoreData::set_value(const size_t x, const size_t y, const Value val)
 {
-    char ch = SudokuValueTools::get_char_from_value(val);
+    char ch = ValueTools::get_char_from_value(val);
     data[x][y] = ch;
 }
 

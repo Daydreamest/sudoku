@@ -19,7 +19,7 @@ class CoreData : public AbstractData
         // TODO should return const char
         virtual char get_value(const size_t x, const size_t y) const override;
 
-        void set_value(const size_t x, const size_t y, const SudokuValue val);
+        void set_value(const size_t x, const size_t y, const Value val);
 
     protected:
         CoreData();

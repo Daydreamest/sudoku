@@ -21,19 +21,19 @@ class Field
         void reset();
 
         // Set a specific value to the field
-        void set_value(const SudokuValue v);
+        void set_value(const Value v);
 
         // Read the current field value
-        SudokuValue get_value() const;
+        Value get_value() const;
 
         // Check if this field has a set balue already
         bool is_set() const;
 
         // Check if the field can have a specific value
-        bool can_be(const SudokuValue v) const;
+        bool can_be(const Value v) const;
 
         // Mark that this field can't have this value
-        void remove_possibility(const SudokuValue v);
+        void remove_possibility(const Value v);
 
     protected:
         // Default constructor
@@ -42,7 +42,7 @@ class Field
     private:
 
         // Current field value
-        SudokuValue field_value;
+        Value field_value;
 
         // A list of possible values that this field may have
         FieldPossibilities::handle_type possible_values;

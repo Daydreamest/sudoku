@@ -20,7 +20,7 @@ class Sudoku : public LoggerInterface
         void set_data(const AbstractData::handle_type d);
         const AbstractData::handle_type get_data() const;
 
-        void set_value(const size_t x, const size_t y, const SudokuValue val);
+        void set_value(const size_t x, const size_t y, const Value val);
 
         void TEST();
 

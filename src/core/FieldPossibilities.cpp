@@ -32,12 +32,12 @@ void FieldPossibilities::reset()
     possible_values.insert(Value_9);
 }
 
-void FieldPossibilities::remove(const SudokuValue v)
+void FieldPossibilities::remove(const Value v)
 {
     possible_values.erase(v);
 }
 
-bool FieldPossibilities::contains(const SudokuValue v) const
+bool FieldPossibilities::contains(const Value v) const
 {
 //    std::cout << "Checking for value: " << v << std::endl;
 
