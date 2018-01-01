@@ -35,5 +35,5 @@ void Main::run()
 
     ui->print_sudoku(sudoku->get_data());
 
-    sudoku->TEST();
+    sudoku->solve();
 }

@@ -2,6 +2,7 @@
 #define VALUES_H
 
 #include <map>
+#include <set>
 
 // Possible values of a single Sudoku field
 enum Value {
@@ -17,6 +18,8 @@ enum Value {
     Value_9
 };
 
+using ValueSet = std::set<Value>;
+
 class ValueTools
 {
     public:
@@ -25,10 +28,14 @@ class ValueTools
         static Value get_value_from_char(const char ch);
         static char get_char_from_value(const Value val);
 
+        static ValueSet get_value_set();
+
     protected:
 
     private:
         ValueTools();
+
+        static ValueSet value_set;
 
         static std::map<char, Value> create_ch_map();
         static std::map<char, Value> ch_to_val_map;

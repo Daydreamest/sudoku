@@ -32,6 +32,10 @@ char ValueTools::get_char_from_value(const Value val)
     return f->second;
 }
 
+ValueSet ValueTools::get_value_set()
+{
+        return value_set;
+}
 
 std::map<char, Value> ValueTools::create_ch_map()
 {
@@ -66,3 +70,15 @@ std::map<Value, char> ValueTools::create_val_map()
 std::map<char, Value> ValueTools::ch_to_val_map = ValueTools::create_ch_map();
 
 std::map<Value, char> ValueTools::val_to_ch_map = ValueTools::create_val_map();
+
+ValueSet ValueTools::value_set = ValueSet {
+    Value_1,
+    Value_2,
+    Value_3,
+    Value_4,
+    Value_5,
+    Value_6,
+    Value_7,
+    Value_8,
+    Value_9
+};

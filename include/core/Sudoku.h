@@ -22,7 +22,7 @@ class Sudoku : public LoggerInterface
 
         void set_value(const size_t x, const size_t y, const Value val);
 
-        void TEST();
+        void solve();
 
     protected:
         Sudoku();

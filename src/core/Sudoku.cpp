@@ -130,8 +130,24 @@ Field::handle_type Sudoku::get_field(const size_t x, const size_t y) const
     return board[x][y];
 }
 
-void Sudoku::TEST()
+void Sudoku::solve()
 {
+    for (int i = 0; i < 9; i++) {
+        auto row = get_row(i);
+        for (int j = 0; j < 9; j++) {
+            auto field = row[j];
+            ValueSet val_set;
+            for (auto val : ValueTools::get_value_set()) {
+                if (field->can_be(val)) {
+                    val_set.insert(val);
+                }
+            }
+            if (val_set.size() == 1) {
+//                log("Good inesrtion found!");
+            }
+        }
+    }
+
 /*
     std::stringstream ss1, ss2;
     log("Info about field: 0, 1");
