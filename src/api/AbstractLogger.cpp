@@ -10,10 +10,21 @@ AbstractLogger::AbstractLogger(std::ostream* str) : level(Log_Level_Debug), stre
     // ctor
 }
 
+AbstractLogger::AbstractLogger(const AbstractLogger& abs) : level(abs.level), stream(abs.stream)
+{
+    // ctor
+}
+
 AbstractLogger::~AbstractLogger()
 {
     // dtor
 }
+
+AbstractLogger& AbstractLogger::operator=(const AbstractLogger&)
+{
+    return *this;
+}
+
 
 void AbstractLogger::log(const std::string text)
 {

@@ -22,6 +22,8 @@ class AbstractLogger {
         AbstractLogger(std::ostream* str);
         virtual ~AbstractLogger();
 
+        AbstractLogger(const AbstractLogger& abs);
+
         virtual void log(const std::string text) final;
 
         virtual void log(const Log_Level lvl, const std::string text) = 0;
@@ -44,6 +46,7 @@ class AbstractLogger {
 
     private:
 
+        AbstractLogger& operator=(const AbstractLogger&);
         std::ostream* stream;
 };
 
