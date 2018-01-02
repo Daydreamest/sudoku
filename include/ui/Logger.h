@@ -21,10 +21,12 @@ class Logger : public AbstractLogger
     protected:
         Logger();
 
+        virtual std::string get_log_line_header() const override;
+
     private:
         using LevelStringMap = std::map<Log_Level, std::string>;
 
-        const std::string log_to_str(const Log_Level lvl);
+        const std::string log_to_str(const Log_Level lvl) const;
 
         const LevelStringMap level_to_string_map;
         const LevelStringMap create_map() const;

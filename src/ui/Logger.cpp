@@ -14,7 +14,9 @@ Logger::~Logger()
 
 Logger::handle_type Logger::create()
 {
-    return handle_type(new Logger);
+    auto result = handle_type(new Logger);
+    result->set_output_stream(std::cout);
+    return result;
 }
 
 void Logger::log(const Log_Level lvl, const std::string text)
@@ -22,7 +24,7 @@ void Logger::log(const Log_Level lvl, const std::string text)
     std::cout << log_to_str(lvl) << text << std::endl;
 }
 
-const std::string Logger::log_to_str(const Log_Level lvl)
+const std::string Logger::log_to_str(const Log_Level lvl) const
 {
     auto iter = level_to_string_map.find(lvl);
     if (iter != level_to_string_map.end()) {
@@ -40,4 +42,9 @@ const Logger::LevelStringMap Logger::create_map() const
         {Log_Level_Warning, "WAR "},
         {Log_Level_Error, "ERR "}
     };
+}
+
+std::string Logger::get_log_line_header() const
+{
+    return log_to_str(level);
 }

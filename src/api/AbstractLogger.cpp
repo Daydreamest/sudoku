@@ -1,6 +1,11 @@
 #include "AbstractLogger.h"
 
-AbstractLogger::AbstractLogger() : level(Log_Level_Debug)
+AbstractLogger::AbstractLogger() : level(Log_Level_Debug), stream(nullptr)
+{
+    // ctor
+}
+
+AbstractLogger::AbstractLogger(std::ostream* str) : level(Log_Level_Debug), stream(str)
 {
     // ctor
 }
@@ -28,4 +33,19 @@ AbstractLogger::Log_Level_Set AbstractLogger::get_level_set() const
         Log_Level_Warning,
         Log_Level_Error
     };
+}
+
+template <class T>
+std::ostream& AbstractLogger::operator<<(T& data)
+{
+    std::ostream* tmp = stream ? stream : &std::cout;
+
+    (*tmp) << get_log_line_header() << data;
+
+    return *tmp;
+}
+
+void AbstractLogger::set_output_stream(std::ostream& str)
+{
+    stream = &str;
 }
