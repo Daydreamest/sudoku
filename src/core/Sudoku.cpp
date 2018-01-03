@@ -22,13 +22,13 @@ Sudoku::handle_type Sudoku::create()
 
 void Sudoku::set_data(const AbstractData::handle_type d)
 {
-    for (int i = 0; i < 9; i++)
-        for (int j = 0; j < 9; j++)
+    for (int x = 0; x < 9; x++)
+        for (int y = 0; y < 9; y++)
         {
-            char ch_val = (*d)[i][j];
+            char ch_val = d->get_value(x, y);
             Value s_val = ValueTools::get_value_from_char(ch_val);
 
-            set_value(j, i, s_val);
+            set_value(x, y, s_val);
         }
 }
 
@@ -53,13 +53,13 @@ void Sudoku::set_value(const size_t x, const size_t y, const Value val)
     board[x][y]->set_value(val);
 
     // Mark in all fields in the same row that this value is already used
-    FieldRow row = get_row(x);
+    FieldRow row = get_row(y);
     for(size_t i = 0; i < 9; i++) {
         row[i]->remove_possibility(val);
     }
 
     // Repeat for column
-    FieldColumn col = get_column(y);
+    FieldColumn col = get_column(x);
     for(size_t i = 0; i < 9; i++) {
         col[i]->remove_possibility(val);
     }
@@ -90,18 +90,24 @@ const FieldBoard Sudoku::create_empty_array() const
     return table;
 }
 
-FieldRow Sudoku::get_row(const size_t i) const
+FieldRow Sudoku::get_row(const size_t y) const
 {
-    return board[i];
+    FieldRow row = FieldRow();
+    for (int x = 0; x < 9; x++) {
+        row[x] = board[x][y];
+    }
+    return row;
+//    return board[i];
 }
 
-FieldColumn Sudoku::get_column(const size_t i) const
+FieldColumn Sudoku::get_column(const size_t x) const
 {
-    FieldColumn col = FieldColumn();
-    for (int j = 0; j < 9; j++) {
-        col[j] = board[j][i];
-    }
-    return col;
+//    FieldColumn col = FieldColumn();
+//    for (int j = 0; j < 9; j++) {
+//        col[j] = board[j][i];
+//    }
+//    return col;
+    return board[x];
 }
 
 FieldTile Sudoku::get_tile(const size_t index) const
@@ -111,9 +117,9 @@ FieldTile Sudoku::get_tile(const size_t index) const
     const size_t start_x = (index % 3) * 3;
     const size_t start_y = (index / 3) * 3;
 
-    for (int i = 0; i < 3; i++)
-        for (int j = 0; j < 3; j++) {
-            tile[i][j] = board[start_x + i][start_y + j];
+    for (int x = 0; x < 3; x++)
+        for (int y = 0; y < 3; y++) {
+            tile[x][y] = board[start_x + x][start_y + y];
         }
 
     return tile;
@@ -133,6 +139,7 @@ Field::handle_type Sudoku::get_field(const size_t x, const size_t y) const
 void Sudoku::solve()
 {
     for (int i = 0; i < 9; i++) {
+//        std::cout << "Reading row: " << i << std::endl;
         auto row = get_row(i);
         for (int j = 0; j < 9; j++) {
             auto field = row[j];
@@ -143,15 +150,25 @@ void Sudoku::solve()
                 }
             }
             if (val_set.size() == 1) {
+                std::stringstream ss;
+                ss << "Good inesrtion found! (" << i << ", " << j << ") = " << *(val_set.begin()) << std::endl;
+                log(ss.str());
 //                log("Good inesrtion found!");
+//                *logger << "Good inesrtion found!";
             }
         }
     }
 
-/*
+
+    TEST();
+}
+
+void Sudoku::TEST()
+{
+    size_t x = 1, y = 2;
     std::stringstream ss1, ss2;
-    log("Info about field: 0, 1");
-    size_t x = 0, y = 1;
+
+    std::cout << "Info about field (" << x << ", " << y << ")" << std::endl;
 
     ss1 << "Value: " << board[x][y]->get_value();
     log(ss1.str());
@@ -195,5 +212,4 @@ void Sudoku::solve()
     }
 
     log(ss2.str());
-    */
 }

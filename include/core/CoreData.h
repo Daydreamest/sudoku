@@ -14,7 +14,7 @@ class CoreData : public AbstractData
         static handle_type create();
         virtual ~CoreData();
 
-        virtual Row<char> operator[] (int x) override;
+//        virtual Row<char> operator[] (int x) override;
 
         // TODO should return const char
         virtual char get_value(const size_t x, const size_t y) const override;
@@ -27,7 +27,7 @@ class CoreData : public AbstractData
     private:
         Table<char> data;
 
-        const Row<char> create_empty_row() const;
+//        const Row<char> create_empty_row() const;
         const Table<char> create_empty_array() const;
 
 };

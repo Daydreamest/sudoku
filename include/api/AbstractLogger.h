@@ -30,7 +30,7 @@ class AbstractLogger {
 
         void set_output_stream(std::ostream& str);
 
-        template<class T>
+        template<typename T>
         std::ostream& operator<<(T& data);
 
         void set_log_level(const Log_Level lvl);

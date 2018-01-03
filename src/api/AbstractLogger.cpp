@@ -46,7 +46,7 @@ AbstractLogger::Log_Level_Set AbstractLogger::get_level_set() const
     };
 }
 
-template <class T>
+template <typename T>
 std::ostream& AbstractLogger::operator<<(T& data)
 {
     std::ostream* tmp = stream ? stream : &std::cout;

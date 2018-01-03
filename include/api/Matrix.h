@@ -3,8 +3,8 @@
 
 #include <array>
 
-template <class T, size_t ROW, size_t COL>
-using GenericMatrix = std::array<std::array<T, COL>, ROW>;
+template <class T, size_t XSIZE, size_t YSIZE>
+using GenericMatrix = std::array<std::array<T, YSIZE>, XSIZE>;
 
 template <class T>
 using Table = GenericMatrix<T, 9, 9>;

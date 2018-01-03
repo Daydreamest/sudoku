@@ -24,6 +24,8 @@ class Sudoku : public LoggerInterface
 
         void solve();
 
+        void TEST();
+
     protected:
         Sudoku();
 
@@ -31,8 +33,8 @@ class Sudoku : public LoggerInterface
         FieldBoard board;
 
         Field::handle_type get_field(const size_t x, const size_t y) const;
-        FieldRow get_row(const size_t i) const;
-        FieldColumn get_column(const size_t i) const;
+        FieldRow get_row(const size_t y) const;
+        FieldColumn get_column(const size_t x) const;
         FieldTile get_tile(const size_t index) const;
         FieldTile get_tile(const size_t x, const size_t y) const;
 

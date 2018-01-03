@@ -16,9 +16,9 @@ class LoggerInterface
         virtual void log(const std::string text);
 
     protected:
+        AbstractLogger::handle_type logger;
 
     private:
-        AbstractLogger::handle_type logger;
 };
 
 #endif // LOGGERINTERFACE_H
