@@ -40,6 +40,8 @@ class Sudoku : public LoggerInterface
 
         const FieldRow create_empty_row() const;
         const FieldBoard create_empty_array() const;
+
+        void log_field(const size_t x, const size_t y); //TODO shoud be const
 };
 
 #endif // SUDOKUBOARD_H

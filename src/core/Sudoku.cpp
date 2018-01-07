@@ -151,12 +151,25 @@ void Sudoku::solve()
         }
     }
 
-
-//    TEST();
+    TEST();
 }
+
+void Sudoku::log_field(const size_t x, const size_t y)
+{
+    std::stringstream ss;
+
+    ss << "Info about field (" << x << ", " << y << ")";
+    log(ss.str());
+
+    log(board[x][y]->to_string());
+}
+
 
 void Sudoku::TEST()
 {
+    log_field(1, 2);
+    log_field(2, 7);
+
 /*    size_t x = 1, y = 2;
     std::stringstream ss1, ss2;
 

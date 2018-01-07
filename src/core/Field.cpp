@@ -1,5 +1,7 @@
 #include "Field.h"
 
+#include <sstream> // TODO remove in the final release
+
 Field::Field() : field_value(Value_Undefined), possible_values(FieldPossibilities::create())
 {
     possible_values->reset();
@@ -47,4 +49,29 @@ Field::handle_type Field::create()
 void Field::remove_possibility(const Value v)
 {
     possible_values->remove(v);
+}
+
+const std::string Field::to_string() const
+{
+    std::stringstream ss;
+
+    ss << "Field value: ";
+
+    if (is_set()) {
+        ss << ValueTools::get_char_from_value(field_value);
+    } else {
+        ss << "Undefined";
+    }
+
+    ss << std::endl << "Possible values are: (";
+
+    for (auto val : ValueTools::get_value_set()) {
+        if (possible_values->contains(val)) {
+            ss << ValueTools::get_char_from_value(val) << " ";
+        }
+    }
+
+    ss << ")" << std::endl;
+
+    return ss.str();
 }

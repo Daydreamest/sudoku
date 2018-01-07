@@ -2,6 +2,7 @@
 #define FIELD_H
 
 #include <memory>
+#include <string> // TODO not needed in final version
 
 #include <FieldPossibilities.h>
 #include <Matrix.h>
@@ -26,7 +27,7 @@ class Field
         // Read the current field value
         Value get_value() const;
 
-        // Check if this field has a set balue already
+        // Check if this field has a set value already
         bool is_set() const;
 
         // Check if the field can have a specific value
@@ -34,6 +35,9 @@ class Field
 
         // Mark that this field can't have this value
         void remove_possibility(const Value v);
+
+        // Create string info about this field
+        const std::string to_string() const;
 
     protected:
         // Default constructor
