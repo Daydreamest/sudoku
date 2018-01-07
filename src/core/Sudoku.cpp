@@ -160,7 +160,7 @@ void Sudoku::solve()
     }
 
 
-    TEST();
+//    TEST();
 }
 
 void Sudoku::TEST()

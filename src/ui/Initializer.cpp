@@ -20,7 +20,7 @@ AbstractData::handle_type Initializer::get()
     UiData::handle_type p = UiData::create();
 
     // TODO automatic read from a file
-/*
+
     p->set_value(0,0,'7');
     p->set_value(2,0,'6');
     p->set_value(7,0,'4');
@@ -48,11 +48,11 @@ AbstractData::handle_type Initializer::get()
     p->set_value(4,8,'2');
     p->set_value(5,8,'8');
     p->set_value(8,8,'4');
-*/
-    p->set_value(1, 2, '1');
-    p->set_value(2, 1, '5');
 
-    std::cout << "Initializer::get (1,2) = " << p->get_value(1, 2) << std::endl;
+//    p->set_value(1, 2, '1');
+//    p->set_value(2, 1, '5');
+
+//    std::cout << "Initializer::get (1,2) = " << p->get_value(1, 2) << std::endl;
 
     return p;
 }
