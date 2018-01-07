@@ -18,11 +18,14 @@ Main::handle_type Main::create()
 {
     handle_type result = std::make_unique<Main>();
 
+    // Create a logger
     auto logger = Logger::create();
 
+    // Create and initialize Ui
     result->ui = Ui::create();
     result->ui->set_logger(logger);
 
+    // Create and initialize Sudoku class
     result->sudoku = Sudoku::create();
     result->sudoku->set_logger(logger);
 

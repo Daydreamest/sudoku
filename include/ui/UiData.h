@@ -14,8 +14,6 @@ class UiData : public AbstractData
         static handle_type create();
         virtual ~UiData();
 
-//        virtual Row<char> operator[] (int x) override;
-
         void set_value(const size_t x, const size_t y, const char value);
 
         virtual char get_value(const size_t x, const size_t y) const override;
@@ -28,7 +26,6 @@ class UiData : public AbstractData
     private:
         Table<char> data;
 
-//        const Row<char> create_empty_row() const;
         const Table<char> create_empty_array() const;
 };
 

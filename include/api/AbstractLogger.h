@@ -1,7 +1,7 @@
 #ifndef ABSTRACTLOGGER_H
 #define ABSTRACTLOGGER_H
 
-#include <iostream>
+//#include <iostream>
 #include <memory>
 #include <set>
 #include <string>
@@ -19,35 +19,35 @@ class AbstractLogger {
         using handle_type = std::shared_ptr<AbstractLogger>;
 
         AbstractLogger();
-        AbstractLogger(std::ostream* str);
+//        AbstractLogger(std::ostream* str);
         virtual ~AbstractLogger();
 
-        AbstractLogger(const AbstractLogger& abs);
+//        AbstractLogger(const AbstractLogger& abs);
 
         virtual void log(const std::string text) final;
 
         virtual void log(const Log_Level lvl, const std::string text) = 0;
 
-        void set_output_stream(std::ostream& str);
+//        void set_output_stream(std::ostream& str);
 
-        template<typename T>
-        std::ostream& operator<<(T& data);
+//        template<typename T>
+//        std::ostream& operator<<(T& data);
 
         void set_log_level(const Log_Level lvl);
 
     protected:
-        using Log_Level_Set = std::set<Log_Level>;
+//        using Log_Level_Set = std::set<Log_Level>;
 
-        Log_Level_Set get_level_set() const;
+//        Log_Level_Set get_level_set() const;
 
-        virtual std::string get_log_line_header() const = 0;
+//        virtual std::string get_log_line_header() const = 0;
 
         Log_Level level;
 
     private:
 
-        AbstractLogger& operator=(const AbstractLogger&);
-        std::ostream* stream;
+//        AbstractLogger& operator=(const AbstractLogger&);
+//        std::ostream* stream;
 };
 
 #endif // ABSTRACTLOGGER_H

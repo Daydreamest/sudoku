@@ -17,6 +17,7 @@ class AbstractUi : public LoggerInterface
         // Get starting data of the sudoku
         virtual AbstractData::handle_type get_initial_values() = 0;
 
+        // Show sudoku on the screen
         virtual void print_sudoku(const AbstractData::handle_type s) = 0;
 
     protected:

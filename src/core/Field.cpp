@@ -7,6 +7,7 @@ Field::Field() : field_value(Value_Undefined), possible_values(FieldPossibilitie
 
 Field::~Field()
 {
+     // dtor
 }
 
 void Field::reset()

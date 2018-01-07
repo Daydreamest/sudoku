@@ -47,8 +47,6 @@ const AbstractData::handle_type Sudoku::get_data() const
 
 void Sudoku::set_value(const size_t x, const size_t y, const Value val)
 {
-//    log("Set value");
-
     // TODO do magic checks
     board[x][y]->set_value(val);
 
@@ -97,16 +95,10 @@ FieldRow Sudoku::get_row(const size_t y) const
         row[x] = board[x][y];
     }
     return row;
-//    return board[i];
 }
 
 FieldColumn Sudoku::get_column(const size_t x) const
 {
-//    FieldColumn col = FieldColumn();
-//    for (int j = 0; j < 9; j++) {
-//        col[j] = board[j][i];
-//    }
-//    return col;
     return board[x];
 }
 
@@ -165,7 +157,7 @@ void Sudoku::solve()
 
 void Sudoku::TEST()
 {
-    size_t x = 1, y = 2;
+/*    size_t x = 1, y = 2;
     std::stringstream ss1, ss2;
 
     std::cout << "Info about field (" << x << ", " << y << ")" << std::endl;
@@ -212,4 +204,5 @@ void Sudoku::TEST()
     }
 
     log(ss2.str());
+    */
 }

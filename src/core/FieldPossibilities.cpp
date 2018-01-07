@@ -1,8 +1,5 @@
 #include "FieldPossibilities.h"
 
-// TODO remove
-//#include <iostream>
-
 FieldPossibilities::FieldPossibilities() : possible_values()
 {
     reset();
@@ -39,13 +36,10 @@ void FieldPossibilities::remove(const Value v)
 
 bool FieldPossibilities::contains(const Value v) const
 {
-//    std::cout << "Checking for value: " << v << std::endl;
-
     if (possible_values.count(v) > 0) {
-//        std::cout << "    FOUND" << std::endl;
         return true;
     };
-//    std::cout << "    NOT FOUND" << std::endl;
+
     return false;
 }
 

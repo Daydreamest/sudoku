@@ -1,8 +1,5 @@
 #include "Initializer.h"
 
-//TODO remove
-#include <iostream>
-
 #include <UiData.h>
 
 Initializer::Initializer()
@@ -48,11 +45,6 @@ AbstractData::handle_type Initializer::get()
     p->set_value(4,8,'2');
     p->set_value(5,8,'8');
     p->set_value(8,8,'4');
-
-//    p->set_value(1, 2, '1');
-//    p->set_value(2, 1, '5');
-
-//    std::cout << "Initializer::get (1,2) = " << p->get_value(1, 2) << std::endl;
 
     return p;
 }
