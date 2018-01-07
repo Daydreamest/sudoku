@@ -47,3 +47,17 @@ FieldPossibilities::handle_type FieldPossibilities::create()
 {
     return handle_type(new FieldPossibilities);
 }
+
+size_t FieldPossibilities::get_number_of_possibilities() const
+{
+    return possible_values.size();
+}
+
+Value FieldPossibilities::get_unique_possibility() const
+{
+    if (get_number_of_possibilities() != 1) {
+        return Value_Undefined;
+    }
+
+    return *(possible_values.cbegin());
+}

@@ -75,3 +75,21 @@ const std::string Field::to_string() const
 
     return ss.str();
 }
+
+size_t Field::get_number_of_possibilities() const
+{
+    if (is_set()) {
+        return 0;
+    }
+
+    return possible_values->get_number_of_possibilities();
+}
+
+Value Field::can_be_set() const
+{
+    if (get_number_of_possibilities() != 1) {
+        return Value_Undefined;
+    }
+
+    return possible_values->get_unique_possibility();
+}

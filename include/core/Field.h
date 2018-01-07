@@ -39,6 +39,13 @@ class Field
         // Create string info about this field
         const std::string to_string() const;
 
+        // Get the number of possible value options for this field
+        size_t get_number_of_possibilities() const;
+
+        // Check if this field has only one option and can be set
+        // Returns the unique value that can be set in this field or Undefined
+        Value can_be_set() const;
+
     protected:
         // Default constructor
         Field();

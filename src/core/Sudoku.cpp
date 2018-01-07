@@ -130,23 +130,14 @@ Field::handle_type Sudoku::get_field(const size_t x, const size_t y) const
 
 void Sudoku::solve()
 {
-    for (int i = 0; i < 9; i++) {
-//        std::cout << "Reading row: " << i << std::endl;
-        auto row = get_row(i);
-        for (int j = 0; j < 9; j++) {
-            auto field = row[j];
-            ValueSet val_set;
-            for (auto val : ValueTools::get_value_set()) {
-                if (field->can_be(val)) {
-                    val_set.insert(val);
-                }
-            }
-            if (val_set.size() == 1) {
+    // Search for fields with 1 value possibility
+    for (int x = 0; x < 9; x++) {
+        for (int y = 0; y < 9; y++) {
+            Value val = board[x][y]->can_be_set();
+            if ( val != Value_Undefined) {
                 std::stringstream ss;
-                ss << "Good inesrtion found! (" << i << ", " << j << ") = " << *(val_set.begin()) << std::endl;
+                ss << "Good inesrtion found! (" << x << ", " << y << ") = " << val << std::endl;
                 log(ss.str());
-//                log("Good inesrtion found!");
-//                *logger << "Good inesrtion found!";
             }
         }
     }
@@ -167,8 +158,8 @@ void Sudoku::log_field(const size_t x, const size_t y)
 
 void Sudoku::TEST()
 {
-    log_field(1, 2);
-    log_field(2, 7);
+    log_field(2, 2);
+    log_field(7, 2);
 
 /*    size_t x = 1, y = 2;
     std::stringstream ss1, ss2;

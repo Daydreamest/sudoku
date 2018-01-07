@@ -29,6 +29,12 @@ class FieldPossibilities
         // Check if the list contains the given value
         bool contains(const Value v) const;
 
+        // Get the number of possible values
+        size_t get_number_of_possibilities() const;
+
+        // Get the only available value left, or Undefined if there are more/less than one
+        Value get_unique_possibility() const;
+
     protected:
         // Default constructor
         FieldPossibilities();
