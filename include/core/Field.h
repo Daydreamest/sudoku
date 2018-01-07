@@ -46,6 +46,8 @@ class Field
         // Returns the unique value that can be set in this field or Undefined
         Value can_be_set() const;
 
+        bool is_set_to(const Value v) const;
+
     protected:
         // Default constructor
         Field();

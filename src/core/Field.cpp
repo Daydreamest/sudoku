@@ -93,3 +93,12 @@ Value Field::can_be_set() const
 
     return possible_values->get_unique_possibility();
 }
+
+bool Field::is_set_to(const Value v) const
+{
+    if (!is_set()) {
+        return false;
+    }
+
+    return (v == field_value);
+}

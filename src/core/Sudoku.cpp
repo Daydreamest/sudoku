@@ -134,15 +134,49 @@ void Sudoku::solve()
     for (int x = 0; x < 9; x++) {
         for (int y = 0; y < 9; y++) {
             Value val = board[x][y]->can_be_set();
-            if ( val != Value_Undefined) {
+            if (val != Value_Undefined) {
                 std::stringstream ss;
-                ss << "Good inesrtion found! (" << x << ", " << y << ") = " << val << std::endl;
+                ss << "UFD Good inesrtion found! (" << x << ", " << y << ") = " << val << std::endl;
                 log(ss.str());
             }
         }
     }
 
-    TEST();
+    // Search the rows for values that can be placed in single places only
+    for (int y = 0; y < 9; y++) {
+        if (is_row_set(y)) {
+            continue;
+        }
+
+        FieldRow row = get_row(y);
+
+        for (auto val : ValueTools::get_value_set()) {
+            if (!row_contains(y, val)) {
+                size_t places_for_val = 0, x_coord = 20;
+                for (int x = 0; x < 9; x++) {
+                    if (row[x]->can_be(val)) {
+                        places_for_val++;
+                        x_coord = x;
+                    }
+                }
+
+                if (places_for_val == 0) {
+                    std::stringstream ss;
+                    ss << "ROW Well shit, value " << val << " can't be placed in row " << y << std::endl;
+                    log(ss.str());
+                } else if (places_for_val == 1) {
+                    std::stringstream ss;
+                    ss << "ROW Good inesrtion found! (" << x_coord << ", " << y << ") = " << val << std::endl;
+                    log(ss.str());
+                } else {
+//                    std::stringstream ss;
+//                    ss << "ROW For value " << val << " there were " << places_for_val << " places found in row " << y << std::endl;
+//                    log(ss.str());
+                }
+            }
+        }
+    }
+//    TEST();
 }
 
 void Sudoku::log_field(const size_t x, const size_t y)
@@ -155,6 +189,29 @@ void Sudoku::log_field(const size_t x, const size_t y)
     log(board[x][y]->to_string());
 }
 
+bool Sudoku::is_row_set(const size_t y) const
+{
+    FieldRow row = get_row(y);
+    for (int x = 0; x < 9; x++) {
+        if (!(row[x]->is_set())) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+bool Sudoku::row_contains(const size_t y, const Value val) const
+{
+    FieldRow row = get_row(y);
+    for (int x = 0; x < 9; x++) {
+        if (row[x]->is_set_to(val)) {
+            return true;
+        }
+    }
+
+    return false;
+}
 
 void Sudoku::TEST()
 {
