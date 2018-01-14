@@ -17,8 +17,8 @@ TileWrapper::handle_type TileWrapper::create(const FieldTile tile)
 
 bool TileWrapper::is_solved() const
 {
-    for (int x = 0; x < 3; x++) {
-        for (int y = 0; y < 3; y++) {
+    for (size_t x = 0; x < 3; x++) {
+        for (size_t y = 0; y < 3; y++) {
             if (!(data[x][y]->is_set())) {
                 return false;
             }
@@ -30,8 +30,8 @@ bool TileWrapper::is_solved() const
 
 bool TileWrapper::contains(const Value val) const
 {
-    for (int x = 0; x < 3; x++) {
-        for (int y = 0; y < 3; y++) {
+    for (size_t x = 0; x < 3; x++) {
+        for (size_t y = 0; y < 3; y++) {
             if (data[x][y]->is_set_to(val)) {
                 return true;
             }
@@ -44,8 +44,8 @@ bool TileWrapper::contains(const Value val) const
 size_t TileWrapper::possible_places_for(const Value val) const
 {
     size_t result = 0;
-    for (int x = 0; x < 3; x++) {
-        for (int y = 0; y < 3; y++) {
+    for (size_t x = 0; x < 3; x++) {
+        for (size_t y = 0; y < 3; y++) {
             if (data[x][y]->can_be(val)) {
                 result++;
             }
@@ -57,8 +57,8 @@ size_t TileWrapper::possible_places_for(const Value val) const
 
 Position TileWrapper::first_acceptabe_position_for(const Value val) const
 {
-    for (int x = 0; x < 3; x++) {
-        for (int y = 0; y < 3; y++) {
+    for (size_t x = 0; x < 3; x++) {
+        for (size_t y = 0; y < 3; y++) {
             if (data[x][y]->can_be(val)) {
                 return Position(x,y);
             }

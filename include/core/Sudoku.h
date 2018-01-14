@@ -8,6 +8,7 @@
 #include <AbstractData.h>
 #include <Field.h>
 #include <LoggerInterface.h>
+#include <Position.h>
 
 class Sudoku : public LoggerInterface
 {
@@ -39,6 +40,8 @@ class Sudoku : public LoggerInterface
         FieldColumn get_column(const size_t x) const;
         FieldTile get_tile(const size_t index) const;
         FieldTile get_tile(const size_t x, const size_t y) const;
+
+        const Position tile_to_board(const Position pos, const size_t i) const;
 
         const FieldRow create_empty_row() const;
         const FieldBoard create_empty_array() const;

@@ -28,7 +28,7 @@ bool ColumnWrapper::is_solved() const
 
 bool ColumnWrapper::contains(const Value val) const
 {
-    for (int y = 0; y < 9; y++) {
+    for (size_t y = 0; y < 9; y++) {
         if (data[y]->is_set_to(val)) {
             return true;
         }
@@ -40,7 +40,7 @@ bool ColumnWrapper::contains(const Value val) const
 size_t ColumnWrapper::possible_places_for(const Value val) const
 {
     size_t result = 0;
-    for (int y = 0; y < 9; y++) {
+    for (size_t y = 0; y < 9; y++) {
         if (data[y]->can_be(val)) {
             result++;
         }

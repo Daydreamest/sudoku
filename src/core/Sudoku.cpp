@@ -31,8 +31,8 @@ Sudoku::handle_type Sudoku::create()
 
 void Sudoku::set_data(const AbstractData::handle_type d)
 {
-    for (int x = 0; x < 9; x++)
-        for (int y = 0; y < 9; y++)
+    for (size_t x = 0; x < 9; x++)
+        for (size_t y = 0; y < 9; y++)
         {
             char ch_val = d->get_value(x, y);
             Value s_val = ValueTools::get_value_from_char(ch_val);
@@ -45,8 +45,8 @@ const AbstractData::handle_type Sudoku::get_data() const
 {
     CoreData::handle_type result = CoreData::create();
 
-    for (int x = 0; x < 9; x++)
-        for (int y = 0; y < 9; y++)
+    for (size_t x = 0; x < 9; x++)
+        for (size_t y = 0; y < 9; y++)
             if (board[x][y]->get_value() != Value_Undefined) {
                 result->set_value(x, y, board[x][y]->get_value());
     }
@@ -82,7 +82,7 @@ void Sudoku::set_value(const size_t x, const size_t y, const Value val)
 const FieldRow Sudoku::create_empty_row() const
 {
     FieldRow row = FieldRow();
-    for (int i = 0; i < 9; i++) {
+    for (size_t i = 0; i < 9; i++) {
         row[i] = Field::create();
     }
     return row;
@@ -91,7 +91,7 @@ const FieldRow Sudoku::create_empty_row() const
 const FieldBoard Sudoku::create_empty_array() const
 {
     FieldBoard table = FieldBoard();
-    for (int i = 0; i < 9; i++) {
+    for (size_t i = 0; i < 9; i++) {
         table[i] = create_empty_row();
     }
     return table;
@@ -100,7 +100,7 @@ const FieldBoard Sudoku::create_empty_array() const
 FieldRow Sudoku::get_row(const size_t y) const
 {
     FieldRow row = FieldRow();
-    for (int x = 0; x < 9; x++) {
+    for (size_t x = 0; x < 9; x++) {
         row[x] = board[x][y];
     }
     return row;
@@ -118,8 +118,8 @@ FieldTile Sudoku::get_tile(const size_t index) const
     const size_t start_x = (index % 3) * 3;
     const size_t start_y = (index / 3) * 3;
 
-    for (int x = 0; x < 3; x++)
-        for (int y = 0; y < 3; y++) {
+    for (size_t x = 0; x < 3; x++)
+        for (size_t y = 0; y < 3; y++) {
             tile[x][y] = board[start_x + x][start_y + y];
         }
 
@@ -130,6 +130,11 @@ FieldTile Sudoku::get_tile(const size_t x, const size_t y) const
 {
     const size_t index = (x / 3) + (y / 3) * 3;
     return get_tile(index);
+}
+
+const Position Sudoku::tile_to_board(const Position pos, const size_t i) const
+{
+    return Position((i % 3) * 3 + pos.get_x(), (i / 3) * 3 + pos.get_y());
 }
 
 Field::handle_type Sudoku::get_field(const size_t x, const size_t y) const
@@ -166,8 +171,8 @@ void Sudoku::TEST()
 void Sudoku::algorithm_fields_with_single_possible_value()
 {
     // Search for fields with 1 value possibility
-    for (int x = 0; x < 9; x++) {
-        for (int y = 0; y < 9; y++) {
+    for (size_t x = 0; x < 9; x++) {
+        for (size_t y = 0; y < 9; y++) {
             Value val = board[x][y]->can_be_set();
             if (val != Value_Undefined) {
                 std::stringstream ss;
@@ -181,7 +186,7 @@ void Sudoku::algorithm_fields_with_single_possible_value()
 void Sudoku::algorithm_only_feasible_place_in_a_row()
 {
     // Search the rows for values that can be placed in single places only
-    for (int y = 0; y < 9; y++) {
+    for (size_t y = 0; y < 9; y++) {
 
         RowWrapper::handle_type row = RowWrapper::create(get_row(y));
 
@@ -216,7 +221,7 @@ void Sudoku::algorithm_only_feasible_place_in_a_row()
 void Sudoku::algorithm_only_feasible_place_in_a_column()
 {
     // Search the columns for values that can be placed in single places only
-    for (int x = 0; x < 9; x++) {
+    for (size_t x = 0; x < 9; x++) {
         ColumnWrapper::handle_type column = ColumnWrapper::create(get_column(x));
 
         if (column->is_solved()) {
@@ -250,7 +255,7 @@ void Sudoku::algorithm_only_feasible_place_in_a_column()
 void Sudoku::algorithm_only_feasible_place_in_a_tile()
 {
     // Search the tiles for values that can be placed in single places only
-    for (int i = 0; i < 9; i++) {
+    for (size_t i = 0; i < 9; i++) {
         TileWrapper::handle_type tile = TileWrapper::create(get_tile(i));
 
         if (tile->is_solved()) {
@@ -267,9 +272,9 @@ void Sudoku::algorithm_only_feasible_place_in_a_tile()
                     ss << "TIL Well shit, value " << val << " can't be placed in tile " << i << std::endl;
                     log(ss.str());
                 } else if (places == 1) {
-                    Position pos = tile->first_acceptabe_position_for(val);
+                    Position pos = tile_to_board(tile->first_acceptabe_position_for(val), i);
                     std::stringstream ss;
-                    ss << "TIL Good inesrtion found! (" << pos.get_x() << ", " << pos.get_y() << ") * " << i << " = " << val << std::endl;
+                    ss << "TIL Good inesrtion found! (" << pos.get_x() << ", " << pos.get_y() << ") = " << val << std::endl;
                     log(ss.str());
                 } else {
 //                    std::stringstream ss;

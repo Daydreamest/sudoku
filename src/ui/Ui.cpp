@@ -22,12 +22,12 @@ void Ui::print_sudoku(const AbstractData::handle_type s)
     std::cout << "  ----------- ----------- -----------" << std::endl;
     int v_rule = 1;
 
-    for(int y = 0; y < 9; y++) {
+    for(size_t y = 0; y < 9; y++) {
         int h_rule = 1;
 
         std::cout << " | ";
 
-        for (int x = 0; x < 9; x++) {
+        for (size_t x = 0; x < 9; x++) {
             std::cout << " " << s->get_value(x, y) << " ";
             if (!(h_rule % 3)) {
                 std::cout << " | ";

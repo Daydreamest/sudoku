@@ -18,15 +18,18 @@ void FieldPossibilities::clear()
 void FieldPossibilities::reset()
 {
     possible_values.clear();
-    possible_values.insert(Value_1);
-    possible_values.insert(Value_2);
-    possible_values.insert(Value_3);
-    possible_values.insert(Value_4);
-    possible_values.insert(Value_5);
-    possible_values.insert(Value_6);
-    possible_values.insert(Value_7);
-    possible_values.insert(Value_8);
-    possible_values.insert(Value_9);
+    for (Value val : ValueTools::get_value_set()) {
+        possible_values.insert(val);
+    }
+//    possible_values.insert(Value_1);
+//    possible_values.insert(Value_2);
+//    possible_values.insert(Value_3);
+//    possible_values.insert(Value_4);
+//    possible_values.insert(Value_5);
+//    possible_values.insert(Value_6);
+//    possible_values.insert(Value_7);
+//    possible_values.insert(Value_8);
+//    possible_values.insert(Value_9);
 }
 
 void FieldPossibilities::remove(const Value v)
