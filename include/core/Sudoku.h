@@ -1,7 +1,9 @@
 #ifndef SUDOKUBOARD_H
 #define SUDOKUBOARD_H
 
+#include <functional>
 #include <memory>
+#include <vector>
 
 #include <AbstractData.h>
 #include <Field.h>
@@ -42,6 +44,12 @@ class Sudoku : public LoggerInterface
         const FieldBoard create_empty_array() const;
 
         void log_field(const size_t x, const size_t y); //TODO shoud be const
+
+        std::vector<std::function<void(Sudoku&)>> algorithms;
+
+        void algorithm_fields_with_single_possible_value();
+        void algorithm_only_feasible_place_in_a_row();
+        void algorithm_only_feasible_place_in_a_column();
 };
 
 #endif // SUDOKUBOARD_H

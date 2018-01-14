@@ -2,7 +2,7 @@
 
 RowWrapper::RowWrapper(const FieldRow row) : data(row)
 {
-
+    //ctor
 }
 
 RowWrapper::~RowWrapper()

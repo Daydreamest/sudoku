@@ -5,10 +5,16 @@
 
 #include <CoreData.h>
 #include <RowWrapper.h>
+#include <ColumnWrapper.h>
 
 Sudoku::Sudoku() : board(create_empty_array())
 {
     //ctor
+
+    // Set algorithms
+    algorithms.push_back(&Sudoku::algorithm_fields_with_single_possible_value);
+    algorithms.push_back(&Sudoku::algorithm_only_feasible_place_in_a_row);
+    algorithms.push_back(&Sudoku::algorithm_only_feasible_place_in_a_column);
 }
 
 Sudoku::~Sudoku()
@@ -131,18 +137,47 @@ Field::handle_type Sudoku::get_field(const size_t x, const size_t y) const
 
 void Sudoku::solve()
 {
+    for(auto alg : algorithms) {
+        alg(*this);
+    }
+
+//    TEST();
+}
+
+void Sudoku::log_field(const size_t x, const size_t y)
+{
+    std::stringstream ss;
+
+    ss << "Info about field (" << x << ", " << y << ")";
+    log(ss.str());
+
+    log(board[x][y]->to_string());
+}
+
+void Sudoku::TEST()
+{
+
+//    log_field(2, 2);
+//    log_field(7, 2);
+}
+
+void Sudoku::algorithm_fields_with_single_possible_value()
+{
     // Search for fields with 1 value possibility
     for (int x = 0; x < 9; x++) {
         for (int y = 0; y < 9; y++) {
             Value val = board[x][y]->can_be_set();
             if (val != Value_Undefined) {
                 std::stringstream ss;
-                ss << "UFD Good inesrtion found! (" << x << ", " << y << ") = " << val << std::endl;
+                ss << "FLD Good inesrtion found! (" << x << ", " << y << ") = " << val << std::endl;
                 log(ss.str());
             }
         }
     }
+}
 
+void Sudoku::algorithm_only_feasible_place_in_a_row()
+{
     // Search the rows for values that can be placed in single places only
     for (int y = 0; y < 9; y++) {
 
@@ -174,70 +209,40 @@ void Sudoku::solve()
             }
         }
     }
-//    TEST();
 }
 
-void Sudoku::log_field(const size_t x, const size_t y)
+void Sudoku::algorithm_only_feasible_place_in_a_column()
 {
-    std::stringstream ss;
+    // Search the columns for values that can be placed in single places only
+    for (int x = 0; x < 9; x++) {
 
-    ss << "Info about field (" << x << ", " << y << ")";
-    log(ss.str());
+        ColumnWrapper::handle_type column = ColumnWrapper::create(get_column(x));
 
-    log(board[x][y]->to_string());
+        if (column->is_solved()) {
+            continue; // Already solved
+        }
+
+        for (auto val : ValueTools::get_value_set()) {
+            if (!column->contains(val)) {
+
+                size_t places = column->possible_places_for(val);
+
+                if (places == 0) {
+                    std::stringstream ss;
+                    ss << "COL Well shit, value " << val << " can't be placed in column " << x << std::endl;
+                    log(ss.str());
+                } else if (places == 1) {
+                    size_t y = column->first_acceptabe_position_for(val);
+                    std::stringstream ss;
+                    ss << "COL Good inesrtion found! (" << x << ", " << y << ") = " << val << std::endl;
+                    log(ss.str());
+                } else {
+//                    std::stringstream ss;
+//                    ss << "COL For value " << val << " there were " << places << " places found in column " << x << std::endl;
+//                    log(ss.str());
+                }
+            }
+        }
+    }
 }
 
-void Sudoku::TEST()
-{
-    log_field(2, 2);
-    log_field(7, 2);
-
-/*    size_t x = 1, y = 2;
-    std::stringstream ss1, ss2;
-
-    std::cout << "Info about field (" << x << ", " << y << ")" << std::endl;
-
-    ss1 << "Value: " << board[x][y]->get_value();
-    log(ss1.str());
-
-    ss2 << "Possible values: ";
-
-    if (board[x][y]->can_be(Value_1)) {
-        ss2 << 1 << ", ";
-    }
-
-    if (board[x][y]->can_be(Value_2)) {
-        ss2 << 2 << ", ";
-    }
-
-    if (board[x][y]->can_be(Value_3)) {
-        ss2 << 3 << ", ";
-    }
-
-    if (board[x][y]->can_be(Value_4)) {
-        ss2 << 4 << ", ";
-    }
-
-    if (board[x][y]->can_be(Value_5)) {
-        ss2 << 5 << ", ";
-    }
-
-    if (board[x][y]->can_be(Value_6)) {
-        ss2 << 6 << ", ";
-    }
-
-    if (board[x][y]->can_be(Value_7)) {
-        ss2 << 7 << ", ";
-    }
-
-    if (board[x][y]->can_be(Value_8)) {
-        ss2 << 8 << ", ";
-    }
-
-    if (board[x][y]->can_be(Value_9)) {
-        ss2 << 9 << ", ";
-    }
-
-    log(ss2.str());
-    */
-}
