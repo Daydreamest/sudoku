@@ -50,6 +50,7 @@ class Sudoku : public LoggerInterface
         void algorithm_fields_with_single_possible_value();
         void algorithm_only_feasible_place_in_a_row();
         void algorithm_only_feasible_place_in_a_column();
+        void algorithm_only_feasible_place_in_a_tile();
 };
 
 #endif // SUDOKUBOARD_H

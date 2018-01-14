@@ -3,9 +3,10 @@
 //TODO remove
 #include <sstream>
 
+#include <ColumnWrapper.h>
 #include <CoreData.h>
 #include <RowWrapper.h>
-#include <ColumnWrapper.h>
+#include <TileWrapper.h>
 
 Sudoku::Sudoku() : board(create_empty_array())
 {
@@ -15,6 +16,7 @@ Sudoku::Sudoku() : board(create_empty_array())
     algorithms.push_back(&Sudoku::algorithm_fields_with_single_possible_value);
     algorithms.push_back(&Sudoku::algorithm_only_feasible_place_in_a_row);
     algorithms.push_back(&Sudoku::algorithm_only_feasible_place_in_a_column);
+    algorithms.push_back(&Sudoku::algorithm_only_feasible_place_in_a_tile);
 }
 
 Sudoku::~Sudoku()
@@ -215,7 +217,6 @@ void Sudoku::algorithm_only_feasible_place_in_a_column()
 {
     // Search the columns for values that can be placed in single places only
     for (int x = 0; x < 9; x++) {
-
         ColumnWrapper::handle_type column = ColumnWrapper::create(get_column(x));
 
         if (column->is_solved()) {
@@ -246,3 +247,37 @@ void Sudoku::algorithm_only_feasible_place_in_a_column()
     }
 }
 
+void Sudoku::algorithm_only_feasible_place_in_a_tile()
+{
+    // Search the tiles for values that can be placed in single places only
+    for (int i = 0; i < 9; i++) {
+        TileWrapper::handle_type tile = TileWrapper::create(get_tile(i));
+
+        if (tile->is_solved()) {
+            continue; // Already solved
+        }
+
+        for (auto val : ValueTools::get_value_set()) {
+            if (!tile->contains(val)) {
+
+                size_t places = tile->possible_places_for(val);
+
+                if (places == 0) {
+                    std::stringstream ss;
+                    ss << "TIL Well shit, value " << val << " can't be placed in tile " << i << std::endl;
+                    log(ss.str());
+                } else if (places == 1) {
+                    Position pos = tile->first_acceptabe_position_for(val);
+                    std::stringstream ss;
+                    ss << "TIL Good inesrtion found! (" << pos.get_x() << ", " << pos.get_y() << ") * " << i << " = " << val << std::endl;
+                    log(ss.str());
+                } else {
+//                    std::stringstream ss;
+//                    ss << "TIL For value " << val << " there were " << places << " places found in tile " << i << std::endl;
+//                    log(ss.str());
+                }
+
+            }
+        }
+    }
+}
