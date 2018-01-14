@@ -148,6 +148,12 @@ void Sudoku::solve()
         alg(*this);
     }
 
+    for(auto found : found_fields) {
+        std::stringstream ss;
+        ss << "SLV found solution for field (" << found.first.get_x() << ", " << found.first.get_y() << ") = " << found.second;
+        log(ss.str());
+    }
+
 //    TEST();
 }
 
@@ -175,9 +181,10 @@ void Sudoku::algorithm_fields_with_single_possible_value()
         for (size_t y = 0; y < 9; y++) {
             Value val = board[x][y]->can_be_set();
             if (val != Value_Undefined) {
-                std::stringstream ss;
-                ss << "FLD Good inesrtion found! (" << x << ", " << y << ") = " << val << std::endl;
-                log(ss.str());
+//                std::stringstream ss;
+//                ss << "FLD Good inesrtion found! (" << x << ", " << y << ") = " << val << std::endl;
+//                log(ss.str());
+                found_fields.push_back(FoundType(Position(x, y), val));
             }
         }
     }
@@ -205,9 +212,10 @@ void Sudoku::algorithm_only_feasible_place_in_a_row()
                     log(ss.str());
                 } else if (places == 1) {
                     size_t x = row->first_acceptabe_position_for(val);
-                    std::stringstream ss;
-                    ss << "ROW Good inesrtion found! (" << x << ", " << y << ") = " << val << std::endl;
-                    log(ss.str());
+//                    std::stringstream ss;
+//                    ss << "ROW Good inesrtion found! (" << x << ", " << y << ") = " << val << std::endl;
+//                    log(ss.str());
+                    found_fields.push_back(FoundType(Position(x, y), val));
                 } else {
 //                    std::stringstream ss;
 //                    ss << "ROW For value " << val << " there were " << places_for_val << " places found in row " << y << std::endl;
@@ -239,9 +247,10 @@ void Sudoku::algorithm_only_feasible_place_in_a_column()
                     log(ss.str());
                 } else if (places == 1) {
                     size_t y = column->first_acceptabe_position_for(val);
-                    std::stringstream ss;
-                    ss << "COL Good inesrtion found! (" << x << ", " << y << ") = " << val << std::endl;
-                    log(ss.str());
+//                    std::stringstream ss;
+//                    ss << "COL Good inesrtion found! (" << x << ", " << y << ") = " << val << std::endl;
+//                    log(ss.str());
+                    found_fields.push_back(FoundType(Position(x, y), val));
                 } else {
 //                    std::stringstream ss;
 //                    ss << "COL For value " << val << " there were " << places << " places found in column " << x << std::endl;
@@ -273,15 +282,15 @@ void Sudoku::algorithm_only_feasible_place_in_a_tile()
                     log(ss.str());
                 } else if (places == 1) {
                     Position pos = tile_to_board(tile->first_acceptabe_position_for(val), i);
-                    std::stringstream ss;
-                    ss << "TIL Good inesrtion found! (" << pos.get_x() << ", " << pos.get_y() << ") = " << val << std::endl;
-                    log(ss.str());
+//                    std::stringstream ss;
+//                    ss << "TIL Good inesrtion found! (" << pos.get_x() << ", " << pos.get_y() << ") = " << val << std::endl;
+//                    log(ss.str());
+                    found_fields.push_back(FoundType(Position(pos.get_x(), pos.get_y()), val));
                 } else {
 //                    std::stringstream ss;
 //                    ss << "TIL For value " << val << " there were " << places << " places found in tile " << i << std::endl;
 //                    log(ss.str());
                 }
-
             }
         }
     }
