@@ -36,7 +36,12 @@ void Main::run()
 {
     sudoku->set_data(ui->get_initial_values());
 
-    ui->print_sudoku(sudoku->get_data());
+    bool has_next_step = true;
 
-    sudoku->solve();
+    while (has_next_step) {
+        ui->print_sudoku(sudoku->get_data());
+        has_next_step = sudoku->solve_step();
+    }
+
+    ui->print_sudoku(sudoku->get_data());
 }
