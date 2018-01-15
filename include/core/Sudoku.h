@@ -58,7 +58,9 @@ class Sudoku : public LoggerInterface
         void algorithm_only_feasible_place_in_a_tile();
 
         using FoundType = std::pair<Position, Value>;
-        std::vector<FoundType> found_fields;
+        std::set<FoundType> found_fields;
 };
+
+inline bool operator<(std::pair<Position, Value>& lhs, std::pair<Position, Value>& rhs);
 
 #endif // SUDOKUBOARD_H

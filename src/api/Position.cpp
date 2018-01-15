@@ -38,16 +38,3 @@ bool Position::operator==(const Position& other)
 {
     return (x == other.x) && (y == other.y);
 }
-
-bool Position::operator<(const Position& other)
-{
-    if (x < other.x) {
-        return true;
-    }
-
-    if (x > other.x) {
-        return false;
-    }
-
-    return (y < other.y);
-}
