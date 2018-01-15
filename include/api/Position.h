@@ -13,6 +13,7 @@ class Position
         size_t get_y() const;
 
         inline bool operator==(const Position& other);
+        inline bool operator<(const Position& other);
 
     protected:
 
