@@ -43,7 +43,8 @@ void Ui::print_sudoku(const AbstractData::handle_type s)
         v_rule++;
     }
 
-//    std::cout << "Ui::print (1,2) = " << s->get_value(1, 2) << std::endl;
+//    std::cout << std::endl << "Press Enter to continue..." << std::endl;
+//    std::cin.ignore();
 }
 
 Ui::handle_type Ui::create()

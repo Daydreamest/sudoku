@@ -10,10 +10,9 @@ class Position
         virtual ~Position();
 
         size_t get_x() const;
-        void set_x(const size_t val);
-
         size_t get_y() const;
-        void set_y(const size_t val);
+
+        inline bool operator==(const Position& other);
 
     protected:
 
