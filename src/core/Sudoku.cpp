@@ -56,7 +56,11 @@ const AbstractData::handle_type Sudoku::get_data() const
 
 void Sudoku::set_value(const size_t x, const size_t y, const Value val)
 {
-    // TODO do magic checks
+    // For undefined values do nothing
+    if (val == Value_Undefined) {
+        return;
+    }
+
     board[x][y]->set_value(val);
 
     // Mark in all fields in the same row that this value is already used

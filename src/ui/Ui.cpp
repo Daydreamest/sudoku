@@ -43,8 +43,8 @@ void Ui::print_sudoku(const AbstractData::handle_type s)
         v_rule++;
     }
 
-//    std::cout << std::endl << "Press Enter to continue..." << std::endl;
-//    std::cin.ignore();
+    std::cout << std::endl << "Press Enter to continue..." << std::endl;
+    std::cin.ignore();
 }
 
 Ui::handle_type Ui::create()

@@ -1,7 +1,7 @@
 #include "Main.h"
 
-#include <Sudoku.h>
 #include <Logger.h>
+#include <Sudoku.h>
 #include <Ui.h>
 
 Main::Main() : sudoku(nullptr), ui(nullptr)
@@ -43,5 +43,5 @@ void Main::run()
         has_next_step = sudoku->solve_step();
     }
 
-    ui->print_sudoku(sudoku->get_data());
+//    ui->print_sudoku(sudoku->get_data());
 }
