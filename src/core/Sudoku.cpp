@@ -4,6 +4,7 @@
 #include <sstream>
 
 #include <ColumnWrapper.h>
+#include <Consts.h>
 #include <CoreData.h>
 #include <RowWrapper.h>
 #include <TileWrapper.h>
@@ -31,24 +32,26 @@ Sudoku::handle_type Sudoku::create()
 
 void Sudoku::set_data(const AbstractData::handle_type d)
 {
-    for (size_t x = 0; x < 9; x++)
-        for (size_t y = 0; y < 9; y++)
-        {
+    loop (x, BOARD_MAX_X) {
+        loop (y, BOARD_MAX_Y) {
             char ch_val = d->get_value(x, y);
             Value s_val = ValueTools::get_value_from_char(ch_val);
 
             set_value(x, y, s_val);
         }
+    }
 }
 
 const AbstractData::handle_type Sudoku::get_data() const
 {
     CoreData::handle_type result = CoreData::create();
 
-    for (size_t x = 0; x < 9; x++)
-        for (size_t y = 0; y < 9; y++)
+    loop (x, BOARD_MAX_X) {
+        loop (y, BOARD_MAX_Y) {
             if (board[x][y]->get_value() != Value_Undefined) {
                 result->set_value(x, y, board[x][y]->get_value());
+            }
+        }
     }
 
     return result;
@@ -77,16 +80,17 @@ void Sudoku::set_value(const size_t x, const size_t y, const Value val)
 
     // Repeat for tile
     FieldTile tile = get_tile(x,y);
-    for(size_t i = 0; i < 3; i++)
+    for(size_t i = 0; i < 3; i++) {
         for(size_t j = 0; j < 3; j++) {
             tile[i][j]->remove_possibility(val);
+        }
     }
 }
 
 const FieldRow Sudoku::create_empty_row() const
 {
     FieldRow row = FieldRow();
-    for (size_t i = 0; i < 9; i++) {
+    loop (i, ROW_MAX) {
         row[i] = Field::create();
     }
     return row;
@@ -95,7 +99,7 @@ const FieldRow Sudoku::create_empty_row() const
 const FieldBoard Sudoku::create_empty_array() const
 {
     FieldBoard table = FieldBoard();
-    for (size_t i = 0; i < 9; i++) {
+    loop (i, COLUMN_MAX) {
         table[i] = create_empty_row();
     }
     return table;
@@ -109,7 +113,7 @@ bool operator<(std::pair<Position, Value>& lhs, std::pair<Position, Value>& rhs)
 FieldRow Sudoku::get_row(const size_t y) const
 {
     FieldRow row = FieldRow();
-    for (size_t x = 0; x < 9; x++) {
+    loop (x, BOARD_MAX_X) {
         row[x] = board[x][y];
     }
     return row;
@@ -122,9 +126,10 @@ FieldColumn Sudoku::get_column(const size_t x) const
 
 bool Sudoku::is_solved() const
 {
-    for (size_t x = 0; x < 9; x++) {
+    loop (x, BOARD_MAX_X) {
         ColumnWrapper::handle_type column = ColumnWrapper::create(get_column(x));
-        if (!column->is_solved()) {
+        if (!column->is_solved())
+        {
             return false;
         }
     }
@@ -139,10 +144,11 @@ FieldTile Sudoku::get_tile(const size_t index) const
     const size_t start_x = (index % 3) * 3;
     const size_t start_y = (index / 3) * 3;
 
-    for (size_t x = 0; x < 3; x++)
-        for (size_t y = 0; y < 3; y++) {
+    loop (x, TILE_MAX_X) {
+        loop(y, TILE_MAX_Y) {
             tile[x][y] = board[start_x + x][start_y + y];
         }
+    }
 
     return tile;
 }
@@ -165,7 +171,7 @@ Field::handle_type Sudoku::get_field(const size_t x, const size_t y) const
 
 bool Sudoku::solve_step()
 {
-    for(auto alg : algorithms) {
+    for (auto alg : algorithms) {
         alg(*this);
     }
 
@@ -173,11 +179,11 @@ bool Sudoku::solve_step()
         return false;
     }
 
-    for(auto found : found_fields) {
+    for (auto found : found_fields) {
         set_value(found.first.get_x(), found.first.get_y(), found.second);
-        std::stringstream ss;
-        ss << "SLV found solution for field (" << found.first.get_x() << ", " << found.first.get_y() << ") = " << found.second;
-        log(ss.str());
+//        std::stringstream ss;
+//        ss << "SLV found solution for field (" << found.first.get_x() << ", " << found.first.get_y() << ") = " << found.second;
+//        log(ss.str());
     }
     found_fields.clear();
 
@@ -205,8 +211,9 @@ void Sudoku::TEST()
 void Sudoku::algorithm_fields_with_single_possible_value()
 {
     // Search for fields with 1 value possibility
-    for (size_t x = 0; x < 9; x++) {
-        for (size_t y = 0; y < 9; y++) {
+
+    loop (x, BOARD_MAX_X) {
+        loop (y, BOARD_MAX_Y) {
             Value val = board[x][y]->can_be_set();
             if (val != Value_Undefined) {
 //                std::stringstream ss;
@@ -221,8 +228,7 @@ void Sudoku::algorithm_fields_with_single_possible_value()
 void Sudoku::algorithm_only_feasible_place_in_a_row()
 {
     // Search the rows for values that can be placed in single places only
-    for (size_t y = 0; y < 9; y++) {
-
+    loop (y, BOARD_MAX_Y) {
         RowWrapper::handle_type row = RowWrapper::create(get_row(y));
 
         if (row->is_solved()) {
@@ -257,7 +263,7 @@ void Sudoku::algorithm_only_feasible_place_in_a_row()
 void Sudoku::algorithm_only_feasible_place_in_a_column()
 {
     // Search the columns for values that can be placed in single places only
-    for (size_t x = 0; x < 9; x++) {
+    loop (x, BOARD_MAX_X) {
         ColumnWrapper::handle_type column = ColumnWrapper::create(get_column(x));
 
         if (column->is_solved()) {
@@ -292,7 +298,7 @@ void Sudoku::algorithm_only_feasible_place_in_a_column()
 void Sudoku::algorithm_only_feasible_place_in_a_tile()
 {
     // Search the tiles for values that can be placed in single places only
-    for (size_t i = 0; i < 9; i++) {
+    loop (i, TILE_COUNT) {
         TileWrapper::handle_type tile = TileWrapper::create(get_tile(i));
 
         if (tile->is_solved()) {

@@ -1,5 +1,7 @@
 #include "RowWrapper.h"
 
+#include <Consts.h>
+
 RowWrapper::RowWrapper(const FieldRow row) : data(row)
 {
     //ctor
@@ -17,7 +19,7 @@ RowWrapper::handle_type RowWrapper::create(const FieldRow row)
 
 bool RowWrapper::is_solved() const
 {
-    for (size_t x = 0; x < 9; x++) {
+    loop (x, ROW_MAX) {
         if (!(data[x]->is_set())) {
             return false;
         }
@@ -28,7 +30,7 @@ bool RowWrapper::is_solved() const
 
 bool RowWrapper::contains(const Value val) const
 {
-    for (size_t x = 0; x < 9; x++) {
+    loop (x, ROW_MAX) {
         if (data[x]->is_set_to(val)) {
             return true;
         }
@@ -40,7 +42,7 @@ bool RowWrapper::contains(const Value val) const
 size_t RowWrapper::possible_places_for(const Value val) const
 {
     size_t result = 0;
-    for (size_t x = 0; x < 9; x++) {
+    loop (x, ROW_MAX) {
         if (data[x]->can_be(val)) {
             result++;
         }
@@ -51,7 +53,7 @@ size_t RowWrapper::possible_places_for(const Value val) const
 
 size_t RowWrapper::first_acceptabe_position_for(const Value val) const
 {
-    for (size_t x = 0; x < 9; x++) {
+    loop (x, ROW_MAX) {
         if (data[x]->can_be(val)) {
             return x;
         }

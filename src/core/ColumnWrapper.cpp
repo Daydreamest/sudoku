@@ -1,5 +1,7 @@
 #include "ColumnWrapper.h"
 
+#include <Consts.h>
+
 ColumnWrapper::ColumnWrapper(const FieldColumn col): data(col)
 {
     //ctor
@@ -17,7 +19,7 @@ ColumnWrapper::handle_type ColumnWrapper::create(const FieldColumn col)
 
 bool ColumnWrapper::is_solved() const
 {
-    for (size_t y = 0; y < 9; y++) {
+    loop (y, COLUMN_MAX) {
         if (!(data[y]->is_set())) {
             return false;
         }
@@ -28,7 +30,7 @@ bool ColumnWrapper::is_solved() const
 
 bool ColumnWrapper::contains(const Value val) const
 {
-    for (size_t y = 0; y < 9; y++) {
+    loop (y, COLUMN_MAX) {
         if (data[y]->is_set_to(val)) {
             return true;
         }
@@ -40,7 +42,7 @@ bool ColumnWrapper::contains(const Value val) const
 size_t ColumnWrapper::possible_places_for(const Value val) const
 {
     size_t result = 0;
-    for (size_t y = 0; y < 9; y++) {
+    loop (y, COLUMN_MAX) {
         if (data[y]->can_be(val)) {
             result++;
         }
@@ -51,7 +53,7 @@ size_t ColumnWrapper::possible_places_for(const Value val) const
 
 size_t ColumnWrapper::first_acceptabe_position_for(const Value val) const
 {
-    for (size_t y = 0; y < 9; y++) {
+    loop (y, COLUMN_MAX) {
         if (data[y]->can_be(val)) {
             return y;
         }
