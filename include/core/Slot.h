@@ -1,6 +1,8 @@
 #ifndef SLOT_H
 #define SLOT_H
 
+#include <set>
+
 #include <Position.h>
 #include <Values.h>
 
@@ -20,6 +22,17 @@ class Slot
     private:
         Value val;
         Position pos;
+
+        // For simplicity
+        friend inline bool operator<(const Slot& lhs, const Slot& rhs);
 };
+
+// Needed fot std::set<Slot>
+inline bool operator<(const Slot& lhs, const Slot& rhs)
+{
+    return lhs.pos < rhs.pos;
+}
+
+using SlotSet = std::set<Slot>;
 
 #endif // SLOT_H
