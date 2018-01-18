@@ -3,27 +3,28 @@
 
 #include <memory>
 
+#include <AbstractWrapper.h>
 #include <Field.h>
 
-class ColumnWrapper
+class ColumnWrapper : public AbstractWrapper
 {
     public:
         using handle_type = std::unique_ptr<ColumnWrapper>;
 
-        static handle_type create(const FieldColumn col);
+        static handle_type create(const FieldColumn col, const size_t id);
 
         virtual ~ColumnWrapper();
 
-        bool is_solved() const;
+        virtual bool is_solved() const override;
 
-        bool contains(const Value val) const;
+        virtual bool contains(const Value val) const override;
 
-        size_t possible_places_for(const Value val) const;
+        virtual size_t possible_places_for(const Value val) const override;
 
-        size_t first_acceptabe_position_for(const Value val) const;
+        virtual Position first_position_for(const Value val) const override;
 
     protected:
-        ColumnWrapper(const FieldColumn col);
+        ColumnWrapper(const FieldColumn col, const size_t id);
 
     private:
         FieldColumn data;

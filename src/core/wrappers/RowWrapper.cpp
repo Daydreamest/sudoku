@@ -2,7 +2,7 @@
 
 #include <Consts.h>
 
-RowWrapper::RowWrapper(const FieldRow row) : data(row)
+RowWrapper::RowWrapper(const FieldRow row, const size_t id) : AbstractWrapper(id), data(row)
 {
     //ctor
 }
@@ -12,9 +12,9 @@ RowWrapper::~RowWrapper()
     //dtor
 }
 
-RowWrapper::handle_type RowWrapper::create(const FieldRow row)
+RowWrapper::handle_type RowWrapper::create(const FieldRow row, const size_t id)
 {
-    return handle_type(new RowWrapper(row));
+    return handle_type(new RowWrapper(row, id));
 }
 
 bool RowWrapper::is_solved() const
@@ -51,13 +51,13 @@ size_t RowWrapper::possible_places_for(const Value val) const
     return result;
 }
 
-size_t RowWrapper::first_acceptabe_position_for(const Value val) const
+Position RowWrapper::first_position_for(const Value val) const
 {
     loop (x, ROW_MAX) {
         if (data[x]->can_be(val)) {
-            return x;
+            return Position(x, index);
         }
     }
 
-    return 20;
+    return Position(20, 20);
 }

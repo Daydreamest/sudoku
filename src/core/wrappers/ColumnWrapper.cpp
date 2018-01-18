@@ -2,7 +2,7 @@
 
 #include <Consts.h>
 
-ColumnWrapper::ColumnWrapper(const FieldColumn col): data(col)
+ColumnWrapper::ColumnWrapper(const FieldColumn col, const size_t id): AbstractWrapper(id), data(col)
 {
     //ctor
 }
@@ -12,9 +12,9 @@ ColumnWrapper::~ColumnWrapper()
     //dtor
 }
 
-ColumnWrapper::handle_type ColumnWrapper::create(const FieldColumn col)
+ColumnWrapper::handle_type ColumnWrapper::create(const FieldColumn col, const size_t id)
 {
-    return handle_type(new ColumnWrapper(col));
+    return handle_type(new ColumnWrapper(col, id));
 }
 
 bool ColumnWrapper::is_solved() const
@@ -51,13 +51,13 @@ size_t ColumnWrapper::possible_places_for(const Value val) const
     return result;
 }
 
-size_t ColumnWrapper::first_acceptabe_position_for(const Value val) const
+Position ColumnWrapper::first_position_for(const Value val) const
 {
     loop (y, COLUMN_MAX) {
         if (data[y]->can_be(val)) {
-            return y;
+            return Position(index, y);
         }
     }
 
-    return 20;
+    return Position(20, 20);
 }

@@ -44,7 +44,7 @@ class Sudoku : public LoggerInterface
         FieldTile get_tile(const size_t index) const;
         FieldTile get_tile(const Position pos) const;
 
-        const Position tile_to_board(const Position pos, const size_t i) const;
+//        const Position tile_to_board(const Position pos, const size_t i) const;
 
         const FieldRow create_empty_row() const;
         const FieldBoard create_empty_array() const;

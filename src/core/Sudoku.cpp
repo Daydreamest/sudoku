@@ -123,7 +123,7 @@ FieldColumn Sudoku::get_column(const size_t x) const
 bool Sudoku::is_solved() const
 {
     loop (x, BOARD_MAX_X) {
-        ColumnWrapper::handle_type column = ColumnWrapper::create(get_column(x));
+        ColumnWrapper::handle_type column = ColumnWrapper::create(get_column(x), x);
         if (!column->is_solved()) {
             return false;
         }
@@ -154,10 +154,10 @@ FieldTile Sudoku::get_tile(const Position pos) const
     return get_tile(index);
 }
 
-const Position Sudoku::tile_to_board(const Position pos, const size_t i) const
-{
-    return Position((i % 3) * 3 + pos.get_x(), (i / 3) * 3 + pos.get_y());
-}
+//const Position Sudoku::tile_to_board(const Position pos, const size_t i) const
+//{
+//    return Position((i % 3) * 3 + pos.get_x(), (i / 3) * 3 + pos.get_y());
+//}
 
 //Field::handle_type Sudoku::get_field(const size_t x, const size_t y) const
 //{
@@ -175,7 +175,6 @@ bool Sudoku::solve_step()
     }
 
     for (auto found : found_fields) {
-//        // TODO watch for this
 //        set_value(Slot(found.first.get_x(), found.first.get_y(), found.second));
         set_value(found);
 
@@ -227,7 +226,7 @@ void Sudoku::algorithm_only_feasible_place_in_a_row()
 {
     // Search the rows for values that can be placed in single places only
     loop (y, BOARD_MAX_Y) {
-        RowWrapper::handle_type row = RowWrapper::create(get_row(y));
+        RowWrapper::handle_type row = RowWrapper::create(get_row(y), y);
 
         if (row->is_solved()) {
             continue; // Already solved
@@ -243,11 +242,13 @@ void Sudoku::algorithm_only_feasible_place_in_a_row()
                     ss << "ROW Well shit, value " << val << " can't be placed in row " << y << std::endl;
                     log(ss.str());
                 } else if (places == 1) {
-                    size_t x = row->first_acceptabe_position_for(val);
+                    found_fields.insert(Slot(row->first_position_for(val), val));
+//                    size_t x = row->first_acceptabe_position_for(val);
+//                    found_fields.insert(Slot(x, y, val));
+
 //                    std::stringstream ss;
 //                    ss << "ROW Good inesrtion found! (" << x << ", " << y << ") = " << val;
 //                    log(ss.str());
-                    found_fields.insert(Slot(x, y, val));
                 } else {
 //                    std::stringstream ss;
 //                    ss << "ROW For value " << val << " there were " << places_for_val << " places found in row " << y << std::endl;
@@ -262,7 +263,7 @@ void Sudoku::algorithm_only_feasible_place_in_a_column()
 {
     // Search the columns for values that can be placed in single places only
     loop (x, BOARD_MAX_X) {
-        ColumnWrapper::handle_type column = ColumnWrapper::create(get_column(x));
+        ColumnWrapper::handle_type column = ColumnWrapper::create(get_column(x), x);
 
         if (column->is_solved()) {
             continue; // Already solved
@@ -278,11 +279,12 @@ void Sudoku::algorithm_only_feasible_place_in_a_column()
                     ss << "COL Well shit, value " << val << " can't be placed in column " << x << std::endl;
                     log(ss.str());
                 } else if (places == 1) {
-                    size_t y = column->first_acceptabe_position_for(val);
+                    found_fields.insert(Slot(column->first_position_for(val), val));
+//                    size_t y = (column->first_acceptabe_position_for(val)).get_y();
+//                    found_fields.insert(Slot(x, y, val));
 //                    std::stringstream ss;
 //                    ss << "COL Good inesrtion found! (" << x << ", " << y << ") = " << val;
 //                    log(ss.str());
-                    found_fields.insert(Slot(x, y, val));
                 } else {
 //                    std::stringstream ss;
 //                    ss << "COL For value " << val << " there were " << places << " places found in column " << x << std::endl;
@@ -297,7 +299,7 @@ void Sudoku::algorithm_only_feasible_place_in_a_tile()
 {
     // Search the tiles for values that can be placed in single places only
     loop (i, TILE_COUNT) {
-        TileWrapper::handle_type tile = TileWrapper::create(get_tile(i));
+        TileWrapper::handle_type tile = TileWrapper::create(get_tile(i), i);
 
         if (tile->is_solved()) {
             continue; // Already solved
@@ -313,11 +315,14 @@ void Sudoku::algorithm_only_feasible_place_in_a_tile()
                     ss << "TIL Well shit, value " << val << " can't be placed in tile " << i << std::endl;
                     log(ss.str());
                 } else if (places == 1) {
-                    Position pos = tile_to_board(tile->first_acceptabe_position_for(val), i);
+//                    Position pos = tile_to_board(tile->first_acceptabe_position_for(val), i);
+//                    found_fields.insert(Slot(pos, val));
+
+                    found_fields.insert(Slot(tile->first_position_for(val), val));
+
 //                    std::stringstream ss;
 //                    ss << "TIL Good inesrtion found! (" << pos.get_x() << ", " << pos.get_y() << ") = " << val;
 //                    log(ss.str());
-                    found_fields.insert(Slot(pos, val));
                 } else {
 //                    std::stringstream ss;
 //                    ss << "TIL For value " << val << " there were " << places << " places found in tile " << i << std::endl;

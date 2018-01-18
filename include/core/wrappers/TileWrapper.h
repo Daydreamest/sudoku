@@ -3,31 +3,34 @@
 
 #include <memory>
 
+#include <AbstractWrapper.h>
 #include <Field.h>
 #include <Position.h>
 
-class TileWrapper
+class TileWrapper : public AbstractWrapper
 {
     public:
         using handle_type = std::unique_ptr<TileWrapper>;
 
-        static handle_type create(const FieldTile tile);
+        static handle_type create(const FieldTile tile, const size_t id);
 
         virtual ~TileWrapper();
 
-        bool is_solved() const;
+        virtual bool is_solved() const override;
 
-        bool contains(const Value val) const;
+        virtual bool contains(const Value val) const override;
 
-        size_t possible_places_for(const Value val) const;
+        virtual size_t possible_places_for(const Value val) const override;
 
-        Position first_acceptabe_position_for(const Value val) const;
+        virtual Position first_position_for(const Value val) const override;
 
     protected:
-        TileWrapper(const FieldTile tile);
+        TileWrapper(const FieldTile tile, const size_t id);
 
     private:
         FieldTile data;
+
+        Position get_global_position(const Position pos) const;
 };
 
 #endif // TILEWRAPPER_H
