@@ -20,6 +20,8 @@ class AbstractWrapper
 
         virtual Position first_position_for(const Value val) const = 0;
 
+        virtual void sanitize(const Value val) = 0;
+
     protected:
         size_t index;
 

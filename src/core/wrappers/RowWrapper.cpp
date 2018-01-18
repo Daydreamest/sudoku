@@ -61,3 +61,12 @@ Position RowWrapper::first_position_for(const Value val) const
 
     return Position(20, 20);
 }
+
+void RowWrapper::sanitize(const Value val)
+{
+    if (contains(val)) {
+        loop (x, ROW_MAX) {
+            data[x]->remove_possibility(val);
+        }
+    }
+}

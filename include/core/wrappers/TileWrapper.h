@@ -24,6 +24,8 @@ class TileWrapper : public AbstractWrapper
 
         virtual Position first_position_for(const Value val) const override;
 
+        virtual void sanitize(const Value val) override;
+
     protected:
         TileWrapper(const FieldTile tile, const size_t id);
 

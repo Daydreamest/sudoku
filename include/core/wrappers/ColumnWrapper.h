@@ -23,6 +23,8 @@ class ColumnWrapper : public AbstractWrapper
 
         virtual Position first_position_for(const Value val) const override;
 
+        virtual void sanitize(const Value val) override;
+
     protected:
         ColumnWrapper(const FieldColumn col, const size_t id);
 

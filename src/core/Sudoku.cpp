@@ -3,11 +3,8 @@
 //TODO remove
 #include <sstream>
 
-#include <ColumnWrapper.h>
 #include <Consts.h>
 #include <CoreData.h>
-#include <RowWrapper.h>
-#include <TileWrapper.h>
 
 Sudoku::Sudoku() : board(create_empty_array())
 {
@@ -57,7 +54,6 @@ const AbstractData::handle_type Sudoku::get_data() const
     return result;
 }
 
-//void Sudoku::set_value(const size_t x, const size_t y, const Value val)
 void Sudoku::set_value(const Slot slot)
 {
     // For undefined values do nothing
@@ -68,24 +64,14 @@ void Sudoku::set_value(const Slot slot)
     board[slot.get_x()][slot.get_y()]->set_value(slot.get_value());
 
     // Mark in all fields in the same row that this value is already used
-    FieldRow row = get_row(slot.get_y());
-    loop (i, ROW_MAX) {
-        row[i]->remove_possibility(slot.get_value());
-    }
+    get_row(slot.get_y())->sanitize(slot.get_value());
 
     // Repeat for column
-    FieldColumn col = get_column(slot.get_x());
-    loop (i, COLUMN_MAX) {
-        col[i]->remove_possibility(slot.get_value());
-    }
+    get_column(slot.get_x())->sanitize(slot.get_value());
 
     // Repeat for tile
-    FieldTile tile = get_tile(Position(slot.get_x(), slot.get_y()));
-    loop (i, TILE_MAX_X) {
-        loop (j, TILE_MAX_Y) {
-            tile[i][j]->remove_possibility(slot.get_value());
-        }
-    }
+    //TODO simplify
+    get_tile(Position(slot.get_x(), slot.get_y()))->sanitize(slot.get_value());
 }
 
 const FieldRow Sudoku::create_empty_row() const
@@ -106,24 +92,24 @@ const FieldBoard Sudoku::create_empty_array() const
     return table;
 }
 
-FieldRow Sudoku::get_row(const size_t y) const
+RowWrapper::handle_type Sudoku::get_row(const size_t y) const
 {
     FieldRow row = FieldRow();
     loop (x, BOARD_MAX_X) {
         row[x] = board[x][y];
     }
-    return row;
+    return std::move(RowWrapper::create(row, y));
 }
 
-FieldColumn Sudoku::get_column(const size_t x) const
+ColumnWrapper::handle_type Sudoku::get_column(const size_t x) const
 {
-    return board[x];
+    return std::move(ColumnWrapper::create(board[x], x));
 }
 
 bool Sudoku::is_solved() const
 {
     loop (x, BOARD_MAX_X) {
-        ColumnWrapper::handle_type column = ColumnWrapper::create(get_column(x), x);
+        ColumnWrapper::handle_type column = get_column(x);
         if (!column->is_solved()) {
             return false;
         }
@@ -132,7 +118,7 @@ bool Sudoku::is_solved() const
     return true;
 }
 
-FieldTile Sudoku::get_tile(const size_t index) const
+TileWrapper::handle_type Sudoku::get_tile(const size_t index) const
 {
     FieldTile tile = FieldTile();
 
@@ -145,13 +131,13 @@ FieldTile Sudoku::get_tile(const size_t index) const
         }
     }
 
-    return tile;
+    return std::move(TileWrapper::create(tile, index));
 }
 
-FieldTile Sudoku::get_tile(const Position pos) const
+TileWrapper::handle_type Sudoku::get_tile(const Position pos) const
 {
     const size_t index = (pos.get_x() / 3) + (pos.get_y() / 3) * 3;
-    return get_tile(index);
+    return std::move(get_tile(index));
 }
 
 bool Sudoku::solve_step()
@@ -215,7 +201,7 @@ void Sudoku::algorithm_only_feasible_place_in_a_row()
 {
     // Search the rows for values that can be placed in single places only
     loop (y, BOARD_MAX_Y) {
-        RowWrapper::handle_type row = RowWrapper::create(get_row(y), y);
+        RowWrapper::handle_type row = get_row(y);
 
         if (row->is_solved()) {
             continue; // Already solved
@@ -249,7 +235,7 @@ void Sudoku::algorithm_only_feasible_place_in_a_column()
 {
     // Search the columns for values that can be placed in single places only
     loop (x, BOARD_MAX_X) {
-        ColumnWrapper::handle_type column = ColumnWrapper::create(get_column(x), x);
+        ColumnWrapper::handle_type column = get_column(x);
 
         if (column->is_solved()) {
             continue; // Already solved
@@ -283,7 +269,7 @@ void Sudoku::algorithm_only_feasible_place_in_a_tile()
 {
     // Search the tiles for values that can be placed in single places only
     loop (i, TILE_COUNT) {
-        TileWrapper::handle_type tile = TileWrapper::create(get_tile(i), i);
+        TileWrapper::handle_type tile = get_tile(i);
 
         if (tile->is_solved()) {
             continue; // Already solved

@@ -74,3 +74,15 @@ Position TileWrapper::first_position_for(const Value val) const
 
     return Position(20,20);
 }
+void TileWrapper::sanitize(const Value val)
+{
+    if (contains(val)) {
+        loop (x, TILE_MAX_X) {
+            loop (y, TILE_MAX_Y) {
+                data[x][y]->remove_possibility(val);
+            }
+        }
+    }
+
+}
+
