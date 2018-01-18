@@ -16,21 +16,19 @@ class Slot
         const size_t get_x() const;
         const size_t get_y() const;
         const Value get_value() const;
+        const Position get_position() const;
 
     protected:
 
     private:
         Value val;
         Position pos;
-
-        // For simplicity
-        friend inline bool operator<(const Slot& lhs, const Slot& rhs);
 };
 
 // Needed fot std::set<Slot>
 inline bool operator<(const Slot& lhs, const Slot& rhs)
 {
-    return lhs.pos < rhs.pos;
+    return lhs.get_position() < rhs.get_position();
 }
 
 using SlotSet = std::set<Slot>;

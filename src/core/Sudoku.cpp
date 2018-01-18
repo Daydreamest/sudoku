@@ -70,8 +70,7 @@ void Sudoku::set_value(const Slot slot)
     get_column(slot.get_x())->sanitize(slot.get_value());
 
     // Repeat for tile
-    //TODO simplify
-    get_tile(Position(slot.get_x(), slot.get_y()))->sanitize(slot.get_value());
+    get_tile(slot.get_position())->sanitize(slot.get_value());
 }
 
 const FieldRow Sudoku::create_empty_row() const

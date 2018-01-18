@@ -29,3 +29,8 @@ const Value Slot::get_value() const
 {
     return val;
 }
+
+const Position Slot::get_position() const
+{
+    return pos;
+}
