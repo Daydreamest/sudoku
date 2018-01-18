@@ -9,6 +9,7 @@
 #include <Field.h>
 #include <LoggerInterface.h>
 #include <Position.h>
+#include <Slot.h>
 
 class Sudoku : public LoggerInterface
 {
@@ -23,7 +24,7 @@ class Sudoku : public LoggerInterface
         void set_data(const AbstractData::handle_type d);
         const AbstractData::handle_type get_data() const;
 
-        void set_value(const size_t x, const size_t y, const Value val);
+        void set_value(const Slot slot);
 
         bool solve_step();
 
@@ -48,6 +49,7 @@ class Sudoku : public LoggerInterface
         const FieldRow create_empty_row() const;
         const FieldBoard create_empty_array() const;
 
+        //TODO remove
         void log_field(const size_t x, const size_t y); //TODO shoud be const
 
         std::vector<std::function<void(Sudoku&)>> algorithms;

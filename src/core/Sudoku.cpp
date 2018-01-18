@@ -37,7 +37,7 @@ void Sudoku::set_data(const AbstractData::handle_type d)
             char ch_val = d->get_value(Position(x, y));
             Value s_val = ValueTools::get_value_from_char(ch_val);
 
-            set_value(x, y, s_val);
+            set_value(Slot(x, y, s_val));
         }
     }
 }
@@ -57,32 +57,33 @@ const AbstractData::handle_type Sudoku::get_data() const
     return result;
 }
 
-void Sudoku::set_value(const size_t x, const size_t y, const Value val)
+//void Sudoku::set_value(const size_t x, const size_t y, const Value val)
+void Sudoku::set_value(const Slot slot)
 {
     // For undefined values do nothing
-    if (val == Value_Undefined) {
+    if (slot.get_value() == Value_Undefined) {
         return;
     }
 
-    board[x][y]->set_value(val);
+    board[slot.get_x()][slot.get_y()]->set_value(slot.get_value());
 
     // Mark in all fields in the same row that this value is already used
-    FieldRow row = get_row(y);
+    FieldRow row = get_row(slot.get_y());
     loop (i, ROW_MAX) {
-        row[i]->remove_possibility(val);
+        row[i]->remove_possibility(slot.get_value());
     }
 
     // Repeat for column
-    FieldColumn col = get_column(x);
+    FieldColumn col = get_column(slot.get_x());
     loop (i, COLUMN_MAX) {
-        col[i]->remove_possibility(val);
+        col[i]->remove_possibility(slot.get_value());
     }
 
     // Repeat for tile
-    FieldTile tile = get_tile(Position(x, y));
+    FieldTile tile = get_tile(Position(slot.get_x(), slot.get_y()));
     loop (i, TILE_MAX_X) {
         loop (j, TILE_MAX_Y) {
-            tile[i][j]->remove_possibility(val);
+            tile[i][j]->remove_possibility(slot.get_value());
         }
     }
 }
@@ -179,7 +180,8 @@ bool Sudoku::solve_step()
     }
 
     for (auto found : found_fields) {
-        set_value(found.first.get_x(), found.first.get_y(), found.second);
+        // TODO watch for this
+        set_value(Slot(found.first.get_x(), found.first.get_y(), found.second));
 //        std::stringstream ss;
 //        ss << "SLV found solution for field (" << found.first.get_x() << ", " << found.first.get_y() << ") = " << found.second;
 //        log(ss.str());
