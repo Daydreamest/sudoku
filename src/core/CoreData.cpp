@@ -15,10 +15,10 @@ CoreData::handle_type CoreData::create()
     return handle_type(new CoreData);
 }
 
-char CoreData::get_value(const size_t x, const size_t y) const
+char CoreData::get_value(const Position pos) const
 {
 
-    return data[x][y];
+    return data[pos.get_x()][pos.get_y()];
 }
 
 void CoreData::set_value(const size_t x, const size_t y, const Value val)

@@ -34,7 +34,7 @@ void Sudoku::set_data(const AbstractData::handle_type d)
 {
     loop (x, BOARD_MAX_X) {
         loop (y, BOARD_MAX_Y) {
-            char ch_val = d->get_value(x, y);
+            char ch_val = d->get_value(Position(x, y));
             Value s_val = ValueTools::get_value_from_char(ch_val);
 
             set_value(x, y, s_val);
@@ -68,20 +68,20 @@ void Sudoku::set_value(const size_t x, const size_t y, const Value val)
 
     // Mark in all fields in the same row that this value is already used
     FieldRow row = get_row(y);
-    for(size_t i = 0; i < 9; i++) {
+    loop (i, ROW_MAX) {
         row[i]->remove_possibility(val);
     }
 
     // Repeat for column
     FieldColumn col = get_column(x);
-    for(size_t i = 0; i < 9; i++) {
+    loop (i, COLUMN_MAX) {
         col[i]->remove_possibility(val);
     }
 
     // Repeat for tile
-    FieldTile tile = get_tile(x,y);
-    for(size_t i = 0; i < 3; i++) {
-        for(size_t j = 0; j < 3; j++) {
+    FieldTile tile = get_tile(Position(x, y));
+    loop (i, TILE_MAX_X) {
+        loop (j, TILE_MAX_Y) {
             tile[i][j]->remove_possibility(val);
         }
     }
@@ -128,8 +128,7 @@ bool Sudoku::is_solved() const
 {
     loop (x, BOARD_MAX_X) {
         ColumnWrapper::handle_type column = ColumnWrapper::create(get_column(x));
-        if (!column->is_solved())
-        {
+        if (!column->is_solved()) {
             return false;
         }
     }
@@ -153,9 +152,9 @@ FieldTile Sudoku::get_tile(const size_t index) const
     return tile;
 }
 
-FieldTile Sudoku::get_tile(const size_t x, const size_t y) const
+FieldTile Sudoku::get_tile(const Position pos) const
 {
-    const size_t index = (x / 3) + (y / 3) * 3;
+    const size_t index = (pos.get_x() / 3) + (pos.get_y() / 3) * 3;
     return get_tile(index);
 }
 
@@ -164,10 +163,10 @@ const Position Sudoku::tile_to_board(const Position pos, const size_t i) const
     return Position((i % 3) * 3 + pos.get_x(), (i / 3) * 3 + pos.get_y());
 }
 
-Field::handle_type Sudoku::get_field(const size_t x, const size_t y) const
-{
-    return board[x][y];
-}
+//Field::handle_type Sudoku::get_field(const size_t x, const size_t y) const
+//{
+//    return board[x][y];
+//}
 
 bool Sudoku::solve_step()
 {

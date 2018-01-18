@@ -40,7 +40,7 @@ UiData::handle_type UiData::create()
     return handle_type(new UiData);
 }
 
-char UiData::get_value(const size_t x, const size_t y) const
+char UiData::get_value(const Position pos) const
 {
-    return data[x][y];
+    return data[pos.get_x()][pos.get_y()];
 }

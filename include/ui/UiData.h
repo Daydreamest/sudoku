@@ -5,6 +5,7 @@
 
 #include <AbstractData.h>
 #include <Matrix.h>
+#include <Position.h>
 
 class UiData : public AbstractData
 {
@@ -16,7 +17,7 @@ class UiData : public AbstractData
 
         void set_value(const size_t x, const size_t y, const char value);
 
-        virtual char get_value(const size_t x, const size_t y) const override;
+        virtual char get_value(const Position pos) const override;
 
         void reset();
 

@@ -28,7 +28,7 @@ void Ui::print_sudoku(const AbstractData::handle_type s)
         std::cout << " | ";
 
         for (size_t x = 0; x < 9; x++) {
-            std::cout << " " << s->get_value(x, y) << " ";
+            std::cout << " " << s->get_value(Position(x, y)) << " ";
             if (!(h_rule % 3)) {
                 std::cout << " | ";
             }

@@ -3,6 +3,8 @@
 
 #include <memory>
 
+#include <Position.h>
+
 class AbstractData
 {
     public:
@@ -13,7 +15,7 @@ class AbstractData
         virtual ~AbstractData() {};
 
         // TODO should return const char
-        virtual char get_value(const size_t x, const size_t y) const = 0;
+        virtual char get_value(const Position pos) const = 0;
 
     protected:
 

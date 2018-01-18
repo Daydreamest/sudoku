@@ -37,11 +37,11 @@ class Sudoku : public LoggerInterface
     private:
         FieldBoard board;
 
-        Field::handle_type get_field(const size_t x, const size_t y) const;
+//        Field::handle_type get_field(const size_t x, const size_t y) const;
         FieldRow get_row(const size_t y) const;
         FieldColumn get_column(const size_t x) const;
         FieldTile get_tile(const size_t index) const;
-        FieldTile get_tile(const size_t x, const size_t y) const;
+        FieldTile get_tile(const Position pos) const;
 
         const Position tile_to_board(const Position pos, const size_t i) const;
 

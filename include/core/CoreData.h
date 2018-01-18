@@ -4,6 +4,7 @@
 #include <AbstractData.h>
 
 #include <Matrix.h>
+#include <Position.h>
 #include <Values.h>
 
 class CoreData : public AbstractData
@@ -15,7 +16,7 @@ class CoreData : public AbstractData
         virtual ~CoreData();
 
         // TODO should return const char
-        virtual char get_value(const size_t x, const size_t y) const override;
+        virtual char get_value(const Position pos) const override;
 
         void set_value(const size_t x, const size_t y, const Value val);
 
