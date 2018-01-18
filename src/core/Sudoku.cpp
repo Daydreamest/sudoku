@@ -154,16 +154,6 @@ FieldTile Sudoku::get_tile(const Position pos) const
     return get_tile(index);
 }
 
-//const Position Sudoku::tile_to_board(const Position pos, const size_t i) const
-//{
-//    return Position((i % 3) * 3 + pos.get_x(), (i / 3) * 3 + pos.get_y());
-//}
-
-//Field::handle_type Sudoku::get_field(const size_t x, const size_t y) const
-//{
-//    return board[x][y];
-//}
-
 bool Sudoku::solve_step()
 {
     for (auto alg : algorithms) {
@@ -175,7 +165,6 @@ bool Sudoku::solve_step()
     }
 
     for (auto found : found_fields) {
-//        set_value(Slot(found.first.get_x(), found.first.get_y(), found.second));
         set_value(found);
 
 //        std::stringstream ss;
@@ -243,9 +232,6 @@ void Sudoku::algorithm_only_feasible_place_in_a_row()
                     log(ss.str());
                 } else if (places == 1) {
                     found_fields.insert(Slot(row->first_position_for(val), val));
-//                    size_t x = row->first_acceptabe_position_for(val);
-//                    found_fields.insert(Slot(x, y, val));
-
 //                    std::stringstream ss;
 //                    ss << "ROW Good inesrtion found! (" << x << ", " << y << ") = " << val;
 //                    log(ss.str());
@@ -280,8 +266,6 @@ void Sudoku::algorithm_only_feasible_place_in_a_column()
                     log(ss.str());
                 } else if (places == 1) {
                     found_fields.insert(Slot(column->first_position_for(val), val));
-//                    size_t y = (column->first_acceptabe_position_for(val)).get_y();
-//                    found_fields.insert(Slot(x, y, val));
 //                    std::stringstream ss;
 //                    ss << "COL Good inesrtion found! (" << x << ", " << y << ") = " << val;
 //                    log(ss.str());
@@ -315,9 +299,6 @@ void Sudoku::algorithm_only_feasible_place_in_a_tile()
                     ss << "TIL Well shit, value " << val << " can't be placed in tile " << i << std::endl;
                     log(ss.str());
                 } else if (places == 1) {
-//                    Position pos = tile_to_board(tile->first_acceptabe_position_for(val), i);
-//                    found_fields.insert(Slot(pos, val));
-
                     found_fields.insert(Slot(tile->first_position_for(val), val));
 
 //                    std::stringstream ss;

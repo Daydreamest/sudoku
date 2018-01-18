@@ -38,16 +38,13 @@ class Sudoku : public LoggerInterface
     private:
         FieldBoard board;
 
-//        Field::handle_type get_field(const size_t x, const size_t y) const;
+        const FieldRow create_empty_row() const;
+        const FieldBoard create_empty_array() const;
+
         FieldRow get_row(const size_t y) const;
         FieldColumn get_column(const size_t x) const;
         FieldTile get_tile(const size_t index) const;
         FieldTile get_tile(const Position pos) const;
-
-//        const Position tile_to_board(const Position pos, const size_t i) const;
-
-        const FieldRow create_empty_row() const;
-        const FieldBoard create_empty_array() const;
 
         //TODO remove
         void log_field(const size_t x, const size_t y); //TODO shoud be const
@@ -59,11 +56,7 @@ class Sudoku : public LoggerInterface
         void algorithm_only_feasible_place_in_a_column();
         void algorithm_only_feasible_place_in_a_tile();
 
-//        using FoundType = std::pair<Position, Value>;
-//        std::set<FoundType> found_fields;
         SlotSet found_fields;
 };
-
-//inline bool operator<(std::pair<Position, Value>& lhs, std::pair<Position, Value>& rhs);
 
 #endif // SUDOKUBOARD_H
