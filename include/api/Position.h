@@ -25,15 +25,11 @@ class Position
 
 inline bool operator<(const Position& lhs, const Position& rhs)
 {
-    if (lhs.get_x() < rhs.get_x()) {
-        return true;
+    if (lhs.get_x() == rhs.get_x()) {
+        return (lhs.get_y() < rhs.get_y());
     }
 
-    if (lhs.get_x() > rhs.get_x()) {
-        return false;
-    }
-
-    return (lhs.get_y() < rhs.get_y());
+    return (lhs.get_x() < rhs.get_x());
 }
 
 

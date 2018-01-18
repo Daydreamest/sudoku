@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+#include <Consts.h>
+
 Position::~Position()
 {
     //dtor
@@ -10,7 +12,7 @@ Position::~Position()
 Position::Position(const size_t xp, const size_t yp) : x(xp), y(yp)
 {
     //ctor
-    if (!is_correct(9)) {
+    if (!is_correct(BOARD_SIZE)) {
         // TODO throw exception
     }
 }
