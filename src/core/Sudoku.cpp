@@ -125,8 +125,8 @@ AbstractWrapper::handle_type Sudoku::get_tile(const size_t index) const
 {
     FieldTile tile = FieldTile();
 
-    const size_t start_x = (index % 3) * 3;
-    const size_t start_y = (index / 3) * 3;
+    const size_t start_x = (index % TILE_MAX_X) * TILE_MAX_X;
+    const size_t start_y = (index / TILE_MAX_Y) * TILE_MAX_Y;
 
     loop (x, TILE_MAX_X) {
         loop(y, TILE_MAX_Y) {
@@ -139,7 +139,7 @@ AbstractWrapper::handle_type Sudoku::get_tile(const size_t index) const
 
 AbstractWrapper::handle_type Sudoku::get_tile(const Position pos) const
 {
-    const size_t index = (pos.get_x() / 3) + (pos.get_y() / 3) * 3;
+    const size_t index = (pos.get_x() / TILE_MAX_X) + (pos.get_y() / TILE_MAX_Y) * TILE_MAX_Y;
     return std::move(get_tile(index));
 }
 
