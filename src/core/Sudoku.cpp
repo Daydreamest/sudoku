@@ -46,7 +46,7 @@ const AbstractData::handle_type Sudoku::get_data() const
     loop (x, BOARD_MAX_X) {
         loop (y, BOARD_MAX_Y) {
             if (board[x][y]->get_value() != Value_Undefined) {
-                result->set_value(x, y, board[x][y]->get_value());
+                result->set_value(Slot(x, y, board[x][y]->get_value()));
             }
         }
     }
@@ -61,6 +61,7 @@ void Sudoku::set_value(const Slot slot)
         return;
     }
 
+    // Set this field to the value
     board[slot.get_x()][slot.get_y()]->set_value(slot.get_value());
 
     // Mark in all fields in the same row that this value is already used

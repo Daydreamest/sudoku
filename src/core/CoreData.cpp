@@ -21,10 +21,10 @@ char CoreData::get_value(const Position pos) const
     return data[pos.get_x()][pos.get_y()];
 }
 
-void CoreData::set_value(const size_t x, const size_t y, const Value val)
+void CoreData::set_value(const Slot slot)
 {
-    char ch = ValueTools::get_char_from_value(val);
-    data[x][y] = ch;
+    char ch = ValueTools::get_char_from_value(slot.get_value());
+    data[slot.get_x()][slot.get_y()] = ch;
 }
 
 const Table<char> CoreData::create_empty_array() const
