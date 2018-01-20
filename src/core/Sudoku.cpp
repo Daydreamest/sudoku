@@ -159,6 +159,7 @@ bool Sudoku::solve_step()
 //        std::stringstream ss;
 //        ss << "SLV found solution for field (" << found.first.get_x() << ", " << found.first.get_y() << ") = " << found.second;
 //        log(ss.str());
+        logger << "SLV found solution for field (" << found.get_x() << ", " << found.get_y() << ") = " << found.get_value();
     }
     found_fields.clear();
 
@@ -293,6 +294,7 @@ void Sudoku::algorithm_only_feasible_place_in_a_tile()
 //                    std::stringstream ss;
 //                    ss << "TIL Good inesrtion found! (" << pos.get_x() << ", " << pos.get_y() << ") = " << val;
 //                    log(ss.str());
+//                    ss << "TIL Good inesrtion found! (" << pos.get_x() << ", " << pos.get_y() << ") = " << val;
                 } else {
 //                    std::stringstream ss;
 //                    ss << "TIL For value " << val << " there were " << places << " places found in tile " << i << std::endl;
