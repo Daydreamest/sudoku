@@ -9,17 +9,16 @@
 class LoggerInterface
 {
     public:
-        class LogHelper {
+        class StreamLogger {
             public:
-                LogHelper();
-                virtual ~LogHelper();
+                StreamLogger();
+                virtual ~StreamLogger();
 
                 AbstractLogger::handle_type logger;
 
-//                template<typename T>
-//                std::ostream& operator<<(T& data);
-
                 bool is_set() const;
+
+                void operator()(const std::string text);
         };
 
 
@@ -29,9 +28,7 @@ class LoggerInterface
 
         virtual void set_logger(const AbstractLogger::handle_type l);
 
-        virtual void log(const std::string text);
-
-        LogHelper logger;
+        StreamLogger log;
 
     protected:
 
@@ -39,7 +36,7 @@ class LoggerInterface
 };
 
 template<typename T>
-std::ostream& operator<<(LoggerInterface::LogHelper& helper, T& data)
+std::ostream& operator<<(LoggerInterface::StreamLogger& helper, T& data)
 {
         std::cout << data;
 

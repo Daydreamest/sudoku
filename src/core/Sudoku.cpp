@@ -1,8 +1,5 @@
 #include "Sudoku.h"
 
-//TODO remove
-#include <sstream>
-
 #include <ColumnWrapper.h>
 #include <Consts.h>
 #include <CoreData.h>
@@ -155,11 +152,7 @@ bool Sudoku::solve_step()
 
     for (auto found : found_fields) {
         set_value(found);
-
-//        std::stringstream ss;
-//        ss << "SLV found solution for field (" << found.first.get_x() << ", " << found.first.get_y() << ") = " << found.second;
-//        log(ss.str());
-        logger << "SLV found solution for field (" << found.get_x() << ", " << found.get_y() << ") = " << found.get_value();
+        log << "SLV found solution for field (" << found.get_x() << ", " << found.get_y() << ") = " << found.get_value() << std::endl;
     }
     found_fields.clear();
 
@@ -169,10 +162,7 @@ bool Sudoku::solve_step()
 
 void Sudoku::log_field(const size_t x, const size_t y)
 {
-    std::stringstream ss;
-
-    ss << "Info about field (" << x << ", " << y << ")";
-    log(ss.str());
+    log << "Info about field (" << x << ", " << y << ")" << std::endl;
 
     log(board[x][y]->to_string());
 }
@@ -192,9 +182,7 @@ void Sudoku::algorithm_fields_with_single_possible_value()
         loop (y, BOARD_MAX_Y) {
             Value val = board[x][y]->can_be_set();
             if (val != Value_Undefined) {
-//                std::stringstream ss;
-//                ss << "FLD Good inesrtion found! (" << x << ", " << y << ") = " << val;
-//                log(ss.str());
+//                log << "FLD Good inesrtion found! (" << x << ", " << y << ") = " << val << std::endl;
                 found_fields.insert(Slot(x, y, val));
             }
         }
@@ -217,18 +205,12 @@ void Sudoku::algorithm_only_feasible_place_in_a_row()
                 size_t places = row->possible_places_for(val);
 
                 if (places == 0) {
-                    std::stringstream ss;
-                    ss << "ROW Well shit, value " << val << " can't be placed in row " << y << std::endl;
-                    log(ss.str());
+                    log << "ROW Well shit, value " << val << " can't be placed in row " << y << std::endl;
                 } else if (places == 1) {
                     found_fields.insert(Slot(row->first_position_for(val), val));
-//                    std::stringstream ss;
-//                    ss << "ROW Good inesrtion found! (" << x << ", " << y << ") = " << val;
-//                    log(ss.str());
+//                    log << "ROW Good inesrtion found! (" << x << ", " << y << ") = " << val << std::endl;
                 } else {
-//                    std::stringstream ss;
-//                    ss << "ROW For value " << val << " there were " << places_for_val << " places found in row " << y << std::endl;
-//                    log(ss.str());
+//                    log << "ROW For value " << val << " there were " << places_for_val << " places found in row " << y << std::endl;
                 }
             }
         }
@@ -251,18 +233,12 @@ void Sudoku::algorithm_only_feasible_place_in_a_column()
                 size_t places = column->possible_places_for(val);
 
                 if (places == 0) {
-                    std::stringstream ss;
-                    ss << "COL Well shit, value " << val << " can't be placed in column " << x << std::endl;
-                    log(ss.str());
+                    log << "COL Well shit, value " << val << " can't be placed in column " << x << std::endl;
                 } else if (places == 1) {
                     found_fields.insert(Slot(column->first_position_for(val), val));
-//                    std::stringstream ss;
-//                    ss << "COL Good inesrtion found! (" << x << ", " << y << ") = " << val;
-//                    log(ss.str());
+//                    log << "COL Good inesrtion found! (" << x << ", " << y << ") = " << val;
                 } else {
-//                    std::stringstream ss;
-//                    ss << "COL For value " << val << " there were " << places << " places found in column " << x << std::endl;
-//                    log(ss.str());
+//                    log << "COL For value " << val << " there were " << places << " places found in column " << x << std::endl;
                 }
             }
         }
@@ -285,20 +261,12 @@ void Sudoku::algorithm_only_feasible_place_in_a_tile()
                 size_t places = tile->possible_places_for(val);
 
                 if (places == 0) {
-                    std::stringstream ss;
-                    ss << "TIL Well shit, value " << val << " can't be placed in tile " << i << std::endl;
-                    log(ss.str());
+                    log << "TIL Well shit, value " << val << " can't be placed in tile " << i << std::endl;
                 } else if (places == 1) {
                     found_fields.insert(Slot(tile->first_position_for(val), val));
-
-//                    std::stringstream ss;
-//                    ss << "TIL Good inesrtion found! (" << pos.get_x() << ", " << pos.get_y() << ") = " << val;
-//                    log(ss.str());
-//                    ss << "TIL Good inesrtion found! (" << pos.get_x() << ", " << pos.get_y() << ") = " << val;
+//                    log << "TIL Good inesrtion found! (" << pos.get_x() << ", " << pos.get_y() << ") = " << val << std::endl;
                 } else {
-//                    std::stringstream ss;
-//                    ss << "TIL For value " << val << " there were " << places << " places found in tile " << i << std::endl;
-//                    log(ss.str());
+//                    log << "TIL For value " << val << " there were " << places << " places found in tile " << i << std::endl;
                 }
             }
         }
