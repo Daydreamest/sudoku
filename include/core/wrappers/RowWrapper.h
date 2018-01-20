@@ -15,18 +15,12 @@ class RowWrapper : public AbstractWrapper
 
         virtual ~RowWrapper();
 
-        virtual bool is_solved() const override;
-
-        virtual bool contains(const Value val) const override;
-
-        virtual size_t possible_places_for(const Value val) const override;
-
-        virtual Position first_position_for(const Value val) const override;
-
-        virtual void sanitize(const Value val) override;
-
     protected:
         RowWrapper(const FieldRow row, const size_t id);
+
+        virtual Field::handle_type get_field(const size_t i) const override;
+
+        virtual Position get_global_position(const size_t i) const override;
 
     private:
         FieldRow data;

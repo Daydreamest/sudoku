@@ -3,8 +3,11 @@
 //TODO remove
 #include <sstream>
 
+#include <ColumnWrapper.h>
 #include <Consts.h>
 #include <CoreData.h>
+#include <RowWrapper.h>
+#include <TileWrapper.h>
 
 Sudoku::Sudoku() : board(create_empty_array())
 {
@@ -92,7 +95,7 @@ const FieldBoard Sudoku::create_empty_array() const
     return table;
 }
 
-RowWrapper::handle_type Sudoku::get_row(const size_t y) const
+AbstractWrapper::handle_type Sudoku::get_row(const size_t y) const
 {
     FieldRow row = FieldRow();
     loop (x, BOARD_MAX_X) {
@@ -101,7 +104,7 @@ RowWrapper::handle_type Sudoku::get_row(const size_t y) const
     return std::move(RowWrapper::create(row, y));
 }
 
-ColumnWrapper::handle_type Sudoku::get_column(const size_t x) const
+AbstractWrapper::handle_type Sudoku::get_column(const size_t x) const
 {
     return std::move(ColumnWrapper::create(board[x], x));
 }
@@ -109,7 +112,7 @@ ColumnWrapper::handle_type Sudoku::get_column(const size_t x) const
 bool Sudoku::is_solved() const
 {
     loop (x, BOARD_MAX_X) {
-        ColumnWrapper::handle_type column = get_column(x);
+        auto column = get_column(x);
         if (!column->is_solved()) {
             return false;
         }
@@ -118,7 +121,7 @@ bool Sudoku::is_solved() const
     return true;
 }
 
-TileWrapper::handle_type Sudoku::get_tile(const size_t index) const
+AbstractWrapper::handle_type Sudoku::get_tile(const size_t index) const
 {
     FieldTile tile = FieldTile();
 
@@ -134,7 +137,7 @@ TileWrapper::handle_type Sudoku::get_tile(const size_t index) const
     return std::move(TileWrapper::create(tile, index));
 }
 
-TileWrapper::handle_type Sudoku::get_tile(const Position pos) const
+AbstractWrapper::handle_type Sudoku::get_tile(const Position pos) const
 {
     const size_t index = (pos.get_x() / 3) + (pos.get_y() / 3) * 3;
     return std::move(get_tile(index));
@@ -201,7 +204,7 @@ void Sudoku::algorithm_only_feasible_place_in_a_row()
 {
     // Search the rows for values that can be placed in single places only
     loop (y, BOARD_MAX_Y) {
-        RowWrapper::handle_type row = get_row(y);
+        auto row = get_row(y);
 
         if (row->is_solved()) {
             continue; // Already solved
@@ -235,7 +238,7 @@ void Sudoku::algorithm_only_feasible_place_in_a_column()
 {
     // Search the columns for values that can be placed in single places only
     loop (x, BOARD_MAX_X) {
-        ColumnWrapper::handle_type column = get_column(x);
+        auto column = get_column(x);
 
         if (column->is_solved()) {
             continue; // Already solved
@@ -269,7 +272,7 @@ void Sudoku::algorithm_only_feasible_place_in_a_tile()
 {
     // Search the tiles for values that can be placed in single places only
     loop (i, TILE_COUNT) {
-        TileWrapper::handle_type tile = get_tile(i);
+        auto tile = get_tile(i);
 
         if (tile->is_solved()) {
             continue; // Already solved

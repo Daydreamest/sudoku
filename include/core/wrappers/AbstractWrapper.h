@@ -2,28 +2,36 @@
 #define ABSTRACTWRAPPER_H
 
 #include <cstddef>
+#include <memory>
 
+#include <Field.h>
 #include <Position.h>
 #include <Values.h>
 
 class AbstractWrapper
 {
     public:
-        explicit AbstractWrapper(const size_t id);
+        using handle_type = std::unique_ptr<AbstractWrapper>;
+        explicit AbstractWrapper(const size_t id, const size_t max_index);
         virtual ~AbstractWrapper();
 
-        virtual bool is_solved() const = 0;
+        bool is_solved() const;
 
-        virtual bool contains(const Value val) const = 0;
+        bool contains(const Value val) const;
 
-        virtual size_t possible_places_for(const Value val) const = 0;
+        size_t possible_places_for(const Value val) const;
 
-        virtual Position first_position_for(const Value val) const = 0;
+        Position first_position_for(const Value val) const;
 
-        virtual void sanitize(const Value val) = 0;
+        void sanitize(const Value val);
 
     protected:
-        size_t index;
+        const size_t ID;
+        const size_t MAX_INDEX;
+
+        virtual Field::handle_type get_field(const size_t i) const = 0;
+
+        virtual Position get_global_position(const size_t i) const = 0;
 
     private:
 };

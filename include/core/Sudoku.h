@@ -6,13 +6,11 @@
 #include <vector>
 
 #include <AbstractData.h>
-#include <ColumnWrapper.h>
+#include <AbstractWrapper.h>
 #include <Field.h>
 #include <LoggerInterface.h>
 #include <Position.h>
-#include <RowWrapper.h>
 #include <Slot.h>
-#include <TileWrapper.h>
 
 class Sudoku : public LoggerInterface
 {
@@ -44,10 +42,10 @@ class Sudoku : public LoggerInterface
         const FieldRow create_empty_row() const;
         const FieldBoard create_empty_array() const;
 
-        RowWrapper::handle_type get_row(const size_t y) const;
-        ColumnWrapper::handle_type get_column(const size_t x) const;
-        TileWrapper::handle_type get_tile(const size_t index) const;
-        TileWrapper::handle_type get_tile(const Position pos) const;
+        AbstractWrapper::handle_type get_row(const size_t y) const;
+        AbstractWrapper::handle_type get_column(const size_t x) const;
+        AbstractWrapper::handle_type get_tile(const size_t index) const;
+        AbstractWrapper::handle_type get_tile(const Position pos) const;
 
         //TODO remove
         void log_field(const size_t x, const size_t y); //TODO shoud be const
