@@ -1,6 +1,6 @@
 #include <Main.h>
 
-using namespace std;
+// hello
 
 int main()
 {

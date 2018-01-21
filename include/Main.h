@@ -3,8 +3,11 @@
 
 #include <memory>
 
-#include <Sudoku.h>
 #include <AbstractUi.h>
+#include <Logger.h>
+#include <Sudoku.h>
+
+extern Logger log;
 
 class Main
 {

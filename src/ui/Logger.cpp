@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-Logger::Logger() : level_to_string_map(create_map())
+Logger::Logger(const Log_Level lvl, std::ostream& out) : level_to_string_map(create_map()), level(lvl), output(out)
 {
     // ctor
 }
@@ -12,12 +12,12 @@ Logger::~Logger()
     // dtor
 }
 
-Logger::handle_type Logger::create()
-{
-    auto result = handle_type(new Logger);
-//    result->set_output_stream(std::cout);
-    return result;
-}
+//Logger::handle_type Logger::create()
+//{
+//    auto result = handle_type(new Logger(Log_Level_Debug));
+////    result->set_output_stream(std::cout);
+//    return result;
+//}
 
 void Logger::log(const Log_Level lvl, const std::string text)
 {
@@ -48,3 +48,13 @@ const Logger::LevelStringMap Logger::create_map() const
 //{
 //    return log_to_str(level);
 //}
+
+void Logger::log(const std::string text)
+{
+    log(level, text);
+}
+
+void Logger::set_log_level(const Log_Level lvl)
+{
+    level = lvl;
+}

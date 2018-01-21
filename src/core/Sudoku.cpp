@@ -3,8 +3,11 @@
 #include <ColumnWrapper.h>
 #include <Consts.h>
 #include <CoreData.h>
+#include <Logger.h>
 #include <RowWrapper.h>
 #include <TileWrapper.h>
+
+extern Logger log;
 
 Sudoku::Sudoku() : board(create_empty_array())
 {
@@ -152,7 +155,7 @@ bool Sudoku::solve_step()
 
     for (auto found : found_fields) {
         set_value(found);
-        log << "SLV found solution for field (" << found.get_x() << ", " << found.get_y() << ") = " << found.get_value() << std::endl;
+        log << "SLV found solution for field (" << found.get_x() << ", " << found.get_y() << ") = " << found.get_value();// << std::endl;
     }
     found_fields.clear();
 
@@ -162,9 +165,9 @@ bool Sudoku::solve_step()
 
 void Sudoku::log_field(const size_t x, const size_t y)
 {
-    log << "Info about field (" << x << ", " << y << ")" << std::endl;
+    log << "Info about field (" << x << ", " << y << ")";// << std::endl;
 
-    log(board[x][y]->to_string());
+    log << board[x][y]->to_string();
 }
 
 void Sudoku::TEST()
