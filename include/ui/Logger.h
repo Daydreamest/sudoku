@@ -4,6 +4,7 @@
 #include <iostream>
 #include <map>
 #include <memory>
+#include <sstream>
 
 //#include <AbstractLogger.h>
 
@@ -18,6 +19,26 @@ enum Log_Level {
 class Logger// : public AbstractLogger
 {
     public:
+
+        class LoggerStreamer
+        {
+            public:
+                std::stringstream stream;
+                std::ostream& outstream;
+
+                LoggerStreamer(std::ostream& out) : outstream(out) {}
+                ~LoggerStreamer() {
+                    stream << " Destroyer! " << std::endl;
+                    outstream << stream.rdbuf();
+                    outstream.flush();
+                }
+
+                template<typename T>
+                Logger::LoggerStreamer& operator<<(const T& data) {
+                    stream << data;
+                    return *this;
+                }
+        };
 
         //TODO remove
         using handle_type = std::shared_ptr<Logger>;
@@ -55,5 +76,15 @@ std::ostream& operator<<(Logger& logger, T& data)
 
     return std::cout;
 }
+
+//template<typename T>
+//Logger::LoggerStreamer&& operator<<(Logger& logger, T& data)
+//{
+//    Logger::LoggerStreamer streamer(std::cout);
+//
+//    streamer << "TEST " << data;
+//
+//    return std::move(streamer);
+//}
 
 #endif // LOGGER_H
