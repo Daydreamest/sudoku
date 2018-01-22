@@ -12,11 +12,6 @@ Logger::~Logger()
     // dtor
 }
 
-void Logger::log(const Log_Level lvl, const std::string text)
-{
-    std::cout << level_to_str(lvl) << text << std::endl;
-}
-
 const std::string Logger::level_to_str(const Log_Level lvl) const
 {
     auto iter = level_to_string_map.find(lvl);
@@ -37,12 +32,14 @@ const Logger::LevelStringMap Logger::create_map() const
     };
 }
 
-void Logger::log(const std::string text)
-{
-    log(level, text);
-}
-
 void Logger::set_log_level(const Log_Level lvl)
 {
     level = lvl;
 }
+
+std::ostream& Logger::operator()(const Log_Level lvl)
+{
+    output << level_to_str(lvl);
+    return output;
+}
+
