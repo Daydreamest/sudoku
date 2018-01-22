@@ -2,6 +2,22 @@
 
 #include <iostream>
 
+//template<class T>
+//std::ostream& operator<<(Logger& logger, T& data)
+//{
+//    std::cout << data;
+//
+//    return std::cout;
+//}
+
+//template<>
+//std::ostream& operator<<(Logger& logger, Log_Level data)
+//{
+//    std::cout << logger.level_to_str(data);
+//
+//    return std::cout;
+//}
+
 Logger::Logger(const Log_Level lvl, std::ostream& out) : level_to_string_map(create_map()), level(lvl), output(out)
 {
     // ctor

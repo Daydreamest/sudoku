@@ -155,7 +155,7 @@ bool Sudoku::solve_step()
 
     for (auto found : found_fields) {
         set_value(found);
-        log << "SLV found solution for field (" << found.get_x() << ", " << found.get_y() << ") = " << found.get_value();// << std::endl;
+        log(Log_Level_Debug) << "SLV found solution for field (" << found.get_x() << ", " << found.get_y() << ") = " << found.get_value() << std::endl;
     }
     found_fields.clear();
 
@@ -165,9 +165,9 @@ bool Sudoku::solve_step()
 
 void Sudoku::log_field(const size_t x, const size_t y)
 {
-    log << "Info about field (" << x << ", " << y << ")";// << std::endl;
+    log(Log_Level_Info) << "Info about field (" << x << ", " << y << ")" << std::endl;
 
-    log << board[x][y]->to_string();
+    log(Log_Level_Info) << board[x][y]->to_string();
 }
 
 void Sudoku::TEST()
@@ -208,7 +208,7 @@ void Sudoku::algorithm_only_feasible_place_in_a_row()
                 size_t places = row->possible_places_for(val);
 
                 if (places == 0) {
-                    log << "ROW Well shit, value " << val << " can't be placed in row " << y;// << std::endl;
+                    log(Log_Level_Error) << "ROW Well shit, value " << val << " can't be placed in row " << y << std::endl;
                 } else if (places == 1) {
                     found_fields.insert(Slot(row->first_position_for(val), val));
 //                    log << "ROW Good inesrtion found! (" << x << ", " << y << ") = " << val << std::endl;
@@ -236,7 +236,7 @@ void Sudoku::algorithm_only_feasible_place_in_a_column()
                 size_t places = column->possible_places_for(val);
 
                 if (places == 0) {
-                    log << "COL Well shit, value " << val << " can't be placed in column " << x;// << std::endl;
+                    log(Log_Level_Error) << "COL Well shit, value " << val << " can't be placed in column " << x << std::endl;
                 } else if (places == 1) {
                     found_fields.insert(Slot(column->first_position_for(val), val));
 //                    log << "COL Good inesrtion found! (" << x << ", " << y << ") = " << val;
@@ -264,7 +264,7 @@ void Sudoku::algorithm_only_feasible_place_in_a_tile()
                 size_t places = tile->possible_places_for(val);
 
                 if (places == 0) {
-                    log << "TIL Well shit, value " << val << " can't be placed in tile " << i;// << std::endl;
+                    log(Log_Level_Error) << "TIL Well shit, value " << val << " can't be placed in tile " << i << std::endl;
                 } else if (places == 1) {
                     found_fields.insert(Slot(tile->first_position_for(val), val));
 //                    log << "TIL Good inesrtion found! (" << pos.get_x() << ", " << pos.get_y() << ") = " << val << std::endl;
