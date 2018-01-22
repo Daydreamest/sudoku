@@ -8,11 +8,10 @@
 #include <AbstractData.h>
 #include <AbstractWrapper.h>
 #include <Field.h>
-//#include <LoggerInterface.h>
 #include <Position.h>
 #include <Slot.h>
 
-class Sudoku// : public LoggerInterface
+class Sudoku
 {
     public:
 

@@ -3,10 +3,9 @@
 
 #include <memory>
 
-//#include <LoggerInterface.h>
 #include <AbstractData.h>
 
-class AbstractUi// : public LoggerInterface
+class AbstractUi
 {
     public:
 

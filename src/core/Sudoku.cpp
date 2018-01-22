@@ -180,7 +180,6 @@ void Sudoku::TEST()
 void Sudoku::algorithm_fields_with_single_possible_value()
 {
     // Search for fields with 1 value possibility
-
     loop (x, BOARD_MAX_X) {
         loop (y, BOARD_MAX_Y) {
             Value val = board[x][y]->can_be_set();

@@ -6,8 +6,6 @@
 #include <memory>
 #include <sstream>
 
-//#include <AbstractLogger.h>
-
 enum Log_Level {
     Log_Level_Debug,
     Log_Level_Info,
@@ -16,30 +14,9 @@ enum Log_Level {
     Log_Level_None
 };
 
-class Logger// : public AbstractLogger
+class Logger
 {
     public:
-
-//        class LoggerStreamer
-//        {
-//            public:
-//                std::stringstream stream;
-//                std::ostream& outstream;
-//
-//                LoggerStreamer(std::ostream& out) : outstream(out) {}
-//                ~LoggerStreamer() {
-//                    stream << " Destroyer! " << std::endl;
-//                    outstream << stream.rdbuf();
-//                    outstream.flush();
-//                }
-//
-//                template<typename T>
-//                Logger::LoggerStreamer& operator<<(const T& data) {
-//                    stream << data;
-//                    return *this;
-//                }
-//        };
-
         //TODO remove
         using handle_type = std::shared_ptr<Logger>;
 
@@ -61,8 +38,6 @@ class Logger// : public AbstractLogger
 
     protected:
 
-//        virtual std::string get_log_line_header() const override;
-
     private:
         using LevelStringMap = std::map<Log_Level, std::string>;
 
@@ -74,28 +49,5 @@ class Logger// : public AbstractLogger
 
         std::ostream& output;
 };
-
-//template<class T>
-//std::ostream& operator<<(Logger& logger, T& data)
-//{
-//    std::cout << data;
-//
-//    return std::cout;
-//}
-//
-
-//template<>
-//std::ostream& operator<<(Logger& logger, Log_Level& data);
-
-
-//template<typename T>
-//Logger::LoggerStreamer&& operator<<(Logger& logger, T& data)
-//{
-//    Logger::LoggerStreamer streamer(std::cout);
-//
-//    streamer << "TEST " << data;
-//
-//    return std::move(streamer);
-//}
 
 #endif // LOGGER_H
