@@ -66,6 +66,7 @@ void Sudoku::set_value(const Slot slot)
 
     // Set this field to the value
     board[slot.get_x()][slot.get_y()]->set_value(slot.get_value());
+    log(Log_Level_Debug) << "STV set field (" << slot.get_x() << ", " << slot.get_y() << ") = " << slot.get_value() << std::endl;
 
     // Mark in all fields in the same row that this value is already used
     get_row(slot.get_y())->sanitize(slot.get_value());
@@ -155,7 +156,7 @@ bool Sudoku::solve_step()
 
     for (auto found : found_fields) {
         set_value(found);
-        log(Log_Level_Debug) << "SLV found solution for field (" << found.get_x() << ", " << found.get_y() << ") = " << found.get_value() << std::endl;
+        log(Log_Level_Info) << "SLV found solution for field (" << found.get_x() << ", " << found.get_y() << ") = " << found.get_value() << std::endl;
     }
     found_fields.clear();
 
