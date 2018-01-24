@@ -1,5 +1,7 @@
 #include "Slot.h"
 
+#include <sstream>
+
 Slot::Slot(const size_t x, const size_t y, const Value v) : val(v), pos(x, y)
 {
     //ctor
@@ -33,4 +35,11 @@ const Value Slot::get_value() const
 const Position Slot::get_position() const
 {
     return pos;
+}
+
+const std::string Slot::toString() const
+{
+    std::stringstream ss;
+    ss << pos.toString() << " = " << val;
+    return ss.str();
 }

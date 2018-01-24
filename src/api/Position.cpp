@@ -1,6 +1,6 @@
 #include "Position.h"
 
-#include <iostream>
+#include <sstream>
 
 #include <Consts.h>
 
@@ -39,4 +39,11 @@ bool Position::is_correct(const size_t val)
 bool Position::operator==(const Position& other)
 {
     return (x == other.x) && (y == other.y);
+}
+
+const std::string Position::toString() const
+{
+    std::stringstream ss;
+    ss << "(" << x << "," << y << ")";
+    return ss.str();
 }

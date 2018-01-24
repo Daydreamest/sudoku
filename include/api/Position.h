@@ -2,6 +2,7 @@
 #define POSITION_H
 
 #include <cstddef>
+#include <string>
 
 class Position
 {
@@ -13,6 +14,8 @@ class Position
         size_t get_y() const;
 
         inline bool operator==(const Position& other);
+
+        const std::string toString() const;
 
     protected:
 

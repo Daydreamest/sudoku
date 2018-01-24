@@ -18,6 +18,8 @@ class Slot
         const Value get_value() const;
         const Position get_position() const;
 
+        const std::string toString() const;
+
     protected:
 
     private:
