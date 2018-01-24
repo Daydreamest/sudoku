@@ -70,12 +70,15 @@ void Sudoku::set_value(const Slot slot)
 
     // Mark in all fields in the same row that this value is already used
     get_row(slot.get_y())->sanitize(slot.get_value());
+    log(Log_Level_Debug) << "STV Row(" << slot.get_y() << ") is sanitized" << std::endl;
 
     // Repeat for column
     get_column(slot.get_x())->sanitize(slot.get_value());
+    log(Log_Level_Debug) << "STV Column(" << slot.get_x() << ") is sanitized" << std::endl;
 
     // Repeat for tile
     get_tile(slot.get_position())->sanitize(slot.get_value());
+    log(Log_Level_Debug) << "STV Tile(" << slot.get_x() << ", " << slot.get_y() << ") is sanitized" << std::endl;
 }
 
 const FieldRow Sudoku::create_empty_row() const
