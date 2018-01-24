@@ -1,10 +1,12 @@
 #include "AlgorithmContainer.h"
 
+#include <AlgorithmFields.h>
 #include <Logger.h>
 
 extern Logger log;
 
-AlgorithmContainer::AlgorithmContainer(FieldBoard& brd, SlotSet& res) : board(brd), result(res)
+//AlgorithmContainer::AlgorithmContainer(FieldBoard& brd, SlotSet& res) : board(brd), result(res)
+AlgorithmContainer::AlgorithmContainer()
 {
     //ctor
 }
@@ -26,4 +28,10 @@ void AlgorithmContainer::run()
         log(Log_Level_Debug) << "ALR Running algorithm: " << algo->get_name() << std::endl;
         (*algo)();
     }
+}
+
+void AlgorithmContainer::initialize(FieldBoard& brd, SlotSet& res)
+{
+    //TODO check if doesn't exist already
+    algorithms.push_back(AlgorithmFields::create(brd, res));
 }

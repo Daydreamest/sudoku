@@ -1,11 +1,11 @@
 #include "Sudoku.h"
 
-#include <ColumnWrapper.h>
-#include <Consts.h>
+#include <ColumnWrapper.h>                  // TODO remove?
+#include <Consts.h>                  // TODO remove?
 #include <CoreData.h>
 #include <Logger.h>
-#include <RowWrapper.h>
-#include <TileWrapper.h>
+#include <RowWrapper.h>                  // TODO remove?
+#include <TileWrapper.h>                  // TODO remove?
 
 extern Logger log;
 
@@ -14,12 +14,12 @@ Sudoku::Sudoku() : board(create_empty_array())
     //ctor
 
     // Set algorithms
-    algorithms.push_back(&Sudoku::algorithm_fields_with_single_possible_value);
+//    algorithms.push_back(&Sudoku::algorithm_fields_with_single_possible_value);
     algorithms.push_back(&Sudoku::algorithm_only_feasible_place_in_a_row);
     algorithms.push_back(&Sudoku::algorithm_only_feasible_place_in_a_column);
     algorithms.push_back(&Sudoku::algorithm_only_feasible_place_in_a_tile);
 
-//    algorithms2.add(Algorithm1::create(board, found_fields));
+    algorithms2.initialize(board, found_fields);
 }
 
 Sudoku::~Sudoku()
@@ -155,6 +155,8 @@ bool Sudoku::solve_step()
         alg(*this);
     }
 
+    algorithms2.run();
+
     if (found_fields.empty()) {
         return false;
     }
@@ -183,19 +185,19 @@ void Sudoku::TEST()
 //    log_field(7, 2);
 }
 
-void Sudoku::algorithm_fields_with_single_possible_value()
-{
-    // Search for fields with 1 value possibility
-    loop (x, BOARD_MAX_X) {
-        loop (y, BOARD_MAX_Y) {
-            Value val = board[x][y]->can_be_set();
-            if (val != Value_Undefined) {
-//                log << "FLD Good inesrtion found! (" << x << ", " << y << ") = " << val << std::endl;
-                found_fields.insert(Slot(x, y, val));
-            }
-        }
-    }
-}
+//void Sudoku::algorithm_fields_with_single_possible_value()
+//{
+//    // Search for fields with 1 value possibility
+//    loop (x, BOARD_MAX_X) {
+//        loop (y, BOARD_MAX_Y) {
+//            Value val = board[x][y]->can_be_set();
+//            if (val != Value_Undefined) {
+//                log(Log_Level_Info) << "FLD Good inesrtion found! (" << x << ", " << y << ") = " << val << std::endl;
+//                found_fields.insert(Slot(x, y, val));
+//            }
+//        }
+//    }
+//}
 
 void Sudoku::algorithm_only_feasible_place_in_a_row()
 {

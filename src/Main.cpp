@@ -21,7 +21,7 @@ Main::handle_type Main::create()
     handle_type result = std::make_unique<Main>();
 
     // Set the logger
-    log.set_log_level(Log_Level_Warning);
+    log.set_log_level(Log_Level_Info);
 
     // Create and initialize Ui
     result->ui = Ui::create();
@@ -43,5 +43,6 @@ void Main::run()
         has_next_step = sudoku->solve_step();
     }
 
-//    ui->print_sudoku(sudoku->get_data());
+ //   ui->print_sudoku(sudoku->get_data());
+ //   has_next_step = sudoku->solve_step();
 }

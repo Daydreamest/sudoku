@@ -11,10 +11,12 @@ class AlgorithmContainer
     public:
         using handle_type = std::shared_ptr<AlgorithmContainer>;
 
-        AlgorithmContainer(FieldBoard& brd, SlotSet& res);
+//        AlgorithmContainer(FieldBoard& brd, SlotSet& res);
+        AlgorithmContainer();
         virtual ~AlgorithmContainer();
 
-        void add(AbstractAlgorithm::handle_type algo);
+        void initialize(FieldBoard& brd, SlotSet& res);
+
 //        void remove_algorithm(AbstractAlgorithm::handle_type algo);
 
 //        void set_result_container(SlotSet& res);
@@ -25,10 +27,12 @@ class AlgorithmContainer
     protected:
 
     private:
+        void add(AbstractAlgorithm::handle_type algo);
+
         std::vector<AbstractAlgorithm::handle_type> algorithms;
 
-        FieldBoard& board;
-        SlotSet& result;
+//        FieldBoard& board;
+//        SlotSet& result;
 };
 
 #endif // ALGORITHMCONTAINER_H
