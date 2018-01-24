@@ -133,7 +133,7 @@ AbstractWrapper::handle_type Sudoku::get_tile(const size_t index) const
     const size_t start_y = (index / TILE_MAX_Y) * TILE_MAX_Y;
 
     loop (x, TILE_MAX_X) {
-        loop(y, TILE_MAX_Y) {
+        loop (y, TILE_MAX_Y) {
             tile[x][y] = board[start_x + x][start_y + y];
         }
     }

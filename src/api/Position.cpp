@@ -3,6 +3,9 @@
 #include <sstream>
 
 #include <Consts.h>
+#include <Logger.h>
+
+extern Logger log;
 
 Position::~Position()
 {
@@ -13,6 +16,8 @@ Position::Position(const size_t xp, const size_t yp) : x(xp), y(yp)
 {
     //ctor
     if (!is_correct(BOARD_SIZE)) {
+        log(Log_Level_Error) << "POC Tring to set position to " << toString() << " while max limit is " << BOARD_SIZE << std::endl;;
+        log(Log_Level_Error) << "POC Throwing exception..." << std::endl;;
         // TODO throw exception
     }
 }
