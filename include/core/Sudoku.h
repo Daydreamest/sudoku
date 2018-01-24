@@ -7,6 +7,7 @@
 
 #include <AbstractData.h>
 #include <AbstractWrapper.h>
+#include <AlgorithmContainer.h>
 #include <Field.h>
 #include <Position.h>
 #include <Slot.h>
@@ -48,6 +49,8 @@ class Sudoku
 
         //TODO remove
         void log_field(const size_t x, const size_t y); //TODO shoud be const
+
+        AlgorithmContainer algorithms2;
 
         std::vector<std::function<void(Sudoku&)>> algorithms;
 

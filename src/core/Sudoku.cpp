@@ -18,6 +18,8 @@ Sudoku::Sudoku() : board(create_empty_array())
     algorithms.push_back(&Sudoku::algorithm_only_feasible_place_in_a_row);
     algorithms.push_back(&Sudoku::algorithm_only_feasible_place_in_a_column);
     algorithms.push_back(&Sudoku::algorithm_only_feasible_place_in_a_tile);
+
+//    algorithms2.add(Algorithm1::create(board, found_fields));
 }
 
 Sudoku::~Sudoku()

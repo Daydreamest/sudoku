@@ -14,7 +14,7 @@ class AlgorithmContainer
         AlgorithmContainer(FieldBoard& brd, SlotSet& res);
         virtual ~AlgorithmContainer();
 
-        void add_algorithm(AbstractAlgorithm::handle_type algo);
+        void add(AbstractAlgorithm::handle_type algo);
 //        void remove_algorithm(AbstractAlgorithm::handle_type algo);
 
 //        void set_result_container(SlotSet& res);
