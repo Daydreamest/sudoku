@@ -17,7 +17,7 @@ AlgorithmFields::~AlgorithmFields()
 
 void AlgorithmFields::operator()()
 {
-    // Search for fields with 1 value possibility
+    log(Log_Level_Debug) << "FLD Running algorithm: " << get_name() << std::endl;
     loop (x, BOARD_MAX_X) {
         loop (y, BOARD_MAX_Y) {
             Value val = board[x][y]->can_be_set();

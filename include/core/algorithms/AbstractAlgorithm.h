@@ -3,8 +3,8 @@
 
 #include <memory>
 
-#include <Slot.h>
 #include <Field.h>
+#include <Slot.h>
 
 class AbstractAlgorithm
 {
