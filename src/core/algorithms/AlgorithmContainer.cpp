@@ -1,6 +1,7 @@
 #include "AlgorithmContainer.h"
 
 #include <AlgorithmFields.h>
+#include <AlgorithmRows.h>
 #include <Logger.h>
 
 extern Logger log;
@@ -34,4 +35,5 @@ void AlgorithmContainer::initialize(FieldBoard& brd, SlotSet& res)
 {
     //TODO check if doesn't exist already
     algorithms.push_back(AlgorithmFields::create(brd, res));
+    algorithms.push_back(AlgorithmRows::create(brd, res));
 }

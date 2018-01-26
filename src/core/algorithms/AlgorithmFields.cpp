@@ -18,6 +18,7 @@ AlgorithmFields::~AlgorithmFields()
 void AlgorithmFields::operator()()
 {
     log(Log_Level_Debug) << "FLD Running algorithm: " << get_name() << std::endl;
+
     loop (x, BOARD_MAX_X) {
         loop (y, BOARD_MAX_Y) {
             Value val = board[x][y]->can_be_set();
@@ -31,10 +32,10 @@ void AlgorithmFields::operator()()
 
 std::string AlgorithmFields::get_name()
 {
-    return "Search fo fields with exactly one possible value";
+    return "Search for fields with exactly one possible value";
 }
 
 AlgorithmFields::handle_type AlgorithmFields::create(const FieldBoard& brd, SlotSet& res)
 {
-    return std::shared_ptr<AlgorithmFields>(new AlgorithmFields(brd, res));
+    return handle_type(new AlgorithmFields(brd, res));
 }

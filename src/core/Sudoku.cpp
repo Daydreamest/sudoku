@@ -15,7 +15,7 @@ Sudoku::Sudoku() : board(create_empty_array())
 
     // Set algorithms
 //    algorithms.push_back(&Sudoku::algorithm_fields_with_single_possible_value);
-    algorithms.push_back(&Sudoku::algorithm_only_feasible_place_in_a_row);
+//    algorithms.push_back(&Sudoku::algorithm_only_feasible_place_in_a_row);
     algorithms.push_back(&Sudoku::algorithm_only_feasible_place_in_a_column);
     algorithms.push_back(&Sudoku::algorithm_only_feasible_place_in_a_tile);
 
@@ -199,33 +199,37 @@ void Sudoku::TEST()
 //    }
 //}
 
-void Sudoku::algorithm_only_feasible_place_in_a_row()
-{
-    // Search the rows for values that can be placed in single places only
-    loop (y, BOARD_MAX_Y) {
-        auto row = get_row(y);
-
-        if (row->is_solved()) {
-            continue; // Already solved
-        }
-
-        for (auto val : ValueTools::get_value_set()) {
-            if (!row->contains(val)) {
-
-                size_t places = row->possible_places_for(val);
-
-                if (places == 0) {
-                    log(Log_Level_Error) << "ROW Well shit, value " << val << " can't be placed in row " << y << std::endl;
-                } else if (places == 1) {
-                    found_fields.insert(Slot(row->first_position_for(val), val));
-//                    log << "ROW Good inesrtion found! (" << x << ", " << y << ") = " << val << std::endl;
-                } else {
-//                    log << "ROW For value " << val << " there were " << places_for_val << " places found in row " << y << std::endl;
-                }
-            }
-        }
-    }
-}
+//void Sudoku::algorithm_only_feasible_place_in_a_row()
+//{
+//    // Search the rows for values that can be placed in single places only
+//    loop (y, BOARD_MAX_Y) {
+//        auto row = get_row(y);
+//
+//        if (row->is_solved()) {
+//            continue; // Already solved
+//        }
+//
+//        for (auto val : ValueTools::get_value_set()) {
+//            if (!row->contains(val)) {
+//
+//                size_t places = row->possible_places_for(val);
+//
+//                if (places == 0) {
+//                    log(Log_Level_Error) << "ROW Well shit, value " << val << " can't be placed in row " << y << std::endl;
+//                } else if (places == 1) {
+//                    Slot found = Slot(row->first_position_for(val), val);
+//                    found_fields.insert(found);
+//                    log(Log_Level_Error) << "ROW Good inesrtion found! (" << found.get_x() << ", " << y << ") = " << val << std::endl;
+//
+////                    found_fields.insert(Slot(row->first_position_for(val), val));
+////                    log << "ROW Good inesrtion found! (" << x << ", " << y << ") = " << val << std::endl;
+//                } else {
+////                    log << "ROW For value " << val << " there were " << places_for_val << " places found in row " << y << std::endl;
+//                }
+//            }
+//        }
+//    }
+//}
 
 void Sudoku::algorithm_only_feasible_place_in_a_column()
 {

@@ -3,7 +3,6 @@
 
 #include <AbstractAlgorithm.h>
 
-
 class AlgorithmFields : public AbstractAlgorithm
 {
     public:
