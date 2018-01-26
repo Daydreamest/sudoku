@@ -5,6 +5,7 @@
 #include <vector>
 
 #include <AbstractAlgorithm.h>
+#include <BoardWrapper.h>
 
 class AlgorithmContainer
 {
@@ -15,7 +16,7 @@ class AlgorithmContainer
         AlgorithmContainer();
         virtual ~AlgorithmContainer();
 
-        void initialize(FieldBoard& brd, SlotSet& res);
+        void initialize(BoardWrapper& brd, SlotSet& res);
 
 //        void remove_algorithm(AbstractAlgorithm::handle_type algo);
 

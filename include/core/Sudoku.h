@@ -8,6 +8,7 @@
 #include <AbstractData.h>
 #include <AbstractWrapper.h>
 #include <AlgorithmContainer.h>
+#include <BoardWrapper.h>
 #include <Field.h>
 #include <Position.h>
 #include <Slot.h>
@@ -23,7 +24,7 @@ class Sudoku
         virtual ~Sudoku();
 
         void set_data(const AbstractData::handle_type d);
-        const AbstractData::handle_type get_data() const;
+        const AbstractData::handle_type get_data();
 
         void set_value(const Slot slot);
 
@@ -37,18 +38,7 @@ class Sudoku
         Sudoku();
 
     private:
-        FieldBoard board;
-
-        const FieldRow create_empty_row() const;
-        const FieldBoard create_empty_array() const;
-
-        AbstractWrapper::handle_type get_row(const size_t y) const;
-        AbstractWrapper::handle_type get_column(const size_t x) const;
-        AbstractWrapper::handle_type get_tile(const size_t index) const;
-        AbstractWrapper::handle_type get_tile(const Position pos) const;
-
-        //TODO remove
-        void log_field(const size_t x, const size_t y); //TODO shoud be const
+        BoardWrapper board;
 
         AlgorithmContainer algorithms2;
 

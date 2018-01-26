@@ -9,7 +9,7 @@ class AlgorithmRows : public AbstractAlgorithm
     public:
         using handle_type = std::shared_ptr<AlgorithmRows>;
 
-        static handle_type create(const FieldBoard& brd, SlotSet& res);
+        static handle_type create(BoardWrapper& brd, SlotSet& res);
 
         virtual ~AlgorithmRows();
 
@@ -18,12 +18,9 @@ class AlgorithmRows : public AbstractAlgorithm
         virtual std::string get_name();
 
     protected:
-        AlgorithmRows(const FieldBoard& brd, SlotSet& res);
+        AlgorithmRows(BoardWrapper& brd, SlotSet& res);
 
     private:
-        //TODO move to board wrapper
-        AbstractWrapper::handle_type get_row(const size_t y) const;
-
 };
 
 #endif // ALGORITHMROWS_H

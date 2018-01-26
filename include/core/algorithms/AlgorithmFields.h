@@ -8,7 +8,7 @@ class AlgorithmFields : public AbstractAlgorithm
     public:
         using handle_type = std::shared_ptr<AlgorithmFields>;
 
-        static handle_type create(const FieldBoard& brd, SlotSet& res);
+        static handle_type create(BoardWrapper& brd, SlotSet& res);
         virtual ~AlgorithmFields();
 
         virtual void operator()();
@@ -16,7 +16,7 @@ class AlgorithmFields : public AbstractAlgorithm
         virtual std::string get_name();
 
     protected:
-        AlgorithmFields(const FieldBoard& brd, SlotSet& res);
+        AlgorithmFields(BoardWrapper& brd, SlotSet& res);
 
     private:
 };

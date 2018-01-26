@@ -31,7 +31,7 @@ void AlgorithmContainer::run()
     }
 }
 
-void AlgorithmContainer::initialize(FieldBoard& brd, SlotSet& res)
+void AlgorithmContainer::initialize(BoardWrapper& brd, SlotSet& res)
 {
     //TODO check if doesn't exist already
     algorithms.push_back(AlgorithmFields::create(brd, res));

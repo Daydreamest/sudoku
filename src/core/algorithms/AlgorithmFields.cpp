@@ -5,7 +5,7 @@
 
 extern Logger log;
 
-AlgorithmFields::AlgorithmFields(const FieldBoard& brd, SlotSet& res) : AbstractAlgorithm(brd, res)
+AlgorithmFields::AlgorithmFields(BoardWrapper& brd, SlotSet& res) : AbstractAlgorithm(brd, res)
 {
     //ctor
 }
@@ -35,7 +35,7 @@ std::string AlgorithmFields::get_name()
     return "Search for fields with exactly one possible value";
 }
 
-AlgorithmFields::handle_type AlgorithmFields::create(const FieldBoard& brd, SlotSet& res)
+AlgorithmFields::handle_type AlgorithmFields::create(BoardWrapper& brd, SlotSet& res)
 {
     return handle_type(new AlgorithmFields(brd, res));
 }
