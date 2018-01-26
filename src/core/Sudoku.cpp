@@ -200,8 +200,9 @@ void Sudoku::algorithm_only_feasible_place_in_a_tile()
                 if (places == 0) {
                     log(Log_Level_Error) << "TIL Well shit, value " << val << " can't be placed in tile " << i << std::endl;
                 } else if (places == 1) {
-                    found_fields.insert(Slot(tile->first_position_for(val), val));
-//                    log << "TIL Good inesrtion found! (" << pos.get_x() << ", " << pos.get_y() << ") = " << val << std::endl;
+                    Slot found = Slot(tile->first_position_for(val), val);
+                    found_fields.insert(found);
+                    log(Log_Level_Error) << "TIL1 Good inesrtion found! " << found.toString() << std::endl;
                 } else {
 //                    log << "TIL For value " << val << " there were " << places << " places found in tile " << i << std::endl;
                 }

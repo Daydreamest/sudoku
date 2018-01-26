@@ -23,8 +23,9 @@ void AlgorithmFields::operator()()
         loop (y, BOARD_MAX_Y) {
             Value val = board[x][y]->can_be_set();
             if (val != Value_Undefined) {
-                log(Log_Level_Info) << "FLD Good inesrtion found! (" << x << ", " << y << ") = " << val << std::endl;
-                results.insert(Slot(x, y, val));
+                Slot found = Slot(x, y, val);
+                log(Log_Level_Info) << "FLD Good inesrtion found! " << found.toString() << std::endl;
+                results.insert(found);
             }
         }
     }
