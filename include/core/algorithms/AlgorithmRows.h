@@ -2,7 +2,6 @@
 #define ALGORITHMROWS_H
 
 #include <AbstractAlgorithm.h>
-#include <AbstractWrapper.h>
 
 class AlgorithmRows : public AbstractAlgorithm
 {

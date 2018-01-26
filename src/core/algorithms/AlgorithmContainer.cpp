@@ -1,5 +1,6 @@
 #include "AlgorithmContainer.h"
 
+#include <AlgorithmColumns.h>
 #include <AlgorithmFields.h>
 #include <AlgorithmRows.h>
 #include <Logger.h>
@@ -36,4 +37,5 @@ void AlgorithmContainer::initialize(BoardWrapper& brd, SlotSet& res)
     //TODO check if doesn't exist already
     algorithms.push_back(AlgorithmFields::create(brd, res));
     algorithms.push_back(AlgorithmRows::create(brd, res));
+    algorithms.push_back(AlgorithmColumns::create(brd, res));
 }

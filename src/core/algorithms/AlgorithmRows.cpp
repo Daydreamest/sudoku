@@ -40,7 +40,7 @@ void AlgorithmRows::operator()()
                 } else if (places == 1) {
                     Slot found = Slot(row->first_position_for(val), val);
                     results.insert(found);
-                    log(Log_Level_Info) << "ROW Good inesrtion found! (" << found.get_x() << ", " << y << ") = " << val << std::endl;
+                    log(Log_Level_Info) << "ROW Good inesrtion found! " << found.toString() << std::endl;
                 } else {
 //                    log << "ROW For value " << val << " there were " << places_for_val << " places found in row " << y << std::endl;
                 }
