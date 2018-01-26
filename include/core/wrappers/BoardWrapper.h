@@ -14,7 +14,7 @@ class BoardWrapper
 
         void set_value(const Slot slot);
 
-        FieldColumn& operator[](const size_t x);
+        const FieldColumn& operator[](const size_t x) const;
 
         AbstractWrapper::handle_type get_row(const size_t y) const;
         AbstractWrapper::handle_type get_column(const size_t x) const;

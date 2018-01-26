@@ -44,7 +44,7 @@ void Sudoku::set_data(const AbstractData::handle_type d)
     }
 }
 
-const AbstractData::handle_type Sudoku::get_data()
+const AbstractData::handle_type Sudoku::get_data() const
 {
     CoreData::handle_type result = CoreData::create();
 

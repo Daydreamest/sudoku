@@ -24,7 +24,7 @@ class Sudoku
         virtual ~Sudoku();
 
         void set_data(const AbstractData::handle_type d);
-        const AbstractData::handle_type get_data();
+        const AbstractData::handle_type get_data() const;
 
         void set_value(const Slot slot);
 

@@ -38,7 +38,7 @@ void BoardWrapper::set_value(const Slot slot)
 
 }
 
-FieldColumn& BoardWrapper::operator[](const size_t x)
+const FieldColumn& BoardWrapper::operator[](const size_t x) const
 {
     return board[x];
 }
