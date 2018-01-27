@@ -40,14 +40,7 @@ class Sudoku
     private:
         BoardWrapper board;
 
-        AlgorithmContainer algorithms2;
-
-        std::vector<std::function<void(Sudoku&)>> algorithms;
-
-//        void algorithm_fields_with_single_possible_value();
-//        void algorithm_only_feasible_place_in_a_row();
-//        void algorithm_only_feasible_place_in_a_column();
-//        void algorithm_only_feasible_place_in_a_tile();
+        AlgorithmContainer algorithms;
 
         SlotSet found_fields;
 };

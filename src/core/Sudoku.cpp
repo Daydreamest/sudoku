@@ -14,12 +14,7 @@ Sudoku::Sudoku()// : board(create_empty_array())
     //ctor
 
     // Set algorithms
-//    algorithms.push_back(&Sudoku::algorithm_fields_with_single_possible_value);
-//    algorithms.push_back(&Sudoku::algorithm_only_feasible_place_in_a_row);
-//    algorithms.push_back(&Sudoku::algorithm_only_feasible_place_in_a_column);
-//    algorithms.push_back(&Sudoku::algorithm_only_feasible_place_in_a_tile);
-
-    algorithms2.initialize(board, found_fields);
+    algorithms.initialize(board, found_fields);
 }
 
 Sudoku::~Sudoku()
@@ -83,11 +78,7 @@ bool Sudoku::is_solved() const
 
 bool Sudoku::solve_step()
 {
-    for (auto alg : algorithms) {
-        alg(*this);
-    }
-
-    algorithms2.run();
+    algorithms.run();
 
     if (found_fields.empty()) {
         return false;
@@ -106,107 +97,3 @@ bool Sudoku::solve_step()
 void Sudoku::TEST()
 {
 }
-
-//void Sudoku::algorithm_fields_with_single_possible_value()
-//{
-//    // Search for fields with 1 value possibility
-//    loop (x, BOARD_MAX_X) {
-//        loop (y, BOARD_MAX_Y) {
-//            Value val = board[x][y]->can_be_set();
-//            if (val != Value_Undefined) {
-//                log(Log_Level_Info) << "FLD Good inesrtion found! (" << x << ", " << y << ") = " << val << std::endl;
-//                found_fields.insert(Slot(x, y, val));
-//            }
-//        }
-//    }
-//}
-
-//void Sudoku::algorithm_only_feasible_place_in_a_row()
-//{
-//    // Search the rows for values that can be placed in single places only
-//    loop (y, BOARD_MAX_Y) {
-//        auto row = get_row(y);
-//
-//        if (row->is_solved()) {
-//            continue; // Already solved
-//        }
-//
-//        for (auto val : ValueTools::get_value_set()) {
-//            if (!row->contains(val)) {
-//
-//                size_t places = row->possible_places_for(val);
-//
-//                if (places == 0) {
-//                    log(Log_Level_Error) << "ROW Well shit, value " << val << " can't be placed in row " << y << std::endl;
-//                } else if (places == 1) {
-//                    Slot found = Slot(row->first_position_for(val), val);
-//                    found_fields.insert(found);
-//                    log(Log_Level_Error) << "ROW Good inesrtion found! (" << found.get_x() << ", " << y << ") = " << val << std::endl;
-//
-////                    found_fields.insert(Slot(row->first_position_for(val), val));
-////                    log << "ROW Good inesrtion found! (" << x << ", " << y << ") = " << val << std::endl;
-//                } else {
-////                    log << "ROW For value " << val << " there were " << places_for_val << " places found in row " << y << std::endl;
-//                }
-//            }
-//        }
-//    }
-//}
-
-//void Sudoku::algorithm_only_feasible_place_in_a_column()
-//{
-//    // Search the columns for values that can be placed in single places only
-//    loop (x, BOARD_MAX_X) {
-//        auto column = board.get_column(x);
-//
-//        if (column->is_solved()) {
-//            continue; // Already solved
-//        }
-//
-//        for (auto val : ValueTools::get_value_set()) {
-//            if (!column->contains(val)) {
-//
-//                size_t places = column->possible_places_for(val);
-//
-//                if (places == 0) {
-//                    log(Log_Level_Error) << "COL Well shit, value " << val << " can't be placed in column " << x << std::endl;
-//                } else if (places == 1) {
-//                    Slot found = Slot(column->first_position_for(val), val);
-//                    found_fields.insert(found);
-//                    log(Log_Level_Error) << "COL1 Good insertion found! " << found.toString() << std::endl;
-//                } else {
-////                    log << "COL For value " << val << " there were " << places << " places found in column " << x << std::endl;
-//                }
-//            }
-//        }
-//    }
-//}
-
-//void Sudoku::algorithm_only_feasible_place_in_a_tile()
-//{
-//    // Search the tiles for values that can be placed in single places only
-//    loop (i, TILE_COUNT) {
-//        auto tile = board.get_tile(i);
-//
-//        if (tile->is_solved()) {
-//            continue; // Already solved
-//        }
-//
-//        for (auto val : ValueTools::get_value_set()) {
-//            if (!tile->contains(val)) {
-//
-//                size_t places = tile->possible_places_for(val);
-//
-//                if (places == 0) {
-//                    log(Log_Level_Error) << "TIL Well shit, value " << val << " can't be placed in tile " << i << std::endl;
-//                } else if (places == 1) {
-//                    Slot found = Slot(tile->first_position_for(val), val);
-//                    found_fields.insert(found);
-//                    log(Log_Level_Error) << "TIL1 Good inesrtion found! " << found.toString() << std::endl;
-//                } else {
-////                    log << "TIL For value " << val << " there were " << places << " places found in tile " << i << std::endl;
-//                }
-//            }
-//        }
-//    }
-//}
