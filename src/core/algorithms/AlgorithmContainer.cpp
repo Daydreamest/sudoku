@@ -8,7 +8,7 @@
 
 namespace sudoku {
 
-extern Logger log;
+extern ui::Logger log;
 
 //AlgorithmContainer::AlgorithmContainer(FieldBoard& brd, SlotSet& res) : board(brd), result(res)
 AlgorithmContainer::AlgorithmContainer()

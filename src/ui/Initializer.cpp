@@ -6,6 +6,7 @@
 #include <UiData.h>
 
 namespace sudoku {
+namespace ui {
 
 Initializer::Initializer()
 {
@@ -46,4 +47,5 @@ Initializer::handle_type Initializer::create()
     return handle_type(new Initializer);
 }
 
+} //namespace ui
 } // namespace sudoku

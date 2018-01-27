@@ -9,7 +9,7 @@
 
 namespace sudoku {
 
-extern Logger log;
+extern ui::Logger log;
 
 class Main
 {

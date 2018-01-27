@@ -6,7 +6,7 @@
 
 namespace sudoku {
 
-extern Logger log;
+extern ui::Logger log;
 
 AlgorithmRows::AlgorithmRows(BoardWrapper& brd, SlotSet& res) : AbstractAlgorithm(brd, res)
 {

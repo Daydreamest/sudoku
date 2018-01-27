@@ -16,6 +16,8 @@ enum Log_Level {
     Log_Level_None
 };
 
+namespace ui {
+
 class Logger
 {
     public:
@@ -50,6 +52,7 @@ class Logger
         std::unique_ptr<std::ostream> null_stream;
 };
 
+} //namespace ui
 } // namespace sudoku
 
 #endif // LOGGER_H

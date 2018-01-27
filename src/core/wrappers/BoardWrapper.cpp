@@ -8,7 +8,7 @@
 
 namespace sudoku {
 
-extern Logger log;
+extern ui::Logger log;
 
 BoardWrapper::BoardWrapper() : board(create_empty_array())
 {

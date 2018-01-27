@@ -3,6 +3,7 @@
 #include <iostream>
 
 namespace sudoku {
+namespace ui {
 
 Ui::Ui() : init(Initializer::create())
 {
@@ -54,4 +55,5 @@ Ui::handle_type Ui::create()
     return handle_type(new Ui);
 }
 
+} //namespace ui
 } // namespace sudoku

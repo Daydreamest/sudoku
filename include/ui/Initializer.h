@@ -6,6 +6,7 @@
 #include <AbstractData.h>
 
 namespace sudoku {
+namespace ui {
 
 class Initializer
 {
@@ -24,6 +25,7 @@ class Initializer
     private:
 };
 
+} //namespace ui
 } // namespace sudoku
 
 #endif // INITIALIZER_H

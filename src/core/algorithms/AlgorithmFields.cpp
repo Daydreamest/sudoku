@@ -5,7 +5,7 @@
 
 namespace sudoku {
 
-extern Logger log;
+extern ui::Logger log;
 
 AlgorithmFields::AlgorithmFields(BoardWrapper& brd, SlotSet& res) : AbstractAlgorithm(brd, res)
 {

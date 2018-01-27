@@ -8,6 +8,7 @@
 #include <Position.h>
 
 namespace sudoku {
+namespace ui {
 
 class UiData : public AbstractData
 {
@@ -32,6 +33,7 @@ class UiData : public AbstractData
         const Table<char> create_empty_array() const;
 };
 
+} //namespace ui
 } // namespace sudoku
 
 #endif // SUDOKUDATA_H

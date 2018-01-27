@@ -6,7 +6,7 @@
 
 namespace sudoku {
 
-Logger log;
+ui::Logger log;
 
 Main::Main() : sudoku(nullptr), ui(nullptr)
 {
@@ -26,7 +26,7 @@ Main::handle_type Main::create()
     log.set_log_level(Log_Level_Warning);
 
     // Create and initialize Ui
-    result->ui = Ui::create();
+    result->ui = ui::Ui::create();
 
     // Create and initialize Sudoku class
     result->sudoku = Sudoku::create();

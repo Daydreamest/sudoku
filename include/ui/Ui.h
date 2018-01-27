@@ -8,6 +8,7 @@
 #include <AbstractData.h>
 
 namespace sudoku {
+namespace ui {
 
 class Ui : public AbstractUi
 {
@@ -31,6 +32,7 @@ class Ui : public AbstractUi
         Initializer::handle_type init;
 };
 
+} //namespace ui
 } // namespace sudoku
 
 #endif // UI_H
