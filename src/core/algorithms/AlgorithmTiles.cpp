@@ -2,7 +2,6 @@
 
 #include <Consts.h>
 #include <Logger.h>
-#include <TileWrapper.h>
 
 namespace sudoku {
 

@@ -14,8 +14,10 @@ namespace core {
 class Field
 {
     public:
+        // Handle definition
         using handle_type = std::shared_ptr<Field>;
 
+        // Building method
         static handle_type create();
 
         // Default destructor
@@ -28,13 +30,13 @@ class Field
         void set_value(const Value v);
 
         // Read the current field value
-        Value get_value() const;
+        const Value get_value() const;
 
         // Check if this field has a set value already
-        bool is_set() const;
+        const bool is_set() const;
 
         // Check if the field can have a specific value
-        bool can_be(const Value v) const;
+        const bool can_be(const Value v) const;
 
         // Mark that this field can't have this value
         void remove_possibility(const Value v);
@@ -43,13 +45,14 @@ class Field
         const std::string to_string() const;
 
         // Get the number of possible value options for this field
-        size_t get_number_of_possibilities() const;
+        const size_t get_number_of_possibilities() const;
 
         // Check if this field has only one option and can be set
         // Returns the unique value that can be set in this field or Undefined
-        Value can_be_set() const;
+        const Value can_be_set() const;
 
-        bool is_set_to(const Value v) const;
+        // Check if this field is set to the given value
+        const bool is_set_to(const Value v) const;
 
     protected:
         // Default constructor

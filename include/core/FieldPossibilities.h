@@ -12,9 +12,10 @@ namespace core {
 class FieldPossibilities
 {
     public:
+        // Handle definition
+        using handle_type = std::unique_ptr<FieldPossibilities>;
 
-        using handle_type = std::shared_ptr<FieldPossibilities>;
-
+        // Building method
         static handle_type create();
 
         // Default destructor
@@ -30,13 +31,13 @@ class FieldPossibilities
         void remove(const Value v);
 
         // Check if the list contains the given value
-        bool contains(const Value v) const;
+        const bool contains(const Value v) const;
 
         // Get the number of possible values
-        size_t get_number_of_possibilities() const;
+        const size_t get_number_of_possibilities() const;
 
         // Get the only available value left, or Undefined if there are more/less than one
-        Value get_unique_possibility() const;
+        const Value get_unique_possibility() const;
 
     protected:
         // Default constructor
