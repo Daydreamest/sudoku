@@ -8,6 +8,7 @@
 
 namespace sudoku {
 namespace core {
+namespace algorithm {
 
 class AbstractAlgorithm
 {
@@ -28,6 +29,7 @@ class AbstractAlgorithm
     private:
 };
 
+} // namespace algorithm
 } // namespace core
 } // namespace sudoku
 

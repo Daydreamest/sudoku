@@ -11,6 +11,7 @@ namespace sudoku {
 extern ui::Logger log;
 
 namespace core {
+namespace algorithm {
 
 //AlgorithmContainer::AlgorithmContainer(FieldBoard& brd, SlotSet& res) : board(brd), result(res)
 AlgorithmContainer::AlgorithmContainer()
@@ -46,5 +47,6 @@ void AlgorithmContainer::initialize(BoardWrapper& brd, SlotSet& res)
     algorithms.push_back(AlgorithmTiles::create(brd, res));
 }
 
+} // namespace algorithm
 } // namespace core
 } // namespace sudoku

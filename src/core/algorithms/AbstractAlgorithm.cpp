@@ -2,6 +2,7 @@
 
 namespace sudoku {
 namespace core {
+namespace algorithm {
 
 AbstractAlgorithm::AbstractAlgorithm(BoardWrapper& brd, SlotSet& res) : board(brd), results(res)
 {
@@ -13,5 +14,6 @@ AbstractAlgorithm::~AbstractAlgorithm()
     //dtor
 }
 
+} // namespace algorithm
 } // namespace core
 } // namespace sudoku

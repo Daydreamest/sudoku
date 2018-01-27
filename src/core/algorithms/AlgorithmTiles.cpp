@@ -9,6 +9,7 @@ namespace sudoku {
 extern ui::Logger log;
 
 namespace core {
+namespace algorithm {
 
 AlgorithmTiles::AlgorithmTiles(BoardWrapper& brd, SlotSet& res) : AbstractAlgorithm(brd, res)
 {
@@ -58,5 +59,6 @@ std::string AlgorithmTiles::get_name()
     return "Search for fields in a tile that are the only ones to contain a specific value";
 }
 
+} // namespace algorithm
 } // namespace core
 } // namespace sudoku

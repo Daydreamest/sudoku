@@ -43,7 +43,7 @@ class Sudoku
     private:
         BoardWrapper board;
 
-        AlgorithmContainer algorithms;
+        algorithm::AlgorithmContainer algorithms;
 
         SlotSet found_fields;
 };

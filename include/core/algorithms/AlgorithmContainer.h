@@ -9,6 +9,7 @@
 
 namespace sudoku {
 namespace core {
+namespace algorithm {
 
 class AlgorithmContainer
 {
@@ -39,6 +40,7 @@ class AlgorithmContainer
 //        SlotSet& result;
 };
 
+} // namespace algorithm
 } // namespace core
 } // namespace sudoku
 

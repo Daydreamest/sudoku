@@ -5,6 +5,7 @@
 
 namespace sudoku {
 namespace core {
+namespace algorithm {
 
 class AlgorithmColumns : public AbstractAlgorithm
 {
@@ -24,6 +25,7 @@ class AlgorithmColumns : public AbstractAlgorithm
     private:
 };
 
+} // namespace algorithm
 } // namespace core
 } // namespace sudoku
 
