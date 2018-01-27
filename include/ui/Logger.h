@@ -6,6 +6,8 @@
 #include <memory>
 #include <sstream>
 
+namespace sudoku {
+
 enum Log_Level {
     Log_Level_Debug = 0,
     Log_Level_Info,
@@ -47,5 +49,7 @@ class Logger
         std::unique_ptr<NullBuffer> null_buffer;
         std::unique_ptr<std::ostream> null_stream;
 };
+
+} // namespace sudoku
 
 #endif // LOGGER_H

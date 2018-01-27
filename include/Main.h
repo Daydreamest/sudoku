@@ -7,6 +7,8 @@
 #include <Logger.h>
 #include <Sudoku.h>
 
+namespace sudoku {
+
 extern Logger log;
 
 class Main
@@ -29,5 +31,7 @@ class Main
         Sudoku::handle_type sudoku;
         AbstractUi::handle_type ui;
 };
+
+} // namespace sudoku
 
 #endif // MAIN_H

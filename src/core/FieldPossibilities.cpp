@@ -1,5 +1,7 @@
 #include "FieldPossibilities.h"
 
+namespace sudoku {
+
 FieldPossibilities::FieldPossibilities() : possible_values()
 {
     reset();
@@ -21,15 +23,6 @@ void FieldPossibilities::reset()
     for (Value val : ValueTools::get_value_set()) {
         possible_values.insert(val);
     }
-//    possible_values.insert(Value_1);
-//    possible_values.insert(Value_2);
-//    possible_values.insert(Value_3);
-//    possible_values.insert(Value_4);
-//    possible_values.insert(Value_5);
-//    possible_values.insert(Value_6);
-//    possible_values.insert(Value_7);
-//    possible_values.insert(Value_8);
-//    possible_values.insert(Value_9);
 }
 
 void FieldPossibilities::remove(const Value v)
@@ -64,3 +57,5 @@ Value FieldPossibilities::get_unique_possibility() const
 
     return *(possible_values.cbegin());
 }
+
+} // namespace sudoku

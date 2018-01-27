@@ -4,6 +4,8 @@
 #include <CoreData.h>
 #include <Logger.h>
 
+namespace sudoku {
+
 extern Logger log;
 
 Sudoku::Sudoku()
@@ -94,3 +96,5 @@ bool Sudoku::solve_step()
 void Sudoku::TEST()
 {
 }
+
+} // namespace sudoku

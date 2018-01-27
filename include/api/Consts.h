@@ -5,6 +5,8 @@
 
 #define loop(x,n) for(size_t x = 0; x < n; ++x)
 
+namespace sudoku {
+
 const size_t BOARD_SIZE = 9;
 const size_t TILE_SIZE = 3;
 
@@ -26,5 +28,7 @@ class Consts
 
     private:
 };
+
+} // namespace sudoku
 
 #endif // CONSTS_H

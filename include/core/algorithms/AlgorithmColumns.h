@@ -3,6 +3,8 @@
 
 #include <AbstractAlgorithm.h>
 
+namespace sudoku {
+
 class AlgorithmColumns : public AbstractAlgorithm
 {
     public:
@@ -20,5 +22,7 @@ class AlgorithmColumns : public AbstractAlgorithm
 
     private:
 };
+
+} // namespace sudoku
 
 #endif // ALGORITHMCOLUMNS_H

@@ -5,6 +5,8 @@
 #include <Consts.h>
 #include <Logger.h>
 
+namespace sudoku {
+
 extern Logger log;
 
 Position::~Position()
@@ -52,3 +54,5 @@ const std::string Position::toString() const
     ss << "(" << x << "," << y << ")";
     return ss.str();
 }
+
+} // namespace sudoku

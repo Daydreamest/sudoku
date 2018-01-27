@@ -8,6 +8,8 @@
 #include <Position.h>
 #include <Values.h>
 
+namespace sudoku {
+
 class AbstractWrapper
 {
     public:
@@ -35,5 +37,7 @@ class AbstractWrapper
 
     private:
 };
+
+} // namespace sudoku
 
 #endif // ABSTRACTWRAPPER_H

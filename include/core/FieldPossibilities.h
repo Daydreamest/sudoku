@@ -6,6 +6,8 @@
 
 #include <Values.h>
 
+namespace sudoku {
+
 class FieldPossibilities
 {
     public:
@@ -44,5 +46,7 @@ class FieldPossibilities
         // A list of possible values that this field may have
         std::set<Value> possible_values;
 };
+
+} // namespace sudoku
 
 #endif // FIELDPOSSIBILITIES_H

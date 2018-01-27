@@ -4,6 +4,8 @@
 #include <Sudoku.h>
 #include <Ui.h>
 
+namespace sudoku {
+
 Logger log;
 
 Main::Main() : sudoku(nullptr), ui(nullptr)
@@ -46,3 +48,5 @@ void Main::run()
  //   ui->print_sudoku(sudoku->get_data());
  //   has_next_step = sudoku->solve_step();
 }
+
+} // namespace sudoku

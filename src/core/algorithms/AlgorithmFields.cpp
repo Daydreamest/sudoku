@@ -3,6 +3,8 @@
 #include <Consts.h>
 #include <Logger.h>
 
+namespace sudoku {
+
 extern Logger log;
 
 AlgorithmFields::AlgorithmFields(BoardWrapper& brd, SlotSet& res) : AbstractAlgorithm(brd, res)
@@ -40,3 +42,5 @@ AlgorithmFields::handle_type AlgorithmFields::create(BoardWrapper& brd, SlotSet&
 {
     return handle_type(new AlgorithmFields(brd, res));
 }
+
+} // namespace sudoku

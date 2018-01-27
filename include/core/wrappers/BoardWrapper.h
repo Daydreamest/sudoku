@@ -6,6 +6,8 @@
 #include <Position.h>
 #include <Slot.h>
 
+namespace sudoku {
+
 class BoardWrapper
 {
     public:
@@ -29,5 +31,7 @@ class BoardWrapper
         const FieldRow create_empty_row() const;
         const FieldBoard create_empty_array() const;
 };
+
+} // namespace sudoku
 
 #endif // BOARDWRAPPER_H

@@ -1,6 +1,9 @@
 #include "Slot.h"
 
+//TODO remove
 #include <sstream>
+
+namespace sudoku {
 
 Slot::Slot(const size_t x, const size_t y, const Value v) : val(v), pos(x, y)
 {
@@ -43,3 +46,5 @@ const std::string Slot::toString() const
     ss << pos.toString() << " = " << val;
     return ss.str();
 }
+
+} // namespace sudoku

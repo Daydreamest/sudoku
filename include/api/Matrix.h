@@ -3,6 +3,8 @@
 
 #include <array>
 
+namespace sudoku {
+
 template <class T, size_t XSIZE, size_t YSIZE>
 using GenericMatrix = std::array<std::array<T, YSIZE>, XSIZE>;
 
@@ -23,5 +25,7 @@ using GenericColumn = std::array<T, length>;
 
 template <class T>
 using Column = GenericColumn<T, 9>;
+
+} // namespace sudoku
 
 #endif // MATRIX_H

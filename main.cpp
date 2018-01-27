@@ -1,10 +1,8 @@
 #include <Main.h>
 
-// hello
-
 int main()
 {
-    Main::handle_type main = Main::create();
+    sudoku::Main::handle_type main = sudoku::Main::create();
 
     main->run();
 

@@ -8,6 +8,8 @@
 #include <Matrix.h>
 #include <Values.h>
 
+namespace sudoku {
+
 class Field
 {
     public:
@@ -65,5 +67,7 @@ using FieldBoard = Table<Field::handle_type>;
 using FieldColumn = Column<Field::handle_type>;
 using FieldRow = Row<Field::handle_type>;
 using FieldTile = Tile<Field::handle_type>;
+
+} // namespace sudoku
 
 #endif // FIELD_H

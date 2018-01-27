@@ -8,6 +8,8 @@
 #include <Slot.h>
 #include <Values.h>
 
+namespace sudoku {
+
 class CoreData : public AbstractData
 {
     public:
@@ -29,5 +31,7 @@ class CoreData : public AbstractData
 
         const Table<char> create_empty_array() const;
 };
+
+} // namespace sudoku
 
 #endif // COREDATA_H

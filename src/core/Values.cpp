@@ -1,5 +1,7 @@
 #include "Values.h"
 
+namespace sudoku {
+
 ValueTools::ValueTools()
 {
     //ctor
@@ -82,3 +84,5 @@ ValueSet ValueTools::value_set = ValueSet {
     Value_8,
     Value_9
 };
+
+} // namespace sudoku

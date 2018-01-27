@@ -6,6 +6,8 @@
 #include <AbstractWrapper.h>
 #include <Field.h>
 
+namespace sudoku {
+
 class RowWrapper : public AbstractWrapper
 {
     public:
@@ -25,5 +27,7 @@ class RowWrapper : public AbstractWrapper
     private:
         FieldRow data;
 };
+
+} // namespace sudoku
 
 #endif // ROWWRAPPER_H

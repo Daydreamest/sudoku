@@ -5,6 +5,8 @@
 
 #include <AbstractData.h>
 
+namespace sudoku {
+
 class AbstractUi
 {
     public:
@@ -24,5 +26,7 @@ class AbstractUi
 
     private:
 };
+
+} // namespace sudoku
 
 #endif // ABSTRACTUI_H

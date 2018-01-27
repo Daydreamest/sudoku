@@ -3,6 +3,8 @@
 
 #include <AbstractAlgorithm.h>
 
+namespace sudoku {
+
 class AlgorithmRows : public AbstractAlgorithm
 {
     public:
@@ -21,5 +23,7 @@ class AlgorithmRows : public AbstractAlgorithm
 
     private:
 };
+
+} // namespace sudoku
 
 #endif // ALGORITHMROWS_H

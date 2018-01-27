@@ -5,6 +5,8 @@
 
 #include <Position.h>
 
+namespace sudoku {
+
 class AbstractData
 {
     public:
@@ -21,5 +23,7 @@ class AbstractData
 
     private:
 };
+
+} // namespace sudoku
 
 #endif // ABSTRACTSUDOKUDATA_H

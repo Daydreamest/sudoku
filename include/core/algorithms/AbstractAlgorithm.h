@@ -6,6 +6,8 @@
 #include <BoardWrapper.h>
 #include <Slot.h>
 
+namespace sudoku {
+
 class AbstractAlgorithm
 {
     public:
@@ -24,5 +26,7 @@ class AbstractAlgorithm
 
     private:
 };
+
+} // namespace sudoku
 
 #endif // ABSTRACTALGORITHM_H

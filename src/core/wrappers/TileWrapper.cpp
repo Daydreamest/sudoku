@@ -2,6 +2,8 @@
 
 #include <Consts.h>
 
+namespace sudoku {
+
 TileWrapper::TileWrapper(const FieldTile tile, const size_t id) : AbstractWrapper(id, TILE_MAX_X * TILE_MAX_Y), data(tile)
 {
     //ctor
@@ -28,3 +30,5 @@ Position TileWrapper::get_global_position(const size_t i) const
     const size_t y = (ID / TILE_MAX_Y) * TILE_MAX_Y + i / TILE_MAX_Y;
     return Position(x, y);
 }
+
+} // namespace sudoku

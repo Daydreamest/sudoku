@@ -13,6 +13,8 @@
 #include <Position.h>
 #include <Slot.h>
 
+namespace sudoku {
+
 class Sudoku
 {
     public:
@@ -44,5 +46,7 @@ class Sudoku
 
         SlotSet found_fields;
 };
+
+} // namespace sudoku
 
 #endif // SUDOKUBOARD_H

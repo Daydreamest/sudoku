@@ -5,6 +5,8 @@
 
 #include <UiData.h>
 
+namespace sudoku {
+
 Initializer::Initializer()
 {
     //ctor
@@ -43,3 +45,5 @@ Initializer::handle_type Initializer::create()
 {
     return handle_type(new Initializer);
 }
+
+} // namespace sudoku

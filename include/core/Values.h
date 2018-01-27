@@ -4,6 +4,8 @@
 #include <map>
 #include <set>
 
+namespace sudoku {
+
 // Possible values of a single Sudoku field
 enum Value {
     Value_Undefined = 0,
@@ -43,5 +45,7 @@ class ValueTools
         static std::map<Value, char> create_val_map();
         static std::map<Value, char> val_to_ch_map;
 };
+
+} // namespace sudoku
 
 #endif // VALUES_H

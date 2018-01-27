@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+namespace sudoku {
+
 Logger::Logger(const Log_Level lvl, std::ostream& out) : level_to_string_map(create_map()), level(lvl), output(out)
 {
     // ctor
@@ -48,3 +50,5 @@ std::ostream& Logger::operator()(const Log_Level lvl)
     output << level_to_str(lvl);
     return output;
 }
+
+} // namespace sudoku

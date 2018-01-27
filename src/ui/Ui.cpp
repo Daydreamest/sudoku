@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+namespace sudoku {
+
 Ui::Ui() : init(Initializer::create())
 {
     //ctor
@@ -52,3 +54,4 @@ Ui::handle_type Ui::create()
     return handle_type(new Ui);
 }
 
+} // namespace sudoku

@@ -6,6 +6,8 @@
 #include <RowWrapper.h>
 #include <TileWrapper.h>
 
+namespace sudoku {
+
 extern Logger log;
 
 BoardWrapper::BoardWrapper() : board(create_empty_array())
@@ -96,3 +98,5 @@ const FieldBoard BoardWrapper::create_empty_array() const
     }
     return table;
 }
+
+} // namespace sudoku

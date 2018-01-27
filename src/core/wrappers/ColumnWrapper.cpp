@@ -2,6 +2,8 @@
 
 #include <Consts.h>
 
+namespace sudoku {
+
 ColumnWrapper::ColumnWrapper(const FieldColumn col, const size_t id): AbstractWrapper(id, COLUMN_MAX), data(col)
 {
     //ctor
@@ -26,3 +28,5 @@ Position ColumnWrapper::get_global_position(const size_t i) const
 {
     return Position(ID, i);
 }
+
+} // namespace sudoku

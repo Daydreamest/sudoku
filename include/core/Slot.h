@@ -6,6 +6,8 @@
 #include <Position.h>
 #include <Values.h>
 
+namespace sudoku {
+
 class Slot
 {
     public:
@@ -34,5 +36,7 @@ inline bool operator<(const Slot& lhs, const Slot& rhs)
 }
 
 using SlotSet = std::set<Slot>;
+
+} // namespace sudoku
 
 #endif // SLOT_H

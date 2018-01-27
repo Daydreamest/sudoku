@@ -1,5 +1,7 @@
 #include "UiData.h"
 
+namespace sudoku {
+
 UiData::UiData() : data(create_empty_array())
 {
     //ctor
@@ -44,3 +46,5 @@ char UiData::get_value(const Position pos) const
 {
     return data[pos.get_x()][pos.get_y()];
 }
+
+} // namespace sudoku

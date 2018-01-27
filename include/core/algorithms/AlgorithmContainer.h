@@ -7,6 +7,8 @@
 #include <AbstractAlgorithm.h>
 #include <BoardWrapper.h>
 
+namespace sudoku {
+
 class AlgorithmContainer
 {
     public:
@@ -35,5 +37,7 @@ class AlgorithmContainer
 //        FieldBoard& board;
 //        SlotSet& result;
 };
+
+} // namespace sudoku
 
 #endif // ALGORITHMCONTAINER_H

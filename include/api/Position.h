@@ -4,6 +4,8 @@
 #include <cstddef>
 #include <string>
 
+namespace sudoku {
+
 class Position
 {
     public:
@@ -35,5 +37,6 @@ inline bool operator<(const Position& lhs, const Position& rhs)
     return (lhs.get_x() < rhs.get_x());
 }
 
+} // namespace sudoku
 
 #endif // POSITION_H

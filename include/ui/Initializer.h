@@ -5,6 +5,8 @@
 
 #include <AbstractData.h>
 
+namespace sudoku {
+
 class Initializer
 {
     public:
@@ -21,5 +23,7 @@ class Initializer
 
     private:
 };
+
+} // namespace sudoku
 
 #endif // INITIALIZER_H
