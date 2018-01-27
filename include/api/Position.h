@@ -17,7 +17,7 @@ class Position
 
         inline bool operator==(const Position& other);
 
-        const std::string toString() const;
+        const std::string to_string() const;
 
     protected:
 

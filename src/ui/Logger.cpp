@@ -5,7 +5,7 @@
 namespace sudoku {
 namespace ui {
 
-Logger::Logger(const Log_Level lvl, std::ostream& out) : level_to_string_map(create_map()), level(lvl), output(out)
+Logger::Logger(const LogLevel lvl, std::ostream& out) : level_to_string_map(create_map()), level(lvl), output(out)
 {
     // ctor
     null_buffer = std::make_unique<NullBuffer>();
@@ -17,7 +17,7 @@ Logger::~Logger()
     // dtor
 }
 
-const std::string Logger::level_to_str(const Log_Level lvl) const
+const std::string Logger::level_to_str(const LogLevel lvl) const
 {
     auto iter = level_to_string_map.find(lvl);
     if (iter != level_to_string_map.end()) {
@@ -29,20 +29,20 @@ const std::string Logger::level_to_str(const Log_Level lvl) const
 
 const Logger::LevelStringMap Logger::create_map() const
 {
-    return std::map<Log_Level, std::string> {
-        {Log_Level_Debug, "DBG "},
-        {Log_Level_Info, "INF "},
-        {Log_Level_Warning, "WAR "},
-        {Log_Level_Error, "ERR "}
+    return std::map<LogLevel, std::string> {
+        {LogLevel_Debug, "DBG "},
+        {LogLevel_Info, "INF "},
+        {LogLevel_Warning, "WAR "},
+        {LogLevel_Error, "ERR "}
     };
 }
 
-void Logger::set_log_level(const Log_Level lvl)
+void Logger::set_log_level(const LogLevel lvl)
 {
     level = lvl;
 }
 
-std::ostream& Logger::operator()(const Log_Level lvl)
+std::ostream& Logger::operator()(const LogLevel lvl)
 {
     if (lvl < level) {
         return *null_stream;

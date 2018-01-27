@@ -41,13 +41,13 @@ void AlgorithmColumns::operator()()
                 size_t places = column->possible_places_for(val);
 
                 if (places == 0) {
-                    log(Log_Level_Error) << "COL Well shit, value " << val << " can't be placed in column " << x << std::endl;
+                    log(LogLevel_Error) << "COL Well shit, value " << val << " can't be placed in column " << x << std::endl;
                 } else if (places == 1) {
                     Slot found = Slot(column->first_position_for(val), val);
                     results.insert(found);
-                    log(Log_Level_Info) << "COL Good insertion found! " << found.toString() << std::endl;
+                    log(LogLevel_Info) << "COL Good insertion found! " << found.to_string() << std::endl;
                 } else {
-                    log(Log_Level_Debug) << "COL For value " << val << " there were " << places << " places found in column " << x << std::endl;
+                    log(LogLevel_Debug) << "COL For value " << val << " there were " << places << " places found in column " << x << std::endl;
                 }
             }
         }

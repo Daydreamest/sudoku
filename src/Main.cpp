@@ -23,7 +23,7 @@ Main::handle_type Main::create()
     handle_type result = std::make_unique<Main>();
 
     // Set the logger
-    log.set_log_level(Log_Level_Warning);
+    log.set_log_level(LogLevel_Warning);
 
     // Create and initialize Ui
     result->ui = ui::Ui::create();

@@ -22,14 +22,14 @@ AlgorithmFields::~AlgorithmFields()
 
 void AlgorithmFields::operator()()
 {
-    log(Log_Level_Debug) << "FLD Running algorithm: " << get_name() << std::endl;
+    log(LogLevel_Debug) << "FLD Running algorithm: " << get_name() << std::endl;
 
     loop (x, consts::BOARD_MAX_X) {
         loop (y, consts::BOARD_MAX_Y) {
             Value val = board[x][y]->can_be_set();
             if (val != Value_Undefined) {
                 Slot found = Slot(x, y, val);
-                log(Log_Level_Info) << "FLD Good inesrtion found! " << found.toString() << std::endl;
+                log(LogLevel_Info) << "FLD Good inesrtion found! " << found.to_string() << std::endl;
                 results.insert(found);
             }
         }

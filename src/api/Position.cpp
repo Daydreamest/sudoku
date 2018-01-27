@@ -18,8 +18,8 @@ Position::Position(const size_t xp, const size_t yp) : x(xp), y(yp)
 {
     //ctor
     if (!is_correct(consts::BOARD_SIZE)) {
-        log(Log_Level_Error) << "POC Tring to set position to " << toString() << " while max limit is " << consts::BOARD_SIZE << std::endl;;
-        log(Log_Level_Error) << "POC Throwing exception..." << std::endl;;
+        log(LogLevel_Error) << "POC Tring to set position to " << to_string() << " while max limit is " << consts::BOARD_SIZE << std::endl;;
+        log(LogLevel_Error) << "POC Throwing exception..." << std::endl;;
         // TODO throw exception
     }
 }
@@ -48,7 +48,7 @@ bool Position::operator==(const Position& other)
     return (x == other.x) && (y == other.y);
 }
 
-const std::string Position::toString() const
+const std::string Position::to_string() const
 {
     std::stringstream ss;
     ss << "(" << x << "," << y << ")";

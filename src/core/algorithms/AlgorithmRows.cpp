@@ -41,13 +41,13 @@ void AlgorithmRows::operator()()
                 size_t places = row->possible_places_for(val);
 
                 if (places == 0) {
-                    log(Log_Level_Error) << "ROW Well shit, value " << val << " can't be placed in row " << y << std::endl;
+                    log(LogLevel_Error) << "ROW Well shit, value " << val << " can't be placed in row " << y << std::endl;
                 } else if (places == 1) {
                     Slot found = Slot(row->first_position_for(val), val);
                     results.insert(found);
-                    log(Log_Level_Info) << "ROW Good inesrtion found! " << found.toString() << std::endl;
+                    log(LogLevel_Info) << "ROW Good inesrtion found! " << found.to_string() << std::endl;
                 } else {
-                    log(Log_Level_Debug) << "ROW For value " << val << " there were " << places << " places found in row " << y << std::endl;
+                    log(LogLevel_Debug) << "ROW For value " << val << " there were " << places << " places found in row " << y << std::endl;
                 }
             }
         }

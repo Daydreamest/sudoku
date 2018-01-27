@@ -40,10 +40,10 @@ const Position Slot::get_position() const
     return pos;
 }
 
-const std::string Slot::toString() const
+const std::string Slot::to_string() const
 {
     std::stringstream ss;
-    ss << pos.toString() << " = " << val;
+    ss << pos.to_string() << " = " << val;
     return ss.str();
 }
 

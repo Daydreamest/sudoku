@@ -87,7 +87,7 @@ bool Sudoku::solve_step()
 
     for (auto found : found_fields) {
         set_value(found);
-        log(Log_Level_Info) << "SLV found solution for field " << found.toString() << std::endl;
+        log(LogLevel_Info) << "SLV found solution for field " << found.to_string() << std::endl;
     }
     found_fields.clear();
 

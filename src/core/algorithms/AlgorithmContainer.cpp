@@ -33,7 +33,7 @@ void AlgorithmContainer::add(AbstractAlgorithm::handle_type algo)
 void AlgorithmContainer::run()
 {
     for (auto algo : algorithms) {
-        log(Log_Level_Debug) << "ALR Running algorithm: " << algo->get_name() << std::endl;
+        log(LogLevel_Debug) << "ALR Running algorithm: " << algo->get_name() << std::endl;
         (*algo)();
     }
 }

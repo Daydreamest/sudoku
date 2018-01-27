@@ -41,13 +41,13 @@ void AlgorithmTiles::operator()()
                 size_t places = tile->possible_places_for(val);
 
                 if (places == 0) {
-                    log(Log_Level_Error) << "TIL Well shit, value " << val << " can't be placed in tile " << i << std::endl;
+                    log(LogLevel_Error) << "TIL Well shit, value " << val << " can't be placed in tile " << i << std::endl;
                 } else if (places == 1) {
                     Slot found = Slot(tile->first_position_for(val), val);
                     results.insert(found);
-                    log(Log_Level_Info) << "TIL Good inesrtion found! " << found.toString() << std::endl;
+                    log(LogLevel_Info) << "TIL Good inesrtion found! " << found.to_string() << std::endl;
                 } else {
-                    log(Log_Level_Debug) << "TIL For value " << val << " there were " << places << " places found in tile " << i << std::endl;
+                    log(LogLevel_Debug) << "TIL For value " << val << " there were " << places << " places found in tile " << i << std::endl;
                 }
             }
         }

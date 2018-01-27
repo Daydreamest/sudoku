@@ -8,12 +8,12 @@
 
 namespace sudoku {
 
-enum Log_Level {
-    Log_Level_Debug = 0,
-    Log_Level_Info,
-    Log_Level_Warning,
-    Log_Level_Error,
-    Log_Level_None
+enum LogLevel {
+    LogLevel_Debug = 0,
+    LogLevel_Info,
+    LogLevel_Warning,
+    LogLevel_Error,
+    LogLevel_None
 };
 
 namespace ui {
@@ -21,24 +21,24 @@ namespace ui {
 class Logger
 {
     public:
-        Logger(const Log_Level lvl = Log_Level_None, std::ostream& out = std::cout);
+        Logger(const LogLevel lvl = LogLevel_None, std::ostream& out = std::cout);
         virtual ~Logger();
 
-        void set_log_level(const Log_Level lvl);
+        void set_log_level(const LogLevel lvl);
 
-        std::ostream& operator()(const Log_Level lvl);
+        std::ostream& operator()(const LogLevel lvl);
 
     protected:
 
     private:
-        using LevelStringMap = std::map<Log_Level, std::string>;
+        using LevelStringMap = std::map<LogLevel, std::string>;
 
         const LevelStringMap level_to_string_map;
         const LevelStringMap create_map() const;
 
-        const std::string level_to_str(const Log_Level lvl) const;
+        const std::string level_to_str(const LogLevel lvl) const;
 
-        Log_Level level;
+        LogLevel level;
 
         std::ostream& output;
 

@@ -26,19 +26,19 @@ void BoardWrapper::set_value(const Slot slot)
 {
     // Set this field to the value
     board[slot.get_x()][slot.get_y()]->set_value(slot.get_value());
-    log(Log_Level_Debug) << "STV set Field" << slot.toString() << std::endl;
+    log(LogLevel_Debug) << "STV set Field" << slot.to_string() << std::endl;
 
     // Mark in all fields in the same row that this value is already used
     get_row(slot.get_y())->sanitize(slot.get_value());
-    log(Log_Level_Debug) << "STV Row(" << slot.get_y() << ") is sanitized" << std::endl;
+    log(LogLevel_Debug) << "STV Row(" << slot.get_y() << ") is sanitized" << std::endl;
 
     // Repeat for column
     get_column(slot.get_x())->sanitize(slot.get_value());
-    log(Log_Level_Debug) << "STV Column(" << slot.get_x() << ") is sanitized" << std::endl;
+    log(LogLevel_Debug) << "STV Column(" << slot.get_x() << ") is sanitized" << std::endl;
 
     // Repeat for tile
     get_tile(slot.get_position())->sanitize(slot.get_value());
-    log(Log_Level_Debug) << "STV Tile" << slot.get_position().toString() << " is sanitized" << std::endl;
+    log(LogLevel_Debug) << "STV Tile" << slot.get_position().to_string() << " is sanitized" << std::endl;
 
 }
 
