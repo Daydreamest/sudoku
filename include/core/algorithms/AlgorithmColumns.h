@@ -4,6 +4,7 @@
 #include <AbstractAlgorithm.h>
 
 namespace sudoku {
+namespace core {
 
 class AlgorithmColumns : public AbstractAlgorithm
 {
@@ -23,6 +24,7 @@ class AlgorithmColumns : public AbstractAlgorithm
     private:
 };
 
+} // namespace core
 } // namespace sudoku
 
 #endif // ALGORITHMCOLUMNS_H

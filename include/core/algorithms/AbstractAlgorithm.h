@@ -7,6 +7,7 @@
 #include <Slot.h>
 
 namespace sudoku {
+namespace core {
 
 class AbstractAlgorithm
 {
@@ -27,6 +28,7 @@ class AbstractAlgorithm
     private:
 };
 
+} // namespace core
 } // namespace sudoku
 
 #endif // ABSTRACTALGORITHM_H

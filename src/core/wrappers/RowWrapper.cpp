@@ -3,6 +3,7 @@
 #include <Consts.h>
 
 namespace sudoku {
+namespace core {
 
 RowWrapper::RowWrapper(const FieldRow row, const size_t id) : AbstractWrapper(id, ROW_MAX), data(row)
 {
@@ -29,4 +30,5 @@ Position RowWrapper::get_global_position(const size_t i) const
     return Position(i, ID);
 }
 
+} // namespace core
 } // namespace sudoku

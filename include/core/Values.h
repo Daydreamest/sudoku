@@ -5,6 +5,7 @@
 #include <set>
 
 namespace sudoku {
+namespace core {
 
 // Possible values of a single Sudoku field
 enum Value {
@@ -46,6 +47,7 @@ class ValueTools
         static std::map<Value, char> val_to_ch_map;
 };
 
+} // namespace core
 } // namespace sudoku
 
 #endif // VALUES_H

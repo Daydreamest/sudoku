@@ -1,6 +1,7 @@
 #include "Values.h"
 
 namespace sudoku {
+namespace core {
 
 ValueTools::ValueTools()
 {
@@ -85,4 +86,5 @@ ValueSet ValueTools::value_set = ValueSet {
     Value_9
 };
 
+} // namespace core
 } // namespace sudoku

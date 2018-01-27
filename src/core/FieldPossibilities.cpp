@@ -1,6 +1,7 @@
 #include "FieldPossibilities.h"
 
 namespace sudoku {
+namespace core {
 
 FieldPossibilities::FieldPossibilities() : possible_values()
 {
@@ -58,4 +59,5 @@ Value FieldPossibilities::get_unique_possibility() const
     return *(possible_values.cbegin());
 }
 
+} // namespace core
 } // namespace sudoku

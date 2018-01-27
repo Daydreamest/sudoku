@@ -8,6 +8,8 @@ namespace sudoku {
 
 extern ui::Logger log;
 
+namespace core {
+
 AlgorithmRows::AlgorithmRows(BoardWrapper& brd, SlotSet& res) : AbstractAlgorithm(brd, res)
 {
     //ctor
@@ -56,4 +58,5 @@ std::string AlgorithmRows::get_name()
     return "Search for fields in a row that are the only ones to contain a specific value";
 }
 
+} // namespace core
 } // namespace sudoku

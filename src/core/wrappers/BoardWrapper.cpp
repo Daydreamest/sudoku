@@ -10,6 +10,8 @@ namespace sudoku {
 
 extern ui::Logger log;
 
+namespace core {
+
 BoardWrapper::BoardWrapper() : board(create_empty_array())
 {
     //ctor
@@ -99,4 +101,5 @@ const FieldBoard BoardWrapper::create_empty_array() const
     return table;
 }
 
+} // namespace core
 } // namespace sudoku

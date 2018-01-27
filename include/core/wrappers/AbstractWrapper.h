@@ -9,6 +9,7 @@
 #include <Values.h>
 
 namespace sudoku {
+namespace core {
 
 class AbstractWrapper
 {
@@ -38,6 +39,7 @@ class AbstractWrapper
     private:
 };
 
+} // namespace core
 } // namespace sudoku
 
 #endif // ABSTRACTWRAPPER_H

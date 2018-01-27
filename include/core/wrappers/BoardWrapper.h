@@ -7,6 +7,7 @@
 #include <Slot.h>
 
 namespace sudoku {
+namespace core {
 
 class BoardWrapper
 {
@@ -32,6 +33,7 @@ class BoardWrapper
         const FieldBoard create_empty_array() const;
 };
 
+} // namespace core
 } // namespace sudoku
 
 #endif // BOARDWRAPPER_H

@@ -8,6 +8,8 @@ namespace sudoku {
 
 extern ui::Logger log;
 
+namespace core {
+
 Sudoku::Sudoku()
 {
     //ctor
@@ -97,4 +99,5 @@ void Sudoku::TEST()
 {
 }
 
+} // namespace core
 } // namespace sudoku

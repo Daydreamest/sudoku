@@ -9,6 +9,7 @@
 #include <Values.h>
 
 namespace sudoku {
+namespace core {
 
 class Field
 {
@@ -68,6 +69,7 @@ using FieldColumn = Column<Field::handle_type>;
 using FieldRow = Row<Field::handle_type>;
 using FieldTile = Tile<Field::handle_type>;
 
+} // namespace core
 } // namespace sudoku
 
 #endif // FIELD_H

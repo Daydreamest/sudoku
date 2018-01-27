@@ -29,7 +29,7 @@ Main::handle_type Main::create()
     result->ui = ui::Ui::create();
 
     // Create and initialize Sudoku class
-    result->sudoku = Sudoku::create();
+    result->sudoku = core::Sudoku::create();
 
     return std::move(result);
 }

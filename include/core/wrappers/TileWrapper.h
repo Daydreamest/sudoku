@@ -8,6 +8,7 @@
 #include <Position.h>
 
 namespace sudoku {
+namespace core {
 
 class TileWrapper : public AbstractWrapper
 {
@@ -29,6 +30,7 @@ class TileWrapper : public AbstractWrapper
         FieldTile data;
 };
 
+} // namespace core
 } // namespace sudoku
 
 #endif // TILEWRAPPER_H

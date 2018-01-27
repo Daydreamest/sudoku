@@ -28,7 +28,7 @@ class Main
         Main();
 
     private:
-        Sudoku::handle_type sudoku;
+        core::Sudoku::handle_type sudoku;
         AbstractUi::handle_type ui;
 };
 

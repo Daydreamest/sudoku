@@ -3,6 +3,7 @@
 #include <Consts.h>
 
 namespace sudoku {
+namespace core {
 
 AbstractWrapper::AbstractWrapper(const size_t id, const size_t max_index): ID(id), MAX_INDEX(max_index)
 {
@@ -69,4 +70,5 @@ void AbstractWrapper::sanitize(const Value val)
     }
 }
 
+} // namespace core
 } // namespace sudoku

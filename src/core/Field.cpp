@@ -3,6 +3,7 @@
 #include <sstream> // TODO remove in the final release
 
 namespace sudoku {
+namespace core {
 
 Field::Field() : field_value(Value_Undefined), possible_values(FieldPossibilities::create())
 {
@@ -105,4 +106,5 @@ bool Field::is_set_to(const Value v) const
     return (v == field_value);
 }
 
+} // namespace core
 } // namespace sudoku

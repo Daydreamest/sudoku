@@ -7,6 +7,7 @@
 #include <Field.h>
 
 namespace sudoku {
+namespace core {
 
 class ColumnWrapper : public AbstractWrapper
 {
@@ -28,6 +29,7 @@ class ColumnWrapper : public AbstractWrapper
         FieldColumn data;
 };
 
+} // namespace core
 } // namespace sudoku
 
 #endif // COLUMNWRAPPER_H

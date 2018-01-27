@@ -7,6 +7,7 @@
 #include <Values.h>
 
 namespace sudoku {
+namespace core {
 
 class Slot
 {
@@ -37,6 +38,7 @@ inline bool operator<(const Slot& lhs, const Slot& rhs)
 
 using SlotSet = std::set<Slot>;
 
+} // namespace core
 } // namespace sudoku
 
 #endif // SLOT_H

@@ -8,6 +8,7 @@
 #include <BoardWrapper.h>
 
 namespace sudoku {
+namespace core {
 
 class AlgorithmContainer
 {
@@ -38,6 +39,7 @@ class AlgorithmContainer
 //        SlotSet& result;
 };
 
+} // namespace core
 } // namespace sudoku
 
 #endif // ALGORITHMCONTAINER_H

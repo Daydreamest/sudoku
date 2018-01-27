@@ -14,6 +14,7 @@
 #include <Slot.h>
 
 namespace sudoku {
+namespace core {
 
 class Sudoku
 {
@@ -47,6 +48,7 @@ class Sudoku
         SlotSet found_fields;
 };
 
+} // namespace core
 } // namespace sudoku
 
 #endif // SUDOKUBOARD_H

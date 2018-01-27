@@ -7,6 +7,8 @@ namespace sudoku {
 
 extern ui::Logger log;
 
+namespace core {
+
 AlgorithmFields::AlgorithmFields(BoardWrapper& brd, SlotSet& res) : AbstractAlgorithm(brd, res)
 {
     //ctor
@@ -43,4 +45,5 @@ AlgorithmFields::handle_type AlgorithmFields::create(BoardWrapper& brd, SlotSet&
     return handle_type(new AlgorithmFields(brd, res));
 }
 
+} // namespace core
 } // namespace sudoku

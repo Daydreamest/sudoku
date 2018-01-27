@@ -1,6 +1,7 @@
 #include "CoreData.h"
 
 namespace sudoku {
+namespace core {
 
 CoreData::CoreData() : data(create_empty_array())
 {
@@ -44,4 +45,5 @@ const Table<char> CoreData::create_empty_array() const
     };
 }
 
+} // namespace core
 } // namespace sudoku

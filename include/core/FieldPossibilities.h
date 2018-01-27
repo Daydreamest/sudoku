@@ -7,6 +7,7 @@
 #include <Values.h>
 
 namespace sudoku {
+namespace core {
 
 class FieldPossibilities
 {
@@ -47,6 +48,7 @@ class FieldPossibilities
         std::set<Value> possible_values;
 };
 
+} // namespace core
 } // namespace sudoku
 
 #endif // FIELDPOSSIBILITIES_H

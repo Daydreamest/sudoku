@@ -8,6 +8,8 @@ namespace sudoku {
 
 extern ui::Logger log;
 
+namespace core {
+
 AlgorithmColumns::AlgorithmColumns(BoardWrapper& brd, SlotSet& res) : AbstractAlgorithm(brd, res)
 {
     //ctor
@@ -56,4 +58,5 @@ std::string AlgorithmColumns::get_name()
     return "Search for fields in a column that are the only ones to contain a specific value";
 }
 
+} // namespace core
 } // namespace sudoku
