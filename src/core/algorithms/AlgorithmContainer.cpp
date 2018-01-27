@@ -3,6 +3,7 @@
 #include <AlgorithmColumns.h>
 #include <AlgorithmFields.h>
 #include <AlgorithmRows.h>
+#include <AlgorithmTiles.h>
 #include <Logger.h>
 
 extern Logger log;
@@ -38,4 +39,5 @@ void AlgorithmContainer::initialize(BoardWrapper& brd, SlotSet& res)
     algorithms.push_back(AlgorithmFields::create(brd, res));
     algorithms.push_back(AlgorithmRows::create(brd, res));
     algorithms.push_back(AlgorithmColumns::create(brd, res));
+    algorithms.push_back(AlgorithmTiles::create(brd, res));
 }
