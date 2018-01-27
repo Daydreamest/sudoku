@@ -92,11 +92,6 @@ bool Sudoku::solve_step()
     found_fields.clear();
 
     return true;
-//    TEST();
-}
-
-void Sudoku::TEST()
-{
 }
 
 } // namespace core

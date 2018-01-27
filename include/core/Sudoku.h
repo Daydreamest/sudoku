@@ -35,8 +35,6 @@ class Sudoku
 
         bool is_solved() const;
 
-        void TEST();
-
     protected:
         Sudoku();
 
