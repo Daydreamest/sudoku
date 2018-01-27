@@ -1,15 +1,12 @@
 #include "Sudoku.h"
 
-#include <ColumnWrapper.h>                  // TODO remove?
-#include <Consts.h>                  // TODO remove?
+#include <Consts.h>
 #include <CoreData.h>
 #include <Logger.h>
-#include <RowWrapper.h>                  // TODO remove?
-#include <TileWrapper.h>                  // TODO remove?
 
 extern Logger log;
 
-Sudoku::Sudoku()// : board(create_empty_array())
+Sudoku::Sudoku()
 {
     //ctor
 

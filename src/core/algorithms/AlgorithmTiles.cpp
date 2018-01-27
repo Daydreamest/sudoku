@@ -42,7 +42,7 @@ void AlgorithmTiles::operator()()
                     results.insert(found);
                     log(Log_Level_Info) << "TIL Good inesrtion found! " << found.toString() << std::endl;
                 } else {
-//                    log << "TIL For value " << val << " there were " << places << " places found in tile " << i << std::endl;
+                    log(Log_Level_Debug) << "TIL For value " << val << " there were " << places << " places found in tile " << i << std::endl;
                 }
             }
         }

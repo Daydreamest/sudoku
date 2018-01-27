@@ -42,7 +42,7 @@ void AlgorithmRows::operator()()
                     results.insert(found);
                     log(Log_Level_Info) << "ROW Good inesrtion found! " << found.toString() << std::endl;
                 } else {
-//                    log << "ROW For value " << val << " there were " << places_for_val << " places found in row " << y << std::endl;
+                    log(Log_Level_Debug) << "ROW For value " << val << " there were " << places << " places found in row " << y << std::endl;
                 }
             }
         }

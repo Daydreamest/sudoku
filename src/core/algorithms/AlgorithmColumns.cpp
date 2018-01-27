@@ -42,7 +42,7 @@ void AlgorithmColumns::operator()()
                     results.insert(found);
                     log(Log_Level_Info) << "COL Good insertion found! " << found.toString() << std::endl;
                 } else {
-//                    log << "COL For value " << val << " there were " << places << " places found in column " << x << std::endl;
+                    log(Log_Level_Debug) << "COL For value " << val << " there were " << places << " places found in column " << x << std::endl;
                 }
             }
         }
