@@ -28,7 +28,7 @@ AlgorithmRows::handle_type AlgorithmRows::create(BoardWrapper& brd, SlotSet& res
 
 void AlgorithmRows::operator()()
 {
-    loop (y, BOARD_MAX_Y) {
+    loop (y, consts::BOARD_MAX_Y) {
         auto row = board.get_row(y);
 
         if (row->is_solved()) {

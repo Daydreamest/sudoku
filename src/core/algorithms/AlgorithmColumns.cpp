@@ -28,7 +28,7 @@ AlgorithmColumns::handle_type AlgorithmColumns::create(BoardWrapper& brd, SlotSe
 
 void AlgorithmColumns::operator()()
 {
-    loop (x, BOARD_MAX_X) {
+    loop (x, consts::BOARD_MAX_X) {
         auto column = board.get_column(x);
 
         if (column->is_solved()) {

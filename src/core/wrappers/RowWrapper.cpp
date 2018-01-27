@@ -5,7 +5,7 @@
 namespace sudoku {
 namespace core {
 
-RowWrapper::RowWrapper(const FieldRow row, const size_t id) : AbstractWrapper(id, ROW_MAX), data(row)
+RowWrapper::RowWrapper(const FieldRow row, const size_t id) : AbstractWrapper(id, consts::ROW_MAX), data(row)
 {
     //ctor
 }

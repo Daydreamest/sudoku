@@ -30,8 +30,8 @@ Sudoku::handle_type Sudoku::create()
 
 void Sudoku::set_data(const AbstractData::handle_type d)
 {
-    loop (x, BOARD_MAX_X) {
-        loop (y, BOARD_MAX_Y) {
+    loop (x, consts::BOARD_MAX_X) {
+        loop (y, consts::BOARD_MAX_Y) {
             char ch_val = d->get_value(Position(x, y));
             Value s_val = ValueTools::get_value_from_char(ch_val);
 
@@ -44,8 +44,8 @@ const AbstractData::handle_type Sudoku::get_data() const
 {
     CoreData::handle_type result = CoreData::create();
 
-    loop (x, BOARD_MAX_X) {
-        loop (y, BOARD_MAX_Y) {
+    loop (x, consts::BOARD_MAX_X) {
+        loop (y, consts::BOARD_MAX_Y) {
             if (board[x][y]->get_value() != Value_Undefined) {
                 result->set_value(Slot(x, y, board[x][y]->get_value()));
             }
@@ -67,7 +67,7 @@ void Sudoku::set_value(const Slot slot)
 
 bool Sudoku::is_solved() const
 {
-    loop (x, BOARD_MAX_X) {
+    loop (x, consts::BOARD_MAX_X) {
         auto column = board.get_column(x);
         if (!column->is_solved()) {
             return false;

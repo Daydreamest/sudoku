@@ -28,7 +28,7 @@ AlgorithmTiles::handle_type AlgorithmTiles::create(BoardWrapper& brd, SlotSet& r
 
 void AlgorithmTiles::operator()()
 {
-    loop (i, TILE_COUNT) {
+    loop (i, consts::TILE_COUNT) {
         auto tile = board.get_tile(i);
 
         if (tile->is_solved()) {

@@ -24,8 +24,8 @@ void AlgorithmFields::operator()()
 {
     log(Log_Level_Debug) << "FLD Running algorithm: " << get_name() << std::endl;
 
-    loop (x, BOARD_MAX_X) {
-        loop (y, BOARD_MAX_Y) {
+    loop (x, consts::BOARD_MAX_X) {
+        loop (y, consts::BOARD_MAX_Y) {
             Value val = board[x][y]->can_be_set();
             if (val != Value_Undefined) {
                 Slot found = Slot(x, y, val);

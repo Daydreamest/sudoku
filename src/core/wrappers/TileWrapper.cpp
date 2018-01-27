@@ -5,7 +5,7 @@
 namespace sudoku {
 namespace core {
 
-TileWrapper::TileWrapper(const FieldTile tile, const size_t id) : AbstractWrapper(id, TILE_MAX_X * TILE_MAX_Y), data(tile)
+TileWrapper::TileWrapper(const FieldTile tile, const size_t id) : AbstractWrapper(id, consts::TILE_MAX_X * consts::TILE_MAX_Y), data(tile)
 {
     //ctor
 }
@@ -22,13 +22,13 @@ TileWrapper::handle_type TileWrapper::create(const FieldTile tile, const size_t 
 
 Field::handle_type TileWrapper::get_field(const size_t i) const
 {
-    return data[i % TILE_MAX_X][i / TILE_MAX_Y];
+    return data[i % consts::TILE_MAX_X][i / consts::TILE_MAX_Y];
 }
 
 Position TileWrapper::get_global_position(const size_t i) const
 {
-    const size_t x = (ID % TILE_MAX_X) * TILE_MAX_X + i % TILE_MAX_X;
-    const size_t y = (ID / TILE_MAX_Y) * TILE_MAX_Y + i / TILE_MAX_Y;
+    const size_t x = (ID % consts::TILE_MAX_X) * consts::TILE_MAX_X + i % consts::TILE_MAX_X;
+    const size_t y = (ID / consts::TILE_MAX_Y) * consts::TILE_MAX_Y + i / consts::TILE_MAX_Y;
     return Position(x, y);
 }
 
