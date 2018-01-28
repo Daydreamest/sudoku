@@ -18,9 +18,8 @@ Position::Position(const size_t xp, const size_t yp) : x(xp), y(yp)
 {
     //ctor
     if (!is_correct(consts::BOARD_SIZE)) {
-        log(LogLevel_Error) << "POC Tring to set position to " << to_string() << " while max limit is " << consts::BOARD_SIZE << std::endl;;
-        log(LogLevel_Error) << "POC Throwing exception..." << std::endl;;
-        // TODO throw exception
+        log(LogLevel_Error) << "POC Incorrect position values" << std::endl;
+        throw PositionException(x, y, consts::BOARD_SIZE);
     }
 }
 
@@ -53,6 +52,24 @@ const std::string Position::to_string() const
     std::stringstream ss;
     ss << "(" << x << "," << y << ")";
     return ss.str();
+}
+
+Position::PositionException::PositionException(const size_t xp, const size_t yp, const size_t max)
+{
+    // ctor
+    std::stringstream ss;
+    ss << "Trying to set position to (" << xp << ", " << yp << ") while max limit is " << max << std::endl;
+    message = ss.str();
+}
+
+Position::PositionException::~PositionException()
+{
+    // dtor
+}
+
+const char* Position::PositionException::what() const throw()
+{
+    return message.c_str();
 }
 
 } // namespace sudoku

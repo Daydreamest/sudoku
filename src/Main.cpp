@@ -51,6 +51,7 @@ void Main::run()
         }
     } catch (SudokuException& e) {
         log(LogLevel_Error) << e.what() << std::endl;
+        return;
     }
 
     ui->print_sudoku(sudoku->get_data());
