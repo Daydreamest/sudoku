@@ -15,23 +15,31 @@ extern ui::Logger log;
 class Main
 {
     public:
-
+        // Handle type definition
         using handle_type = std::unique_ptr<Main>;
         friend handle_type std::make_unique<Main>();
 
+        // Building method
         static handle_type create();
 
+        // Destructor
         virtual ~Main();
 
+        // Main method to run the programme
         int run();
 
     protected:
+        // Constructor
         Main();
 
     private:
+        // Sudoku handle
         core::Sudoku::handle_type sudoku;
+
+        // UI handle
         AbstractUi::handle_type ui;
 
+        // Configuration object
         Configuration config;
 };
 
