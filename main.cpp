@@ -2,9 +2,9 @@
 
 int main()
 {
+    // Create Main class
     sudoku::Main::handle_type main = sudoku::Main::create();
 
-    main->run();
-
-    return 0;
+    // Run the programme
+    return main->run();
 }

@@ -23,7 +23,7 @@ class Main
 
         virtual ~Main();
 
-        void run();
+        int run();
 
     protected:
         Main();

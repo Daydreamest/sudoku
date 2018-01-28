@@ -39,7 +39,7 @@ Main::handle_type Main::create()
     return std::move(result);
 }
 
-void Main::run()
+int Main::run()
 {
     try {
         // Read starting board
@@ -61,11 +61,13 @@ void Main::run()
         }
     } catch (SudokuException& e) {
         log(LogLevel_Error) << e.what() << std::endl;
-        return;
+        return 1;
     }
 
     // Print the final state of the sudoku
     ui->print_sudoku(sudoku->get_data());
+
+    return 0;
 }
 
 } // namespace sudoku
