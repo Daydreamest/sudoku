@@ -3,6 +3,7 @@
 
 #include <memory>
 
+#include <Configuration.h>
 #include <AbstractUi.h>
 #include <Logger.h>
 #include <Sudoku.h>
@@ -30,6 +31,8 @@ class Main
     private:
         core::Sudoku::handle_type sudoku;
         AbstractUi::handle_type ui;
+
+        Configuration config;
 };
 
 } // namespace sudoku

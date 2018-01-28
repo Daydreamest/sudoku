@@ -3,6 +3,8 @@
 
 #include <exception>
 
+namespace sudoku {
+
 class SudokuException : public std::exception
 {
     public:
@@ -17,5 +19,7 @@ class SudokuException : public std::exception
 
     private:
 };
+
+} // namespace sudoku
 
 #endif // SUDOKUEXCEPTION_H
