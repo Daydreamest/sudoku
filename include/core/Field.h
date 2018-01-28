@@ -2,7 +2,7 @@
 #define FIELD_H
 
 #include <memory>
-#include <string> // TODO not needed in final version
+#include <string>
 
 #include <FieldPossibilities.h>
 #include <Matrix.h>

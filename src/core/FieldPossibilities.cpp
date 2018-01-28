@@ -10,7 +10,7 @@ FieldPossibilities::FieldPossibilities() : possible_values()
 
 FieldPossibilities::~FieldPossibilities()
 {
-    possible_values.clear();
+    clear();
 }
 
 void FieldPossibilities::clear()
@@ -20,7 +20,7 @@ void FieldPossibilities::clear()
 
 void FieldPossibilities::reset()
 {
-    possible_values.clear();
+    clear();
     for (Value val : ValueTools::get_value_set()) {
         possible_values.insert(val);
     }
