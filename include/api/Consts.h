@@ -3,6 +3,7 @@
 
 #include <cstddef>
 
+// Convenience abbreviation for "for" loop
 #define loop(x,n) for(size_t x = 0; x < n; ++x)
 
 namespace sudoku {

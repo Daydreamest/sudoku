@@ -10,9 +10,10 @@ namespace sudoku {
 class AbstractUi
 {
     public:
-
+        // Handle type definition
         using handle_type = std::shared_ptr<AbstractUi>;
 
+        // Destructor
         virtual ~AbstractUi() {};
 
         // Get starting data of the sudoku
@@ -22,6 +23,7 @@ class AbstractUi
         virtual void print_sudoku(const AbstractData::handle_type s) = 0;
 
     protected:
+        // Constructor
         AbstractUi() {};
 
     private:
