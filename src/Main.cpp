@@ -8,9 +8,10 @@
 
 namespace sudoku {
 
+// Logger deffinition
 ui::Logger log;
 
-Main::Main() : sudoku(nullptr), ui(nullptr)
+Main::Main()
 {
     //ctor
 }
@@ -24,13 +25,13 @@ Main::handle_type Main::create()
 {
     handle_type result = std::make_unique<Main>();
 
-    // Set the logger
+    // Set the logging level
     result->config.set_log_level(LogLevel_Warning);
 
     // Set verbosity
     result->config.set_verbosity(false);
 
-    // Create and initialize Ui
+    // Create and initialize UI
     result->ui = ui::Ui::create();
 
     // Create and initialize Sudoku class
@@ -54,7 +55,7 @@ int Main::run()
         while (has_next_step) {
             has_next_step = sudoku->solve_step();
 
-            // Show every steop of the solution?
+            // Show every step of the solution?
             if (config.is_verbose()) {
                 ui->print_sudoku(sudoku->get_data());
             }

@@ -3,6 +3,7 @@
 #include <fstream>
 #include <iostream>
 
+#include <Position.h>
 #include <UiData.h>
 
 namespace sudoku {
@@ -33,7 +34,7 @@ AbstractData::handle_type Initializer::get()
     size_t y = 0;
     while (std::getline(infile, line)) {
         for (size_t x = 0; x < 9; x++) {
-            data->set_value(x, y, line[x]);
+            data->set_value(Position(x, y), line[x]);
         }
         y++;
     }

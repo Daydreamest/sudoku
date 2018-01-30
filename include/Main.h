@@ -10,6 +10,7 @@
 
 namespace sudoku {
 
+// Logger instance
 extern ui::Logger log;
 
 class Main
@@ -25,7 +26,7 @@ class Main
         // Destructor
         virtual ~Main();
 
-        // Main method to run the programme
+        // Main method to run the program
         int run();
 
     protected:

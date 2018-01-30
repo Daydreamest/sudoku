@@ -13,23 +13,30 @@ namespace ui {
 class UiData : public AbstractData
 {
     public:
+        // Handle type definition
         using handle_type = std::shared_ptr<UiData>;
 
+        // Building method
         static handle_type create();
+
+        // Destructor
         virtual ~UiData();
 
-        void set_value(const size_t x, const size_t y, const char value);
+        // Value setter for a specific position
+        void set_value(const Position pos, const char value);
 
-        virtual char get_value(const Position pos) const override;
-
-        void reset();
+        // AbstractData::get_value
+        virtual const char get_value(const Position pos) const override;
 
     protected:
+        // Constructor
         UiData();
 
     private:
+        // Creator of a default, empty data table
         Table<char> data;
 
+        // Creator of a default, empty data table
         const Table<char> create_empty_array() const;
 };
 

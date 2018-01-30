@@ -14,22 +14,30 @@ namespace core {
 class CoreData : public AbstractData
 {
     public:
+        // Handle type definition
         using handle_type = std::shared_ptr<CoreData>;
 
+        // Building method
         static handle_type create();
+
+        // Destructor
         virtual ~CoreData();
 
-        // TODO should return const char
-        virtual char get_value(const Position pos) const override;
+        // AbstractData::get_value
+        virtual const char get_value(const Position pos) const override;
 
+        // Value setter for a specific position
         void set_value(const Slot slot);
 
     protected:
+        // Constructor
         CoreData();
 
     private:
+        // Data table
         Table<char> data;
 
+        // Creator of a default, empty data table
         const Table<char> create_empty_array() const;
 };
 

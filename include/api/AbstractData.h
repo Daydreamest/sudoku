@@ -10,18 +10,14 @@ namespace sudoku {
 class AbstractData
 {
     public:
-
+        // Handle type definition
         using handle_type = std::shared_ptr<AbstractData>;
 
         AbstractData() {};
         virtual ~AbstractData() {};
 
-        // TODO should return const char
-        virtual char get_value(const Position pos) const = 0;
-
-    protected:
-
-    private:
+        // Get a printable (char) value in the given position
+        virtual const char get_value(const Position pos) const = 0;
 };
 
 } // namespace sudoku

@@ -13,14 +13,9 @@ UiData::~UiData()
     //dtor
 }
 
-void UiData::set_value(const size_t x, const size_t y, const char value)
+void UiData::set_value(const Position pos, const char value)
 {
-    data[x][y] = value;
-}
-
-void UiData::reset()
-{
-    data = create_empty_array();
+    data[pos.get_x()][pos.get_y()] = value;
 }
 
 const Table<char> UiData::create_empty_array() const
@@ -43,7 +38,7 @@ UiData::handle_type UiData::create()
     return handle_type(new UiData);
 }
 
-char UiData::get_value(const Position pos) const
+const char UiData::get_value(const Position pos) const
 {
     return data[pos.get_x()][pos.get_y()];
 }
