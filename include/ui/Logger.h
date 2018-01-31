@@ -8,6 +8,7 @@
 
 namespace sudoku {
 
+// Available logging levels
 enum LogLevel {
     LogLevel_Debug = 0,
     LogLevel_Info,
@@ -21,7 +22,7 @@ namespace ui {
 class Logger
 {
     public:
-        // COnstructor
+        // Constructor
         Logger(const LogLevel lvl = LogLevel_None, std::ostream& out = std::cout);
 
         //Destructor

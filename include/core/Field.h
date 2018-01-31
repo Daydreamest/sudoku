@@ -59,7 +59,6 @@ class Field
         Field();
 
     private:
-
         // Current field value
         Value field_value;
 

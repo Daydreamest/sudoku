@@ -21,30 +21,42 @@ enum Value {
     Value_9
 };
 
+// Set container definition
 using ValueSet = std::set<Value>;
 
 class ValueTools
 {
     public:
+        // Destructor
         virtual ~ValueTools();
 
+        // Translate char to value
         static Value get_value_from_char(const char ch);
+
+        // Translate value to char
         static char get_char_from_value(const Value val);
 
+        // Get a container of all possible values
         static ValueSet get_value_set();
 
-    protected:
-
     private:
+        // Constructor
         ValueTools();
 
+        // Container of all possible values
         static ValueSet value_set;
 
-        static std::map<char, Value> create_ch_map();
+        // A map of char to value
         static std::map<char, Value> ch_to_val_map;
 
-        static std::map<Value, char> create_val_map();
+        // Create a map of char to value
+        static std::map<char, Value> create_ch_map();
+
+        // A map of value to char
         static std::map<Value, char> val_to_ch_map;
+
+        // Create a map of value to char
+        static std::map<Value, char> create_val_map();
 };
 
 } // namespace core

@@ -44,7 +44,6 @@ class FieldPossibilities
         FieldPossibilities();
 
     private:
-
         // A list of possible values that this field may have
         std::set<Value> possible_values;
 };
