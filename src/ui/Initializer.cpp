@@ -9,7 +9,7 @@
 namespace sudoku {
 namespace ui {
 
-Initializer::Initializer()
+Initializer::Initializer(const std::string input_file_name) : ifile(input_file_name)
 {
     //ctor
 }
@@ -23,7 +23,7 @@ AbstractData::handle_type Initializer::get()
 {
     UiData::handle_type data = UiData::create();
 
-    std::ifstream infile("input.txt");
+    std::ifstream infile(ifile);
 
     if (!infile.good()) {
         std::cout << "File bad" << std::endl;
@@ -43,9 +43,9 @@ AbstractData::handle_type Initializer::get()
     return data;
 }
 
-Initializer::handle_type Initializer::create()
+Initializer::handle_type Initializer::create(const std::string input_file_name)
 {
-    return handle_type(new Initializer);
+    return handle_type(new Initializer(input_file_name));
 }
 
 } //namespace ui

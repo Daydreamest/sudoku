@@ -5,7 +5,7 @@
 namespace sudoku {
 namespace ui {
 
-Ui::Ui() : init(Initializer::create())
+Ui::Ui(const std::string input_file_name) : init(Initializer::create(input_file_name))
 {
     //ctor
 }
@@ -50,9 +50,9 @@ void Ui::print_sudoku(const AbstractData::handle_type s)
 //    std::cin.ignore();
 }
 
-Ui::handle_type Ui::create()
+Ui::handle_type Ui::create(const std::string input_file_name)
 {
-    return handle_type(new Ui);
+    return handle_type(new Ui(input_file_name));
 }
 
 } //namespace ui

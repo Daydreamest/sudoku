@@ -31,8 +31,11 @@ Main::handle_type Main::create()
     // Set verbosity
     result->config.set_verbosity(false);
 
+    // Set input data file name
+    result->config.set_input_data("input.txt");
+
     // Create and initialize UI
-    result->ui = ui::Ui::create();
+    result->ui = ui::Ui::create("input.txt");
 
     // Create and initialize Sudoku class
     result->sudoku = core::Sudoku::create();

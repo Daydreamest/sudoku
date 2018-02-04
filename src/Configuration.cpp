@@ -32,5 +32,14 @@ const bool Configuration::is_verbose() const
     return verbosity;
 }
 
+void Configuration::set_input_data(const std::string name)
+{
+    input_file = name;
+}
+
+const std::string Configuration::get_input_data() const
+{
+    return input_file;
+}
 
 } // namespace sudoku

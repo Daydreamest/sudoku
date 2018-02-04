@@ -2,6 +2,7 @@
 #define INITIALIZER_H
 
 #include <memory>
+#include <string>
 
 #include <AbstractData.h>
 
@@ -15,7 +16,7 @@ class Initializer
         using handle_type = std::shared_ptr<Initializer>;
 
         // Building method
-        static handle_type create();
+        static handle_type create(const std::string input_file_name);
 
         // Destructor
         virtual ~Initializer();
@@ -25,9 +26,11 @@ class Initializer
 
     protected:
         // Constructor
-        Initializer();
+        Initializer(const std::string input_file_name);
 
     private:
+        // Input filr name
+        const std::string ifile;
 };
 
 } //namespace ui

@@ -2,6 +2,7 @@
 #define UI_H
 
 #include <memory>
+#include <string>
 
 #include <AbstractUi.h>
 #include <Initializer.h>
@@ -26,11 +27,11 @@ class Ui : public AbstractUi
         virtual void print_sudoku(const AbstractData::handle_type s) override;
 
         // Building method
-        static handle_type create();
+        static handle_type create(const std::string input_file_name);
 
     protected:
         // Constructor
-        Ui();
+        Ui(const std::string input_file_name);
 
     private:
         // Initializer handle
