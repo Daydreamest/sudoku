@@ -39,11 +39,10 @@ void AlgorithmContainer::run()
 
 void AlgorithmContainer::initialize(BoardWrapper& brd, SlotSet& res)
 {
-    //TODO check if doesn't exist already
-    algorithms.push_back(AlgorithmFields::create(brd, res));
-    algorithms.push_back(AlgorithmRows::create(brd, res));
-    algorithms.push_back(AlgorithmColumns::create(brd, res));
-    algorithms.push_back(AlgorithmTiles::create(brd, res));
+    add(AlgorithmFields::create(brd, res));
+    add(AlgorithmRows::create(brd, res));
+    add(AlgorithmColumns::create(brd, res));
+    add(AlgorithmTiles::create(brd, res));
 }
 
 } // namespace algorithm
