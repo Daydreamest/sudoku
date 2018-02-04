@@ -13,7 +13,6 @@ extern ui::Logger log;
 namespace core {
 namespace algorithm {
 
-//AlgorithmContainer::AlgorithmContainer(FieldBoard& brd, SlotSet& res) : board(brd), result(res)
 AlgorithmContainer::AlgorithmContainer()
 {
     //ctor

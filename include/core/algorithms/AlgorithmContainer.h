@@ -14,30 +14,29 @@ namespace algorithm {
 class AlgorithmContainer
 {
     public:
+        // Handle type definition
         using handle_type = std::shared_ptr<AlgorithmContainer>;
 
-//        AlgorithmContainer(FieldBoard& brd, SlotSet& res);
+        // Constructor
         AlgorithmContainer();
+
+        // Destructor
         virtual ~AlgorithmContainer();
 
+        // Initialize this cintainer with all available algorithms
         void initialize(BoardWrapper& brd, SlotSet& res);
 
-//        void remove_algorithm(AbstractAlgorithm::handle_type algo);
-
-//        void set_result_container(SlotSet& res);
-//
-//        void set_board(FieldBoard& brd);
-
+        // Run all initialized algorithms
         void run();
+
     protected:
 
     private:
+        // Add an algorithm to the storage
         void add(AbstractAlgorithm::handle_type algo);
 
+        // Algorithm storage object
         std::vector<AbstractAlgorithm::handle_type> algorithms;
-
-//        FieldBoard& board;
-//        SlotSet& result;
 };
 
 } // namespace algorithm
