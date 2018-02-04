@@ -60,10 +60,5 @@ Initializer::FileInputException::~FileInputException()
     // dtor
 }
 
-const char* Initializer::FileInputException::what() const throw()
-{
-    return message.c_str();
-}
-
 } //namespace ui
 } // namespace sudoku

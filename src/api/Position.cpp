@@ -67,9 +67,4 @@ Position::PositionException::~PositionException()
     // dtor
 }
 
-const char* Position::PositionException::what() const throw()
-{
-    return message.c_str();
-}
-
 } // namespace sudoku

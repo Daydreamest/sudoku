@@ -2,6 +2,7 @@
 #define SUDOKUEXCEPTION_H
 
 #include <exception>
+#include <string>
 
 namespace sudoku {
 
@@ -9,17 +10,19 @@ class SudokuException : public std::exception
 {
     public:
         // Constructor
-        SudokuException() {};
+        SudokuException() : message("Generic sudoku error") {};
 
         // Destructor
         virtual ~SudokuException() {};
 
         // Exception details
         virtual const char* what() const throw() {
-            return "Generic sudoku exception";
+            return message.c_str();
         }
 
     protected:
+        // Error message
+        std::string message;
 
     private:
 };

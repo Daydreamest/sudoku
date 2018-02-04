@@ -41,13 +41,6 @@ class Initializer
 
                 // Destructor
                 virtual ~FileInputException();
-
-                // What has happened
-                virtual const char* what() const throw();
-
-            private:
-                // Error message
-                std::string message;
         };
 };
 

@@ -44,13 +44,6 @@ class Position
 
                 // Destructor
                 virtual ~PositionException();
-
-                // What has happened
-                virtual const char* what() const throw();
-
-            private:
-                // Error message
-                std::string message;
         };
 };
 
