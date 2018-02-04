@@ -1,7 +1,7 @@
 #include "Initializer.h"
 
 #include <fstream>
-#include <iostream>
+#include <sstream>
 
 #include <Position.h>
 #include <UiData.h>
@@ -26,8 +26,7 @@ AbstractData::handle_type Initializer::get()
     std::ifstream infile(ifile);
 
     if (!infile.good()) {
-        std::cout << "File bad" << std::endl;
-        return data;
+        throw FileInputException(ifile);
     }
 
     std::string line;
@@ -46,6 +45,24 @@ AbstractData::handle_type Initializer::get()
 Initializer::handle_type Initializer::create(const std::string input_file_name)
 {
     return handle_type(new Initializer(input_file_name));
+}
+
+Initializer::FileInputException::FileInputException(const std::string input_file_name)
+{
+    // ctor
+    std::stringstream ss;
+    ss << "Not possible to read file '" << input_file_name << "' in order to initialize the sudoku correctly" << std::endl;
+    message = ss.str();
+}
+
+Initializer::FileInputException::~FileInputException()
+{
+    // dtor
+}
+
+const char* Initializer::FileInputException::what() const throw()
+{
+    return message.c_str();
 }
 
 } //namespace ui

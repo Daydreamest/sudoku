@@ -31,6 +31,24 @@ class Initializer
     private:
         // Input filr name
         const std::string ifile;
+
+        // Exception class to be thrown if the input file doesn't exist
+        class FileInputException : public SudokuException
+        {
+            public:
+                // Constructor with coordinates
+                FileInputException(const std::string input_file_name);
+
+                // Destructor
+                virtual ~FileInputException();
+
+                // What has happened
+                virtual const char* what() const throw();
+
+            private:
+                // Error message
+                std::string message;
+        };
 };
 
 } //namespace ui
