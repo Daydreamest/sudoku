@@ -42,6 +42,17 @@ class Initializer
                 // Destructor
                 virtual ~FileInputException();
         };
+
+        // Exception class to be thrown if the input line is in wrong format
+        class InputLineException : public SudokuException
+        {
+            public:
+                // Constructor with coordinates
+                InputLineException(const std::string line);
+
+                // Destructor
+                virtual ~InputLineException();
+        };
 };
 
 } //namespace ui

@@ -32,6 +32,10 @@ AbstractData::handle_type Initializer::get()
     std::string line;
     size_t y = 0;
     while (std::getline(infile, line)) {
+        if (line.length() != 9) {
+            throw InputLineException(line);
+        }
+
         for (size_t x = 0; x < 9; x++) {
             data->set_value(Position(x, y), line[x]);
         }
@@ -56,6 +60,19 @@ Initializer::FileInputException::FileInputException(const std::string input_file
 }
 
 Initializer::FileInputException::~FileInputException()
+{
+    // dtor
+}
+
+Initializer::InputLineException::InputLineException(const std::string line)
+{
+    // ctor
+    std::stringstream ss;
+    ss << "Line in the input file has wrong lenght (not 9): '" << line << "'" << std::endl;
+    message = ss.str();
+}
+
+Initializer::InputLineException::~InputLineException()
 {
     // dtor
 }
